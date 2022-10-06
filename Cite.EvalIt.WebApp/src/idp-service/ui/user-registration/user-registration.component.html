@@ -1,0 +1,81 @@
+<div class="user-registration">
+	<div class="col-md-4 offset-md-4">
+		<mat-card *ngIf="tenantId">
+			<mat-card-content>
+				<form *ngIf="showInvitationCode" (ngSubmit)="submitInvitationCode()">
+					<h2>{{'IDP-SERVICE.AUTHENTICATION.TITLES.INVITATION-CODE' | translate}}</h2>
+					<div class="form-fields" [formGroup]="this.invitationFormGroup">
+						<mat-form-field>
+		<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.INVITATION-CODE' | translate}}</mat-label>
+		<input matInput autocomplete="nope"  type="text" formControlName="code" required>
+							<mat-error *ngIf="this.invitationFormGroup.get('code').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+						</mat-form-field>
+						<div class="col"></div>
+						<ngx-recaptcha2 class="col-auto" [siteKey]="installationConfiguration.recaptchaSiteKey" [size]="installationConfiguration.recaptchaSize" [hl]="installationConfiguration.recaptchaLanguage" [theme]="installationConfiguration.recaptchaTheme" [type]="installationConfiguration.recaptchaType" formControlName="recaptcha">
+						</ngx-recaptcha2>
+						<div class="col"></div>
+					</div>
+					<div class="row">
+						<div class="col"></div>
+						<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'COMMONS.ACTIONS.CONTINUE' | translate}}</button></div>
+					</div>
+				</form>
+				<div *ngIf="showProviderSelection">
+					<h2>{{'IDP-SERVICE.AUTHENTICATION.TITLES.PROVIDER-SELECTION' | translate}}</h2>
+					<div *ngIf="providerManager">
+						<app-auth-providers *ngIf="providerManager" [configuration]="externalProvidersComponentConfig"
+							[googleProvider]="getAuthenticationProvider(credentialProviderEnum.Google)"
+							[taxisnetProvider]="getAuthenticationProvider(credentialProviderEnum.Taxisnet)"
+							[facebookProvider]="getAuthenticationProvider(credentialProviderEnum.Facebook)"
+							[twitterProvider]="getAuthenticationProvider(credentialProviderEnum.Twitter)"
+							[linkedInProvider]="getAuthenticationProvider(credentialProviderEnum.LinkedIn)"
+							[gitHubProvider]="getAuthenticationProvider(credentialProviderEnum.GitHub)"
+							[samlProviders]="getAuthenticationProvider(credentialProviderEnum.Saml)"
+							[openIDConnectCodeProviders]="getAuthenticationProvider(credentialProviderEnum.OpenIDConnectCode)"
+							[casProviders]="getAuthenticationProvider(credentialProviderEnum.CAS)"
+							[userPassProvider]="getAuthenticationProvider(credentialProviderEnum.UserPass)"
+							[directLinkProvider]="getAuthenticationProvider(credentialProviderEnum.DirectLink)"
+							[transientProvider]="getAuthenticationProvider(credentialProviderEnum.Transient)"
+							[tenantId]="tenantId" [signUpMode]="mode" [invitationCode]="getInvitationCode()" [signupConsents]="this.consentsValidity?.userConsents" (onAuthenticate)="registerExternal($event)" (onProviderSelected)="updateSelectedProvider($event)">
+						</app-auth-providers>
+						<div *ngIf="allowPreviousStep()">
+							<button mat-button color="primary" type="button" (click)="toPreviousStep()">{{'COMMONS.ACTIONS.BACK' | translate}}</button>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="showRegistrationFields">
+					<h2>{{'IDP-SERVICE.AUTHENTICATION.TITLES.REGISTRATION-FIELDS' | translate}}</h2>
+					<div>
+						<app-direct-link-register *ngIf="isDirectLinkProvider()" [configuration]="getDirectLinkRegisterComponentConfiguration()" (onAuthenticate)="registerDirectLink($event)"></app-direct-link-register>
+						<app-transient-register *ngIf="isTransientProvider()" [configuration]="getDirectLinkRegisterComponentConfiguration()" (onAuthenticate)="registerTransient($event)"></app-transient-register>
+						<app-user-pass-register *ngIf="isUserPassProvider()" [configuration]="getUserPassRegisterComponentConfiguration()" (onAuthenticate)="registerInternal($event)"></app-user-pass-register>
+						<div *ngIf="allowPreviousStep()">
+							<div>
+								<button mat-button color="primary" type="button" (click)="toPreviousStep()">{{'COMMONS.ACTIONS.BACK' | translate}}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="showUserConsents" class="row">
+					<h2 class="col-12">{{'IDP-SERVICE.AUTHENTICATION.TITLES.USER-CONSENTS' | translate}}</h2>
+					<app-user-consents-editor class="col-12" (consentsValidity)="consentsValidityChanged($event)" [lastConsented]="lastConsented"></app-user-consents-editor>
+					<div *ngIf="allowPreviousStep()" class="col-auto">
+						<div>
+							<button mat-button color="primary" type="button" (click)="toPreviousStep()">{{'COMMONS.ACTIONS.BACK' | translate}}</button>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="row user-consents-action-buttons-row">
+							<div class="col"></div>
+							<div class="col-auto">
+								<div>
+									<button mat-raised-button color="primary" type="button" (click)="acceptConsents()" [disabled]="!consentsValidity?.consentsAreAccepted">{{'COMMONS.ACTIONS.NEXT' | translate}}</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

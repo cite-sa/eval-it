@@ -1,0 +1,181 @@
+{
+	"Permissions": {
+		"ExtendedClaims": [],
+		"Policies": {
+			//User
+			"BrowseUser": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"EditUser": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"DeleteUser": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			//User Profile
+			"BrowseUserProfile": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			//Tag
+			"BrowseTag": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"EditTag": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"DeleteTag": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			//DataObject
+			"BrowseDataObject": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"EditDataObject": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"DeleteDataObject": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			//DataObjectType
+			"BrowseDataObjectType": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"EditDataObjectType": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"DeleteDataObjectType": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			// UI Pages
+			"ViewUsersPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewTagsPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewDataObjectTypesPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewDataObjectsPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewApiClientsPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewRoleAssignmentPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewAccessTokensPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewUserInvitationPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewUserProfilePage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewForgetMeRequestPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewWhatYouKnowAboutMeRequestPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewNotificationPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewNotificationEventRulePage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewInAppNotificationPage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			},
+			"ViewNotificationTemplatePage": {
+				"Roles": [],
+				"Clients": [],
+				"AllowAnonymous": false,
+				"AllowAuthenticated": false
+			}
+		}
+	}
+}

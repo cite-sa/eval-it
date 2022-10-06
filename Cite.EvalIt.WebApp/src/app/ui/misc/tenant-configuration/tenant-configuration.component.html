@@ -1,0 +1,65 @@
+<div class="row tenant-configuration-component">
+	<div class="col-md-8 offset-md-2">
+		<h4>{{'APP.TENANT-CONFIGURATION.TITLE' | translate}}</h4>
+		<div class="col-12 configuration-container">
+			<div class="row">
+				<mat-accordion class="col-12 headers-align">
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>{{'APP.TENANT-CONFIGURATION.ITEMS.USER-SERVICE-USER-LOCALE.TITLE' | translate}}</mat-panel-title>
+							<mat-panel-description>{{'APP.TENANT-CONFIGURATION.ITEMS.USER-SERVICE-USER-LOCALE.HINT' | translate}}</mat-panel-description>
+						</mat-expansion-panel-header>
+						<ng-template matExpansionPanelContent>
+							<app-tenant-configuration-user-locale-editor></app-tenant-configuration-user-locale-editor>
+						</ng-template>
+					</mat-expansion-panel>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>{{'APP.TENANT-CONFIGURATION.ITEMS.IDP-SERVICE-CREDENTIAL-PROVIDERS.TITLE' | translate}}</mat-panel-title>
+							<mat-panel-description>{{'APP.TENANT-CONFIGURATION.ITEMS.IDP-SERVICE-CREDENTIAL-PROVIDERS.HINT' | translate}}</mat-panel-description>
+						</mat-expansion-panel-header>
+						<ng-template matExpansionPanelContent>
+							<app-tenant-configuration-credential-providers-editor></app-tenant-configuration-credential-providers-editor>
+						</ng-template>
+					</mat-expansion-panel>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-SLACK-BROADCAST.TITLE' | translate}}</mat-panel-title>
+							<mat-panel-description>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-SLACK-BROADCAST.HINT' | translate}}</mat-panel-description>
+						</mat-expansion-panel-header>
+						<ng-template matExpansionPanelContent>
+							<app-tenant-configuration-slack-broadcast-editor></app-tenant-configuration-slack-broadcast-editor>
+						</ng-template>
+					</mat-expansion-panel>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-EMAIL-CLIENT.TITLE' | translate}}</mat-panel-title>
+							<mat-panel-description>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-EMAIL-CLIENT.HINT' | translate}}</mat-panel-description>
+						</mat-expansion-panel-header>
+						<ng-template matExpansionPanelContent>
+							<app-tenant-configuration-email-client-editor></app-tenant-configuration-email-client-editor>
+						</ng-template>
+					</mat-expansion-panel>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-SMS-CLIENT.TITLE' | translate}}</mat-panel-title>
+							<mat-panel-description>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-SMS-CLIENT.HINT' | translate}}</mat-panel-description>
+						</mat-expansion-panel-header>
+						<ng-template matExpansionPanelContent>
+							<app-tenant-configuration-sms-client-editor></app-tenant-configuration-sms-client-editor>
+						</ng-template>
+					</mat-expansion-panel>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-NOTIFIER-LIST.TITLE' | translate}}</mat-panel-title>
+							<mat-panel-description>{{'APP.TENANT-CONFIGURATION.ITEMS.NOTIFICATION-SERVICE-NOTIFIER-LIST.HINT' | translate}}</mat-panel-description>
+						</mat-expansion-panel-header>
+						<ng-template matExpansionPanelContent>
+							<app-tenant-configuration-notifier-list-editor></app-tenant-configuration-notifier-list-editor>
+						</ng-template>
+					</mat-expansion-panel>
+				</mat-accordion>
+			</div>
+		</div>
+	</div>
+</div>

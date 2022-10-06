@@ -1,0 +1,18 @@
+<div class="row data-object-info">
+	<div class="col-md-8 offset-md-2">
+        <app-data-object-viewer (editorClicked)="this.toEditor()" (userClicked)="this.toUserProfile($event)" (typeClicked)="this.toObjectType($event)"></app-data-object-viewer>
+        <!-- <mat-divider class="mt-3"></mat-divider> -->
+        <mat-tab-group mat-stretch-tabs dynamicHeight>
+            <mat-tab label="{{'APP.DATA-OBJECT-INFO.REVIEWS' | translate}}">
+                <div class="ml-3 mr-3 mb-3">
+                    <app-data-object-review-listing *ngIf="object" [object]="this.object"></app-data-object-review-listing>
+                </div>
+            </mat-tab>
+            <mat-tab label="{{'APP.DATA-OBJECT-INFO.TAGS' | translate}}">
+                <div class="ml-3 mr-3 mb-3">
+                    <app-data-object-tag-editor *ngIf="object" [object]="this.object"></app-data-object-tag-editor>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

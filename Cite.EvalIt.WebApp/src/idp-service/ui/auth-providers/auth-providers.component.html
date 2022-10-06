@@ -1,0 +1,45 @@
+<h4 *ngIf="showHeader()">{{'IDP-SERVICE.AUTHENTICATION.TITLES.EXTERNAL-PROVIDERS' | translate}}</h4>
+<div class="row auth-providers">
+	<div *ngIf="googleProvider" class="col-auto">
+		<app-google-login (onAuthenticateSuccess)="onGoogleLoginSuccess($event)"></app-google-login>
+	</div>
+	<div *ngIf="facebookProvider" class="col-auto">
+		<app-facebook-login (onAuthenticateSuccess)="onFacebookLoginSuccess($event)"></app-facebook-login>
+	</div>
+	<div *ngIf="twitterProvider" class="col-auto">
+		<app-twitter-login (onAuthenticateSuccess)="onTwitterLoginSuccess($event)"></app-twitter-login>
+	</div>
+	<div *ngIf="linkedInProvider" class="col-auto">
+		<app-linked-in-login (onAuthenticateSuccess)="onLinkedInLoginSuccess($event)"></app-linked-in-login>
+	</div>
+	<div *ngIf="gitHubProvider" class="col-auto">
+		<app-github-login (onAuthenticateSuccess)="onGitHubLoginSuccess($event)"></app-github-login>
+	</div>
+	<div *ngIf="taxisnetProvider" class="col-auto">
+		<app-taxisnet-login (onAuthenticateSuccess)="onTaxisnetLoginSuccess($event)" [tenantId]="tenantId" [signUpMode]="signUpMode"
+			[invitationCode]="invitationCode" [signupConsents]="signupConsents"></app-taxisnet-login>
+	</div>
+	<div *ngIf="openIDConnectCodeProviders && openIDConnectCodeProviders.length > 0" class="col-auto">
+		<app-openid-connect-code-login *ngFor="let openIDConnectCodeProvider of openIDConnectCodeProviders" [tenantId]="tenantId" [signUpMode]="signUpMode" [invitationCode]="invitationCode" [signupConsents]="signupConsents" [ssoUrl]="openIDConnectCodeProvider.options.ssoUrl" [idpId]="openIDConnectCodeProvider.options.idpId" [title]="openIDConnectCodeProvider.options.title"></app-openid-connect-code-login>
+	</div>
+	<div *ngIf="samlProviders && samlProviders.length > 0" class="col-auto">
+		<app-saml-login *ngFor="let samlProvider of samlProviders" [tenantId]="tenantId" [signUpMode]="signUpMode" [invitationCode]="invitationCode" [signupConsents]="signupConsents" [samlIdpId]="samlProvider.options.idpEntityId" [idpSSOUrl]="samlProvider.options.idpssoUrl" [binding]="samlProvider.options.binding" [title]="samlProvider.options.title"></app-saml-login>
+	</div>
+	<div *ngIf="casProviders && casProviders.length > 0" class="col-auto">
+		<app-cas-login *ngFor="let casProvider of casProviders" [tenantId]="tenantId" [signUpMode]="signUpMode"
+			[invitationCode]="invitationCode" [signupConsents]="signupConsents"
+			[casIdpId]="casProvider.options.idpEntityId" [casServerUrlBase]="casProvider.options.casServerUrlBase"
+			[title]="casProvider.options.title"></app-cas-login>
+	</div>
+	<div *ngIf="userPassProvider" class="col-auto">
+		<app-default-provider [provider]="userPassProvider" (onSelect)="selectProvider($event)"></app-default-provider>
+	</div>
+	<div *ngIf="directLinkProvider" class="col-auto">
+		<app-default-provider [provider]="directLinkProvider" (onSelect)="selectProvider($event)">
+		</app-default-provider>
+	</div>
+	<div *ngIf="transientProvider" class="col-auto">
+		<app-default-provider [provider]="transientProvider" (onSelect)="selectProvider($event)">
+		</app-default-provider>
+	</div>
+</div>

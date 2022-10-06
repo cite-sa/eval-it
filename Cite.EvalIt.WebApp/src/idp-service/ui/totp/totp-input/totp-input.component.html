@@ -1,0 +1,4 @@
+<mat-form-field class="totp-input">
+	<mat-label>{{getPlaceholder()}}</mat-label>
+	<input autocomplete="nope" matInput name="totp-input" [value]="value" (input)="pushChanges($event.target.value)" [required]="required">
+</mat-form-field>

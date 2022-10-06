@@ -1,0 +1,14 @@
+<form class="row" class="direct-link-mail-request-login" *ngIf="formGroup" (ngSubmit)="register()" [formGroup]="formGroup">
+	<div class="row">
+		<mat-form-field class="col-12">
+			<input matInput placeholder="{{'IDP-SERVICE.AUTHENTICATION.FIELDS.EMAIL' | translate}}" type="email" name="email" formControlName="email" required>
+			<mat-error *ngIf="formGroup.get('email').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+			<mat-error *ngIf="formGroup.get('email').hasError('emailTaken')">{{'COMMONS.VALIDATION.EMAIL-TAKEN' | translate}}</mat-error>
+		</mat-form-field>
+		<div class="col"></div>
+	</div>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.LOGIN' | translate}}</button></div>
+	</div>
+</form>

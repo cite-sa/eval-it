@@ -1,0 +1,10 @@
+{
+	"IdpClient": {
+		"Claims": {
+			"Mapping": {
+				"neaniasSub": [ { "Type": "neaniasSub" } ],
+				"x-role": [ { "Type": "x-role" } ]
+			}
+		}
+	}
+}

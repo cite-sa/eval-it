@@ -1,0 +1,11 @@
+.vs/
+Cite.EvalIt.Resources/bin/
+Cite.EvalIt.Resources/obj/
+Cite.EvalIt.Web/bin/
+Cite.EvalIt.Web/obj/
+Cite.EvalIt/bin/
+Cite.EvalIt/obj/
+Cite.EvalIt.Web/logs/
+Cite.EvalIt.WebApp/node_modules/
+Cite.EvalIt.WebApp/dist/
+Cite.EvalIt.WebApp/debug.log

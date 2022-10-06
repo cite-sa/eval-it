@@ -1,0 +1,77 @@
+{
+	"Notifications": {
+		"UserFollow": {
+			"NotificationKey": "A0654A46-4170-49A5-92BD-7BB34B6080FD",
+			"Template": {
+				"Name": "{name}",
+				"TargetUserName": "{following-user-name}",
+				"TargetUserId": "{following-user-id}"
+			}
+		},
+		"UserTrust": {
+			"NotificationKey": "422062CF-DB54-4158-A8AF-69824C7641F4",
+			"Template": {
+				"Name": "{name}",
+				"TargetUserName": "{trusting-user-name}",
+				"TargetUserId": "{trusting-user-id}"
+			}
+		},
+		"UserUnfollow": {
+			"NotificationKey": "40C270DB-FE58-4F45-8B7E-B8193BA0FB0B",
+			"Template": {
+				"Name": "{name}",
+				"TargetUserName": "{unfollowing-user-name}",
+				"TargetUserId": "{unfollowing-user-id}"
+			}
+		},
+		"UserUntrust": {
+			"NotificationKey": "01E5BDF8-3724-4D73-8E73-4A51C0CE0C9D",
+			"Template": {
+				"Name": "{name}",
+				"TargetUserName": "{untrusting-user-name}",
+				"TargetUserId": "{untrusting-user-id}"
+			}
+		},
+		"UserReviewSigned": {
+			"NotificationKey": "2E8C9349-9697-451A-82C1-57C9EB129D67",
+			"Template": {
+				"Name": "{name}",
+				"TargetUserName": "{reviewing-user-name}",
+				"TargetUserId": "{reviewing-user-id}",
+				"TargetReviewId": "{review-id}",
+				"TargetObjectId": "{reviewed-object-id}",
+				"TargetObjectName": "{reviewed-object-name}"
+			}
+		},
+		"UserReviewUnsigned": {
+			"NotificationKey": "010442F6-9B6A-4725-AE3B-BFD495F1CA51",
+			"Template": {
+				"Name": "{name}",
+				"TargetReviewId": "{review-id}",
+				"TargetObjectId": "{reviewed-object-id}",
+				"TargetObjectName": "{reviewed-object-name}"
+			}
+		},
+		"UserLikeSigned": {
+			"NotificationKey": "8C14F741-DD37-4A37-A244-101F0718DFFF",
+			"Template": {
+				"Name": "{name}",
+				"TargetUserName": "{liking-user-name}",
+				"TargetUserId": "{liking-user-id}",
+				"TargetReviewId": "{liked-review-id}",
+				"TargetObjectId": "{reviewed-object-id}",
+				"TargetObjectName": "{reviewed-object-name}"
+			}
+		},
+		"UserLikeUnsigned": {
+			"NotificationKey": "03AA2A93-BD8A-4F7B-8159-D7D9D9B269A8",
+			"Template": {
+				"Name": "{name}",
+				"TargetReviewId": "{review-id}",
+				"TargetObjectId": "{reviewed-object-id}",
+				"TargetObjectName": "{reviewed-object-name}"
+			}
+		}
+
+	}
+}

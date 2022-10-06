@@ -1,0 +1,103 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{this.evalOption.label}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.enumUtils.toEvaluationConfigurationTypeString(this.evalOption.optionType)}}
+            <mat-icon style="color:orange" *ngIf="this.formGroup?.touched && this.formGroup?.status == 'INVALID'">error_outline</mat-icon>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="profile-editor" [formGroup]="formGroup">
+        <div class="row pt-3 pb-3">
+            <mat-label class="col-4 font-weight-bold">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.OPTION-LABEL" | translate}}</mat-label>
+            <mat-label class="col-4">{{this.evalOption.label}}</mat-label>
+        </div>
+        <div class="row pt-3 pb-3">
+            <mat-label class="col-4 font-weight-bold">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.OPTION-IS-MANDATORY" | translate}}</mat-label>
+            <mat-label class="col-4">{{this.evalOption.isMandatory ? "Yes" : "No"}}</mat-label>
+        </div>
+        <div class="row">
+            <mat-form-field class="col">
+                <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.OPTION-WEIGHT" | translate}}</mat-label>
+                <input matInput type="number" name="ranking-profile-option-weight" formControlName="optionWeight" required>
+                <mat-error *ngIf="formGroup.get('optionWeight').hasError('backendError')">{{formGroup.get('optionWeight').getError('backendError')?.message}}</mat-error>
+                <mat-error *ngIf="formGroup.get('optionWeight').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div class="pt-3" *ngIf="formGroup.get('profileType').value == profileType['AbsoluteIntegerRankingProfile'] || formGroup.get('profileType').value == profileType['AbsoluteDecimalRankingProfile'] || formGroup.get('profileType').value == profileType['PercentageRankingProfile']">
+            <div class="row" *ngFor="let bounds of formGroup.get('mappedRangeBounds').controls; let i=index">
+                <mat-form-field class="col-1 bound-type-select" formArrayName="mappedRangeBounds" >
+                    <span [formGroupName]="i">
+                        <mat-select name="ranking-profile-range-bound-type" formControlName="upperBoundType" required>
+                            <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                                {{this.boundSymbols[val]}}
+                            </mat-option>
+                        </mat-select>
+                    </span>
+                </mat-form-field>
+                <div class="col-3" formArrayName="mappedRangeBounds">        
+                    <mat-form-field [formGroupName]="i">
+                        <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND" | translate}}</mat-label>
+                        <input matInput type="number" name="ranking-profile-range-bounds" formControlName="value" required>
+                        <mat-error *ngIf="formGroup.get('mappedRangeBounds').hasError('backendError')">{{formGroup.get('mappedRangeBounds').getError('backendError')?.message}}</mat-error>
+                        <mat-error *ngIf="formGroup.get('mappedRangeBounds').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <mat-form-field class="offset-3 col-4" formArrayName="mappedUserValues" >
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.VALUE-RANGE" | translate}}</mat-label>
+                    <input matInput type="number" name="ranking-profile-range-bounds" [formControlName]="i" required>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('backendError')">{{formGroup.get('mappedUserValues').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+                <button *ngIf="!formGroup.disabled" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeRange(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <div class="row">
+                <mat-form-field class="offset-7 col-4" formArrayName="mappedUserValues">
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.VALUE-RANGE-REST" | translate}}</mat-label>
+                    <input matInput type="number" name="ranking-profile-range-bounds" [formControlName]="this.formGroup.get('mappedRangeBounds').controls.length" required>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('backendError')">{{formGroup.get('mappedUserValues').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').at(this.formGroup.get('mappedRangeBounds').controls.length).hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+            <button *ngIf="!formGroup.disabled" class="col-auto" mat-icon-button color="primary" type='button' (click)="addRange()">
+                <mat-icon>add</mat-icon>
+            </button>
+            <mat-error *ngIf="formGroup.get('mappedRangeBounds').hasError('isNonIncreasing')">Range Upper Bounds are non-increasing!</mat-error>
+        </div>
+
+        <div class="pt-3" *ngIf="formGroup.get('profileType').value == profileType['ScaleRankingProfile']">
+            <div class="row" *ngFor="let value of formGroup.get('mappedUserValues').controls; let i=index">
+                <mat-label class="col-4">{{this.evalOption.evaluationScale[i].label}}</mat-label>
+                <mat-form-field class="offset-3 col-4" formArrayName="mappedUserValues" >
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.VALUE-SCALE" | translate}}</mat-label>
+                    <input matInput type="number" name="ranking-profile-range-bounds" [formControlName]="i" required>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('backendError')">{{formGroup.get('mappedUserValues').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="pt-3" *ngIf="formGroup.get('profileType').value == profileType['SelectionRankingProfile']">
+            <div class="row" *ngFor="let value of formGroup.get('mappedUserValues').controls; let i=index">
+                <mat-label class="col-4">{{this.evalOption.evaluationSelectionOptions[i].key}}</mat-label>
+                <mat-form-field class="offset-3 col-4" formArrayName="mappedUserValues" >
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.VALUE-SELECTION" | translate}}</mat-label>
+                    <input matInput type="number" name="ranking-profile-range-bounds" [formControlName]="i" required>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('backendError')">{{formGroup.get('mappedUserValues').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('mappedUserValues').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+            </div>        
+        </div>
+
+        <button *ngIf="!formGroup.disabled" class="float-right" mat-icon-button color="primary" type='button' (click)="emitIndexEvent()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</mat-expansion-panel>
+

@@ -1,0 +1,51 @@
+<div class="row rank-recalculation-task-listing-filters">
+	<div class="col-12 p-0">		
+		<div class="row mb-3">
+			<div class="col-3 align-self-center">
+				<button class="rank-recalculation-task-filters-btn" mat-stroked-button [matMenuTriggerFor]="filtersMenu">
+					<i class="fa fa-2x fa-filter filter-icon"></i>
+					<span>{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.SEARCH-FILTER' | translate}}</span>
+					<span class="opened-filters">{{countOpenFilters()}}</span>
+					<i class="material-icons">keyboard_arrow_down</i>
+				</button>
+			</div>
+			<div class="col-3 d-flex align-items-center toggle-col" >
+				<mat-slide-toggle *ngIf="filterSelections['isActiveOption']" [(ngModel)]="isActive" class="toggle col-auto w-100">
+					{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.SHOW-INACTIVE' | translate}}
+				</mat-slide-toggle>
+			</div>
+		</div>
+		<div class="row">
+			<mat-form-field class="col-6" *ngIf="filterSelections['requestingUserIdsOption']">
+				<mat-label>{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.REQUESTING-USERS' | translate}}</mat-label>
+				<app-multiple-auto-complete [(ngModel)]="requestingUsers" [configuration]="userMultipleAutocompleteConfiguration">
+				</app-multiple-auto-complete>
+			</mat-form-field>
+
+			<mat-form-field *ngIf="filterSelections['taskStatusesOption']" class="col-6">
+				<mat-label>{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.TASK-STATUS' | translate}}</mat-label>
+				<mat-select [(ngModel)]="taskStatuses" multiple>
+					<mat-option *ngFor="let val of taskStatusKeys" [value]="val">
+						{{this.taskStatus[val]}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+		</div>
+	</div>
+</div>
+<mat-menu #filtersMenu="matMenu">
+	<div class="filters-menu-container">
+		<div class="filters-menu-header col-md-12">
+			<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); selectAll()">{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.ALL-FILTERS' | translate}}</button>
+			<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); deselectAll() ">{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.NO-FILTERS' | translate}}</button>
+		</div>
+		<div class="col-md-12 d-flex flex-row pt-3">
+			<div class="col d-flex flex-column">
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['requestingUserIdsOption']" (ngModelChange)="checkBoxChanged($event, 'requestingUserIds')" (click)="$event.stopPropagation()">{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.REQUESTING-USERS' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['taskStatusesOption']" (ngModelChange)="checkBoxChanged($event, 'taskStatuses')" (click)="$event.stopPropagation()">{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.TASK-STATUS' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['isActiveOption']" (ngModelChange)="checkBoxChanged($event, 'isActive')" (click)="$event.stopPropagation()">{{'APP.RANK-RECALCULATION-TASK-LISTING.FILTER.SHOW-INACTIVE' | translate}}</mat-checkbox>
+			</div>
+		</div>
+	</div>
+</mat-menu>

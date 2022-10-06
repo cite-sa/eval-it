@@ -1,0 +1,19 @@
+<div class="row app-user-info">
+	<div class="col-md-8 offset-md-2">
+        <h4 >{{'APP.APP-USER-INFO.TITLE' | translate}} <span *ngIf="user"> {{ user.name}} </span></h4>
+        <mat-accordion multi>
+            <mat-expansion-panel expanded>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> {{'APP.APP-USER-INFO.NETWORK' | translate}} </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-app-user-network-listing  *ngIf="user" [user]="this.user"></app-app-user-network-listing>
+            </mat-expansion-panel>
+            <mat-expansion-panel expanded>
+                <mat-expansion-panel-header>
+                    <mat-panel-title> {{'APP.APP-USER-INFO.TAGS' | translate}} </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-app-user-tag-editor *ngIf="user" [user]="this.user"></app-app-user-tag-editor>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>

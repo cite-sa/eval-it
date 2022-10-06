@@ -1,0 +1,6 @@
+{
+  "RankRecalculator": {
+    "IntervalSeconds": 10,
+    "BatchSize": 4
+  }
+}

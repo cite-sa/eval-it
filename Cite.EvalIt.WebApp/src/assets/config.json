@@ -1,0 +1,66 @@
+{
+	"production": false,
+	"version": "-dev",
+	"infrastructure": "default",
+	"isMultitenant": false,
+	"defaultTheme": 0,
+	"defaultLanguage": 0,
+	"defaultCulture": "en-US",
+	"defaultTimezone": "UTC",
+	"inAppNotificationsCountInterval": "30",
+	"userSettingsVersion": "1",
+	"idp_service": {
+		"enabled": true,
+		"address": "IDPURL/api/idp/",
+		"clientId": "CLIENTID",
+		"scope": "SCOPE",
+		"clientSecret": "CLIENTSECRET",
+		"tenant_header": null,
+		"antiforgery_header_name": null,
+		"antiforgery_cookie_name": null,
+		"totp_header": "totp",
+		"grantType": "GRANTTYPE",
+		"googleClientId": "",
+		"facebookClientId": "",
+		"googleEnableSignInRegister": false,
+		"facebookEnableSignInRegister": false,
+		"linkedInEnableSignInRegister": false,
+		"githubEnableSignInRegister": false,
+		"twitterEnableSignInRegister": false,
+		"openIDConnectCode": {
+			"grantType": "OIDCGRANTTYPE",
+			"enableSignInRegister": false,
+			"consumerServiceUrl": "URL/login/external/oidc/code"
+		}
+	},
+	"user_service": {
+		"enabled": true,
+		"address": "USERURL/api/user/"
+	},
+	"notification_service": {
+		"enabled": true,
+		"address": "NOTIFICATIONURL/api/notification/"
+	},
+	"app_service": {
+		"enabled": true,
+		"address": "URL"
+	},
+	"recaptcha": {
+		"enabled": true,
+		"siteKey": "SECRET",
+		"size": "normal",
+		"lang": "en",
+		"theme": "light",
+		"type": "image"
+	},
+	"logging": {
+		"enabled": true,
+		"logLevels": ["debug", "info", "warning", "error"]
+	},
+	"globalErrorHandling": {
+		"transmitLogs": true,
+		"appName": "coreApp"
+	},
+	"privacyStatementUrl": "URL/assets/static-pages/privacy-statement.html",
+	"termsOfUseUrl": "URL/assets/static-pages/terms-of-use.html"
+}

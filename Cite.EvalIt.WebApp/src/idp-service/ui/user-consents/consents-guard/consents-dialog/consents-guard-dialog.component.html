@@ -1,0 +1,11 @@
+<div class="row consents-guard-dialog">
+	<h4 class="col-12">{{'IDP-SERVICE.CONSENTS-GUARD-DIALOG.TITLE' | translate}}</h4>
+	<app-user-consents-editor class="col-12" (consentsValidity)="consentsValidityChanged($event)" [requirements]="requirements"></app-user-consents-editor>
+	<div class="col-12 editor-actions">
+		<div class="row">
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button">{{'IDP-SERVICE.CONSENTS-GUARD-DIALOG.ACTIONS.CANCEL' | translate}}</button></div>
+			<div class="col"></div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="save()" [disabled]="!consentsValidity?.consentsAreAccepted" type="submit">{{'IDP-SERVICE.CONSENTS-GUARD-DIALOG.ACTIONS.SAVE' | translate}}</button></div>
+		</div>
+	</div>
+</div>

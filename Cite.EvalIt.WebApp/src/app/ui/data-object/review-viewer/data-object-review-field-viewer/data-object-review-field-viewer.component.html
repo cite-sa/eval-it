@@ -1,0 +1,38 @@
+<ng-template [ngIf]="evaluation.values.length > 0" >
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-label class="col-3 pt-1 font-weight-bold">{{evalOption?.label}}</mat-label>
+
+    <div *ngFor="let value of evaluation.values; let i=index" class="row">
+        <div class="offset-1 pt-1 pb-3 col-10">
+
+            <mat-label *ngIf="evaluation.evaluationType == evalType['AbsoluteDecimalEvaluation']">
+                {{value}} {{this.evalOption.measurementUnit}}
+            </mat-label>
+            
+            <mat-label *ngIf="evaluation.evaluationType == evalType['AbsoluteIntegerEvaluation']">
+                {{value}} {{this.evalOption.measurementUnit}}
+            </mat-label>
+            
+            <mat-label *ngIf="evaluation.evaluationType == evalType['PercentageEvaluation']">
+                {{value}}%
+            </mat-label>
+
+            <mat-label *ngIf="evaluation.evaluationType == evalType['TextEvaluation']">
+                {{value}}
+            </mat-label>
+            
+            <mat-button-toggle-group *ngIf="evaluation.evaluationType == evalType['ScaleEvaluation']">
+                <mat-button-toggle *ngFor="let x of this.evalOption.evaluationScale" [value]="x.value" [disabled]="value != x.value" [checked]="value == x.value">
+                    <mat-icon *ngIf="this.evalOption.scaleDisplayOption != scaleDisplayType.Label">{{x.iconIdentifier}} </mat-icon>
+                    <span *ngIf="this.evalOption.scaleDisplayOption != scaleDisplayType.Icon" > {{x.label}}</span>
+                </mat-button-toggle>
+            </mat-button-toggle-group>        
+            
+            <mat-label *ngIf="evaluation.evaluationType == evalType['SelectionEvaluation']">
+                {{this.getSelectionValue(value)}}
+            </mat-label>
+            
+        </div>
+    </div>
+
+</ng-template>

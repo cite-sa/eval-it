@@ -1,0 +1,95 @@
+<div class="row data-object-type-editor">
+	<div class="col-md-8 offset-md-2">
+		<mat-card>
+			<mat-card-title *ngIf="isNew">{{'APP.DATA-OBJECT-TYPE-EDITOR.NAME.NEW' | translate}}</mat-card-title>
+			<mat-card-title *ngIf="!isNew">{{formGroup.get('name').value}}</mat-card-title>
+			<mat-card-content>
+				<form (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+					<div class="row">
+						<mat-form-field class="col-md-12">
+							<mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.FIELDS.NAME' | translate}}</mat-label>
+							<input matInput type="text" name="data-object-type-name" formControlName="name" required>
+							<mat-error *ngIf="formGroup.get('name').hasError('backendError')">{{formGroup.get('name').getError('backendError')?.message}}</mat-error>
+							<mat-error *ngIf="formGroup.get('name').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+						</mat-form-field>
+					</div>
+
+					<div class="row pb-3">
+						<mat-slide-toggle [checked]="false" class="col" formControlName="multipleReviewOption">{{'APP.DATA-OBJECT-TYPE-EDITOR.FIELDS.MULTIPLE-REVIEWS' | translate}}</mat-slide-toggle>
+					</div>
+
+					<mat-divider></mat-divider>
+
+					<div *ngIf="!isNew" class="row pt-3">
+						<mat-form-field class="col-10">
+							<mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.FIELDS.SELECTED-METHODOLOGY' | translate}}</mat-label>
+							<app-single-auto-complete (optionSelected)="setValue($event)" [value]="getValue()" [configuration]="defaultMethodologySingleAutocompleteConfiguration">
+							</app-single-auto-complete>
+								<mat-error *ngIf="formGroup.get('selectedRankingMethodologyId').hasError('backendError')">{{formGroup.get('selectedRankingMethodologyId').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+						<button *ngIf="authService.hasPermission(authService.permissionEnum.EditDataObjectType)" class="col-1" mat-icon-button color="primary" type='button' (click)="editSelectedMethodology()">
+							<mat-icon>edit</mat-icon>
+						</button>
+						<button *ngIf="authService.hasPermission(authService.permissionEnum.EditDataObjectType)" class="col-1" mat-icon-button color="primary" type='button' (click)="addMethodology()">
+							<mat-icon>add</mat-icon>
+						</button>
+					</div>
+
+					<mat-divider></mat-divider>
+
+					<mat-tab-group mat-stretch-tabs dynamicHeight>
+						<mat-tab label="Registration Information">
+							<mat-accordion>
+								<div *ngFor="let fg of getSortedInfoOptions()">
+									<app-registration-information-field *ngIf="isActive(fg)" [formGroup]="fg" (indexEvent)="deleteInfoOption($event)"></app-registration-information-field>
+									<app-registration-information-inactive-field *ngIf="!isActive(fg)" [isUsed]="isUsed" [formGroup]="fg" (indexEvent)="restoreInfoOption($event)"></app-registration-information-inactive-field>
+								</div>
+							</mat-accordion>
+							<div class="editor-actions col-6" >
+								<button  mat-button mat-raised-button type="button" color="primary" [matMenuTriggerFor]="infoOptionTypeMenu">{{'APP.DATA-OBJECT-TYPE-EDITOR.CREATE-REGISTRATION-INFORMATION' | translate}}</button>
+								<mat-menu #infoOptionTypeMenu="matMenu">
+									<button *ngFor="let val of infoTypeKeys" type="button" mat-menu-item (click)="addInfoOption(val)">{{this.enumUtils.toRegistrationInformationTypeString(val)}}</button>
+								</mat-menu>
+							</div>
+						</mat-tab>
+						<mat-tab label="Evaluation Configuration">
+							<mat-accordion>
+								<div *ngFor="let fg of getSortedConfigOptions()">
+									<app-evaluation-configuration-field *ngIf="isActive(fg)" [formGroup]="fg" (indexEvent)="deleteConfigOption($event)"></app-evaluation-configuration-field>
+									<app-evaluation-configuration-inactive-field *ngIf="!isActive(fg)" [isUsed]="isUsed" [formGroup]="fg" (indexEvent)="restoreConfigOption($event)"></app-evaluation-configuration-inactive-field>
+								</div>
+							</mat-accordion>
+							<div class="editor-actions col-6" >
+								<button  mat-button mat-raised-button type="button" color="primary" [matMenuTriggerFor]="evalOptionTypeMenu">{{'APP.DATA-OBJECT-TYPE-EDITOR.CREATE-EVALUATION-CONFIGURATION' | translate}}</button>
+								<mat-menu #evalOptionTypeMenu="matMenu">
+									<button *ngFor="let val of evalTypeKeys" type="button" mat-menu-item (click)="addConfigOption(val)">{{this.enumUtils.toEvaluationConfigurationTypeString(val)}}</button>
+								</mat-menu>
+							</div>
+						</mat-tab>
+						<mat-tab label="Rank Recalculation Strategy">
+							<mat-accordion>
+								<div *ngFor="let fg of getSortedStrategyOptions()">
+									<app-object-rank-recalculation-strategy-field [formGroup]="fg" [isUsed]="isUsed"  (indexEvent)="deactivateStrategyOption($event)" (restoreEvent)="restoreStrategyOption($event)" (deleteEvent)="deleteStrategyOption($event)"></app-object-rank-recalculation-strategy-field>
+								</div>
+							</mat-accordion>
+							<mat-error *ngIf="formGroup.get('strategyConfig')?.get('strategies')?.hasError('zeroWeightSumError')">{{'COMMONS.VALIDATION.ZERO-WEIGHT-SUM-ERROR' | translate}}</mat-error>
+							<div class="editor-actions col-6" >
+								<button  mat-button mat-raised-button type="button" color="primary" [matMenuTriggerFor]="rankStrategyTypeMenu">{{'APP.DATA-OBJECT-TYPE-EDITOR.CREATE-OBJECT-RANK-RECALCULATION-STRATEGY' | translate}}</button>
+								<mat-menu #rankStrategyTypeMenu="matMenu">
+									<button *ngFor="let val of stratTypeKeys" type="button" mat-menu-item (click)="addStrategyOption(val)">{{this.enumUtils.toObjectRankRecalculationStrategyTypeString(val)}}</button>
+								</mat-menu>
+							</div>
+						</mat-tab>
+					</mat-tab-group>
+
+					<div class="row justify-content-end">
+						<div class="col-6">
+							<app-editor-actions-component [canDelete]="authService.hasPermission(authService.permissionEnum.DeleteDataObjectType) && !isDeleted && !isNew && !isUsed" [canSave]="authService.hasPermission(authService.permissionEnum.EditDataObjectType) && !isDeleted" (onDelete)="delete()" (onCancel)="cancel()" (onSave)="save()"></app-editor-actions-component>
+						</div>
+					</div>
+				</form>
+			</mat-card-content>
+		</mat-card>
+		<!-- <app-ranking-methodology-listing *ngIf="this.type != null" [object]="this.type" ></app-ranking-methodology-listing> -->
+	</div>
+</div>

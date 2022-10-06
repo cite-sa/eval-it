@@ -1,0 +1,27 @@
+<div class="decline-what-you-know-about-me">
+	<div class="col-md-4 offset-md-4">
+		<form *ngIf="formGroup" (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+			<mat-card *ngIf="tenantId">
+				<mat-card-title>{{'USER-SERVICE.DECLINE-WHAT-YOU-KNOW-ABOUT-ME.TITLE' | translate}}</mat-card-title>
+				<mat-card-subtitle>{{'USER-SERVICE.DECLINE-WHAT-YOU-KNOW-ABOUT-ME.SUBTITLE' | translate}}</mat-card-subtitle>
+				<mat-card-content>
+					<div class="row form-fields">
+						<mat-form-field class="col-auto">
+							<mat-label>{{'USER-SERVICE.DECLINE-WHAT-YOU-KNOW-ABOUT-ME.FIELDS.TEXT' | translate}}</mat-label>
+							<input matInput autocomplete="nope"  type="text" formControlName="text">
+							<mat-error *ngIf="formGroup.get('text').hasError('backendError')">{{formGroup.get('text').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+						<div class="col"></div>
+						<ngx-recaptcha2 class="col-auto" [siteKey]="installationConfiguration.recaptchaSiteKey" [size]="installationConfiguration.recaptchaSize" [hl]="installationConfiguration.recaptchaLanguage" [theme]="installationConfiguration.recaptchaTheme" [type]="installationConfiguration.recaptchaType" formControlName="recaptcha">
+						</ngx-recaptcha2>
+						<div class="col"></div>
+					</div>
+					<div class="row">
+						<div class="col"></div>
+						<div class="col-auto"><button mat-raised-button color="primary" (click)="decline()" type="submit" [disabled]="loading">{{'USER-SERVICE.DECLINE-WHAT-YOU-KNOW-ABOUT-ME.ACTIONS.SUBMIT' | translate}}</button></div>
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</form>
+	</div>
+</div>

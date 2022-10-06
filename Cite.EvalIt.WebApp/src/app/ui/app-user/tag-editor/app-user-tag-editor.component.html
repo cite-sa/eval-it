@@ -1,0 +1,28 @@
+<div class="row app-user-tag-editor">
+	<div class="col">
+		<form *ngIf="formGroup" (ngSubmit)="formSubmit()">
+			<div class="row">
+				<mat-label class="pl-3">{{'APP.APP-USER-TAG-EDITOR.FIELDS.DISCIPLINE' | translate}}</mat-label>
+				<mat-form-field class="col-md-12">
+					<app-multiple-auto-complete 
+						name="disciplineTags" [(ngModel)]="disciplineTags" 
+						[configuration]="disciplineTagMultipleAutocompleteConfiguration"
+						[disabled]="!authService.hasPermission(authService.permissionEnum.EditUser) || isDeleted">
+					</app-multiple-auto-complete>
+					<mat-error *ngIf="formGroup.get('tagIds').hasError('backendError')">{{formGroup.get('tagIds').getError('backendError')?.message}}</mat-error>
+				</mat-form-field>
+				
+				<mat-label class="pl-3">{{'APP.APP-USER-TAG-EDITOR.FIELDS.HASHTAG' | translate}}</mat-label>
+				<mat-form-field class="col-md-12">
+					<app-multiple-auto-complete 
+						name="hashtagTags" [(ngModel)]="hashtagTags" 
+						[configuration]="hashtagTagMultipleAutocompleteConfiguration"
+						[disabled]="!authService.hasPermission(authService.permissionEnum.EditUser) || isDeleted">
+					</app-multiple-auto-complete>
+					<mat-error *ngIf="formGroup.get('tagIds').hasError('backendError')">{{formGroup.get('tagIds').getError('backendError')?.message}}</mat-error>
+				</mat-form-field>
+			</div>
+			<app-editor-actions-component [canDelete]="authService.hasPermission(authService.permissionEnum.EditUser) && !isDeleted && !isNew" [canSave]="authService.hasPermission(authService.permissionEnum.EditUser) && !isDeleted" (onDelete)="delete()" (onCancel)="cancel()" (onSave)="save()"></app-editor-actions-component>
+		</form>
+	</div>
+</div>

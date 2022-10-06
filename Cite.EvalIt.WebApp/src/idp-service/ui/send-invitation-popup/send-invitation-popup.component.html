@@ -1,0 +1,16 @@
+<form *ngIf="formGroup" (ngSubmit)="formSubmit()" [formGroup]="formGroup" class="send-invitation-popup">
+	<h2>{{'IDP-SERVICE.SEND-INVITATION-POPUP.TITLE' | translate}}</h2>
+	<div class="form-fields">
+		<mat-form-field>
+			<mat-label>{{'IDP-SERVICE.SEND-INVITATION-POPUP.FIELDS.EMAIL' | translate}}</mat-label>
+			<input matInput type="text" name="email" formControlName="email" required>
+			<mat-error *ngIf="formGroup.get('email').hasError('backendError')">{{errorModel.email}}</mat-error>
+			<mat-error *ngIf="formGroup.get('email').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+			<mat-error *ngIf="formGroup.get('email').hasError('email')">{{'COMMONS.VALIDATION.EMAIL' | translate}}</mat-error>
+		</mat-form-field>
+	</div>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-auto"><button mat-raised-button color="primary" (click)="resetPassword()" type="submit" [disabled]="loading">{{'IDP-SERVICE.SEND-INVITATION-POPUP.ACTIONS.SUBMIT' | translate}}</button></div>
+	</div>
+</form>

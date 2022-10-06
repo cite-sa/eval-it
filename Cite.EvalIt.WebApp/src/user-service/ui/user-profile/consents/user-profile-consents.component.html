@@ -1,0 +1,10 @@
+<div class="row user-profile-consents">
+	<app-user-consents-editor class="col-12" (consentsValidity)="consentsValidityChanged($event)" [showAwareness]="false"></app-user-consents-editor>
+	<div class="col-12 editor-actions">
+		<div class="row">
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button" >{{'USER-SERVICE.USER-PROFILE-COMPONENT.ACTIONS.CANCEL' | translate}}</button></div>
+			<div class="col"></div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="save()" type="submit" >{{'USER-SERVICE.USER-PROFILE-COMPONENT.ACTIONS.SAVE' | translate}}</button></div>
+		</div>
+	</div>
+</div>

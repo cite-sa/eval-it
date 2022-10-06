@@ -1,0 +1,15 @@
+    <app-display-sorter [sort]="this.sortColumns" (changeSort)="this.onChangeSort($event)"></app-display-sorter>
+    <mat-paginator
+        [length]="this.count"
+        [pageIndex]="this.limit ? this.offset/this.limit : 0"
+        [pageSize]="this.limit"
+        (page)="this.alterPage($event)"
+    ></mat-paginator>
+
+
+    <div class="row">
+        <div class="col-12 col-xl-6 pb-3" *ngFor="let row of this.rows" >
+            <app-data-object-review-tile  [review]="row" [feedback]="getFeedbackByReviewId(row.id)" (editClicked)="this.onEditClicked($event)" (viewClicked)="this.onViewClicked($event)" (nameClicked)="this.onNameClicked($event)" (refreshReview)="this.onReviewRefresh($event)">
+            </app-data-object-review-tile>
+        </div>
+    </div>

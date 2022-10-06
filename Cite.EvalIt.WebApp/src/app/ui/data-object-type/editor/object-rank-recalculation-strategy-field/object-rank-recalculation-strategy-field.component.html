@@ -1,0 +1,223 @@
+<mat-expansion-panel *ngIf="isActive(this.formGroup)">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{this.enumUtils.toObjectRankRecalculationStrategyTypeString(this.formGroup.get('strategyType').value)}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.formGroup.get('strategyWeight').value != undefined ? this.formGroup.get('strategyWeight').value : "APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.NO-WEIGHT" | translate}}
+            <mat-icon style="color:orange" *ngIf="this.formGroup?.touched && this.formGroup?.status == 'INVALID'">error_outline</mat-icon>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="strategy-editor" [formGroup]="formGroup">
+        <div class="row">
+            <mat-form-field ngClass="col-6">
+                <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.STRATEGY-WEIGHT' | translate}}</mat-label>
+                <input matInput type="number" name="strategy-weight" formControlName="strategyWeight" required>
+                <mat-error *ngIf="formGroup.get('strategyWeight').hasError('backendError')">{{formGroup.get('strategyWeight').getError('backendError')?.message}}</mat-error>
+                <mat-error *ngIf="formGroup.get('strategyWeight').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+            </mat-form-field>
+        </div>
+        
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['AllEqual']">
+        </div>
+        
+        <mat-divider></mat-divider>
+
+
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['Liked']">
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('likePartition')" (change)="this.toggleSlider($event, 'likePartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.LIKED.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('likePartition').disabled">
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('likePartition')"
+                    partitionTypeString="LIKED"
+                    (addEvent)="addRange()"
+                    (removeEvent)="removeRange($event)">
+                </app-partition-form-display>
+            </div>
+
+        </div>
+
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['NetworkPopularity']">
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('networkPopularityPartition')" (change)="this.toggleSlider($event, 'networkPopularityPartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.NETWORK-POPULARITY.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('networkPopularityPartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('networkPopularityPartition')"
+                    partitionTypeString="NETWORK-POPULARITY"
+                    (addEvent)="addRange()"
+                    (removeEvent)="removeRange($event)">
+                </app-partition-form-display>
+            </div> 
+
+        </div>
+            
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['NetworkTrust']">
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('networkTrustPartition')" (change)="this.toggleSlider($event, 'networkTrustPartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.NETWORK-TRUST.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('networkTrustPartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('networkTrustPartition')"
+                    partitionTypeString="NETWORK-TRUST"
+                    (addEvent)="addRange()"
+                    (removeEvent)="removeRange($event)">
+                </app-partition-form-display>
+            </div>
+
+        </div>
+
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['ReviewDisciplineVisibility']">
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('reviewDisciplinePartition')" (change)="this.toggleSlider($event, 'reviewDisciplinePartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.REVIEW-DISCIPLINE.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('reviewDisciplinePartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('reviewDisciplinePartition')"
+                    partitionTypeString="REVIEW-DISCIPLINE"
+                    (addEvent)="addRange()"
+                    (removeEvent)="removeRange($event)">
+                </app-partition-form-display>
+            </div>
+            
+        </div>
+
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['AuthorDisciplineVisibility']">
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('authorTrustDisciplinePartition')" (change)="this.toggleSlider($event, 'authorTrustDisciplinePartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.TRUST-REVIEW-LIKE.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('authorTrustDisciplinePartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('authorTrustDisciplinePartition')"
+                    partitionTypeString="TRUST-REVIEW-LIKE"
+                    (addEvent)="addRange()"
+                    (removeEvent)="removeRange($event)">
+                </app-partition-form-display>
+            </div>
+            
+            <mat-divider></mat-divider>
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('authorFollowDisciplinePartition')" (change)="this.toggleSlider($event, 'authorFollowDisciplinePartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.FOLLOW-REVIEW-LIKE.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('authorFollowDisciplinePartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('authorFollowDisciplinePartition')"
+                    partitionTypeString="FOLLOW-REVIEW-LIKE"
+                    (addEvent)="addRange()"
+                    (removeEvent)="removeRange($event)">
+                </app-partition-form-display>
+            </div>
+
+        </div>
+
+        <div class="pt-3" *ngIf="formGroup.get('strategyType').value == stratType['AuthorActivity']">
+            <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.AUTHOR-ACTIVITY-ROLLING-TIME-PERIOD' | translate}}</mat-label>
+
+            <div class="row">
+                <mat-form-field ngClass="col-3">
+                    <input matInput type="number" name="author-activity-time-unit-count" formControlName="timeUnitCount" required>
+                    <mat-error *ngIf="formGroup.get('timeUnitCount').hasError('backendError')">{{formGroup.get('timeUnitCount').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('timeUnitCount').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="col-auto">
+                    <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.AUTHOR-ACTIVITY-TIME-UNIT' | translate}}</mat-label>
+                    <mat-select name="author-activity-time-unit" formControlName="timeUnit" required>
+                        <mat-option *ngFor="let val of this.timeUnitKeys" [value]="val">
+                            <span>{{this.timeUnitType[val]}}</span>
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.get('timeUnit').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+            
+            <mat-divider></mat-divider>
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('authorObjectActivityPartition')" (change)="this.toggleSlider($event, 'authorObjectActivityPartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.OBJECT-UPLOADED.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('authorObjectActivityPartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('authorObjectActivityPartition')"
+                    partitionTypeString="OBJECT-UPLOADED"
+                    (addEvent)="addRange(0)"
+                    (removeEvent)="removeRange($event,0)">
+                </app-partition-form-display>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="pt-3 pb-3">
+                <mat-slide-toggle [checked]="!this.isDeselected('authorReviewActivityPartition')" (change)="this.toggleSlider($event, 'authorReviewActivityPartition')">
+                    {{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.REVIEW-UPLOADED.RANGE" | translate}}
+                </mat-slide-toggle>
+            </div>
+
+            <div *ngIf="!this.formGroup.get('authorReviewActivityPartition').disabled" >
+                <app-partition-form-display 
+                    [formGroup]="this.formGroup.get('authorReviewActivityPartition')"
+                    partitionTypeString="REVIEW-UPLOADED"
+                    (addEvent)="addRange(1)"
+                    (removeEvent)="removeRange($event,1)">
+                </app-partition-form-display>
+            </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="row pt-3">
+            <div class="col"></div>
+
+            <div class="col-auto">
+                <button type='button' mat-raised-button color="warn" (click)="emitIndexEvent()">{{'APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.DELETE-OPTION' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</mat-expansion-panel>
+
+<mat-expansion-panel disabled *ngIf="!isActive(this.formGroup)" >
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{this.enumUtils.toObjectRankRecalculationStrategyTypeString(this.formGroup.get('strategyType').value)}}
+        </mat-panel-title>
+        <mat-panel-description>
+            <div></div>
+            <div class="float-right">
+                <button mat-icon-button color="primary" type='button' (click)="emitDeleteEvent()">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" type='button' (click)="emitRestoreEvent()">
+                    <mat-icon>restore</mat-icon>
+                </button>
+            </div>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+<mat-expansion-panel>

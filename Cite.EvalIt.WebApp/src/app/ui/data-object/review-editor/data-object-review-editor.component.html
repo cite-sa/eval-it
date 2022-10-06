@@ -1,0 +1,26 @@
+<div class="row data-object-review-editor">
+	<div class="col-md-8 offset-md-2"  *ngIf="formGroup">
+		<form (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+		<mat-card>
+			<mat-card-title *ngIf="isNew">{{'APP.DATA-OBJECT-REVIEW-EDITOR.NAME.NEW' | translate}}</mat-card-title>
+			<mat-card-title *ngIf="!isNew">{{'APP.DATA-OBJECT-REVIEW-EDITOR.NAME.EDIT' | translate}}</mat-card-title>
+			<mat-card-content>
+				<mat-accordion>
+					<div *ngFor="let eval of this.formGroup.get('evaluationData').get('evaluations')['controls']; let i=index">
+						<app-data-object-review-field *ngIf="getOptionById(eval.value.optionId)?.isActive" [formGroup]="eval" [evaluationOption]="getOptionById(eval.value.optionId)" [removed]="isRemoved(eval.value.optionId)" [added]="isAdded(eval.value.optionId)" (removeEvent)="removeUnresolvedAttribute($event)" (addEvent)="addUnresolvedAttribute($event)"></app-data-object-review-field>
+						<!-- <app-data-object-review-inactive-field *ngIf="!getOptionById(eval.value.optionId)?.isActive" [inputOption]="getOptionById(eval.value.optionId)"></app-data-object-review-inactive-field> -->
+					</div>
+				</mat-accordion>
+				<div class="row justify-content-end">
+					<div class="col-6 italics" *ngIf="isUnresolved()">
+						<mat-icon>warning</mat-icon>{{ "APP.DATA-OBJECT-REVIEW-EDITOR.MESSAGE-EDITED" | translate}}
+					</div>
+					<div class="col-6">
+						<app-editor-actions-component [canDelete]="authService.hasPermission(authService.permissionEnum.DeleteDataObjectReview) && !isDeleted && !isNew && !isUsed" [canSave]="authService.hasPermission(authService.permissionEnum.EditDataObjectReview) && !isDeleted" (onDelete)="delete()" (onCancel)="cancel()" (onSave)="save()"></app-editor-actions-component>
+					</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</form>
+	</div>
+</div>

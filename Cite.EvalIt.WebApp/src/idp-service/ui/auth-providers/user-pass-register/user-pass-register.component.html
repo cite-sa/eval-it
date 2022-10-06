@@ -1,0 +1,29 @@
+<h4 *ngIf="showHeader()">{{'IDP-SERVICE.AUTHENTICATION.TITLES.INTERNAL-PROVIDER' | translate}}</h4>
+<form class="user-pass-register" (ngSubmit)="register()" [formGroup]="userRegistrationFormGroup">
+	<div class="row">
+		<mat-form-field class="col-12">
+			<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.USERNAME' | translate}}</mat-label>
+			<input matInput type="text" name="username" formControlName="username" required>
+			<mat-error *ngIf="userRegistrationFormGroup.get('username').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-12">
+			<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.PASSWORD' | translate}}</mat-label>
+			<input matInput type="password" name="password" formControlName="password" required>
+			<mat-error *ngIf="userRegistrationFormGroup.get('password').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-12">
+			<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.CONFIRM-PASSWORD' | translate}}</mat-label>
+			<input matInput type="password" name="password-confirm" formControlName="passwordConfirm" required>
+			<mat-error *ngIf="userRegistrationFormGroup.get('passwordConfirm').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<div *ngIf="recaptchaEnabled()" class="col"></div>
+		<ngx-recaptcha2 *ngIf="recaptchaEnabled()" class="col-auto" [siteKey]="installationConfiguration.recaptchaSiteKey" [size]="installationConfiguration.recaptchaSize" [hl]="installationConfiguration.recaptchaLanguage" [theme]="installationConfiguration.recaptchaTheme" [type]="installationConfiguration.recaptchaType" formControlName="recaptcha">
+		</ngx-recaptcha2>
+		<div *ngIf="recaptchaEnabled()" class="col"></div>
+		<mat-error *ngIf="hasPasswordMismatchError()">{{'COMMONS.VALIDATION.PASSWORD-MISMATCH' | translate}}</mat-error>
+	</div>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.REGISTER' | translate}}</button></div>
+	</div>
+</form>

@@ -1,0 +1,34 @@
+<div class="row user-profile-forget-me-editor">
+	<h4 class="col-12">{{'USER-SERVICE.USER-PROFILE-COMPONENT.FORGET-ME.TABLE-TITLE' | translate}}</h4>
+	<table *ngIf="requests" class="col-12 table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">{{'USER-SERVICE.USER-PROFILE-COMPONENT.FORGET-ME.COLUMNS.STATE' | translate}}</th>
+				<th scope="col">{{'USER-SERVICE.USER-PROFILE-COMPONENT.FORGET-ME.COLUMNS.CREATED-AT' | translate}}</th>
+				<th scope="col">{{'USER-SERVICE.USER-PROFILE-COMPONENT.FORGET-ME.COLUMNS.EXPIRES-AT' | translate}}</th>
+				<th scope="col">{{'USER-SERVICE.USER-PROFILE-COMPONENT.FORGET-ME.COLUMNS.CANCEL' | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let request of requests; let i = index">
+				<th scope="row">{{i + 1}}</th>
+				<td>{{getStateText(request)}}</td>
+				<td>{{request.createdAt | dateTimeFormatter:'short'}}</td>
+				<td>{{request.expiresAt | dateTimeFormatter:'short'}}</td>
+				<td>
+					<button *ngIf="canCancelRequest(request)" mat-icon-button type="button" (click)="deleteRequest(request)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="col-12 editor-actions">
+		<div class="row editor-actions">
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button" >{{'USER-SERVICE.USER-PROFILE-COMPONENT.ACTIONS.CANCEL' | translate}}</button></div>
+			<div class="col"></div>
+			<div class="col-auto" *ngIf="canRequestToBeForgotten()"><button mat-raised-button color="primary" (click)="requestForgetMe()" type="submit"  [disabled]="!requestEnabled()">{{'USER-SERVICE.USER-PROFILE-COMPONENT.FORGET-ME.REQUEST-FORGET' | translate}}</button></div>
+		</div>
+	</div>
+</div>

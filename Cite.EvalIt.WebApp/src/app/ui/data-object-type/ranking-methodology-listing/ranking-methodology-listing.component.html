@@ -1,0 +1,20 @@
+<div class="row ranking-methodology-listing">
+	<div class="col">
+
+		<h4>{{'APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-LISTING.TITLE' | translate}}</h4>
+
+		<div class="col-12 p-0 filter-row">
+			<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+		</div>
+		<div class="col-12 p-0 filter-row">
+			<app-ranking-methodology-listing-filters [(filter)]="lookup" (filterChange)="clientFilterChange($event)"></app-ranking-methodology-listing-filters>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="clientLookup.pageOffset" [limit]="clientLookup.pageSize" [defaultSort]="lookup.order?.items" [externalSorting]="false" [externalPaging]="false" (rowActivated)="onRowActivated($event)" (pageLoad)="alterPage($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+
+		<button *ngIf="authService.hasPermission(authService.permissionEnum.EditDataObjectType)" mat-fab class="mat-fab-bottom-right" (click)="onNewItem()">
+			<mat-icon class="mat-24">add</mat-icon>
+		</button>
+	</div>
+</div>

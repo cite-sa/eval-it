@@ -1,0 +1,23 @@
+export enum UserErrors{
+    HashConflict = 100,
+    Forbidden = 101,    
+    SystemError = 102,    
+    MissingTenant = 103,    
+    StaleAPIKey = 104,    
+    InvalidApiKey = 105,    
+    ModelValidation = 106,    
+    EmailNonUnique = 107,    
+    NonPersonPrincipal = 108,    
+    SensitiveInfo = 109,    
+    RequestThresholdExceeded = 110,    
+    WhatYouKnowAboutMeIncompatibleState = 111,    
+    WhatYouKnowAboutMeIncompatibleValidation = 112,    
+    ForgetMeIncompatibleState = 113,    
+    ForgetMeIncompatibleValidation = 114,    
+    BlockingConsent = 115,    
+    SingleTenantConfigurationPerTypeSupported = 116,    
+    IncompatibleTenantConfigurationTypes = 117,    
+    MissingTotpToken = 118,    
+    InvalidReCaptcha = 119,
+}
+

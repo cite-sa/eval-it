@@ -1,0 +1,15 @@
+<h4 *ngIf="showHeader()">{{'IDP-SERVICE.AUTHENTICATION.TITLES.INTERNAL-PROVIDER' | translate}}</h4>
+<form class="transient-register" (ngSubmit)="register()" [formGroup]="userRegistrationFormGroup">
+	<div class="row">
+		<mat-form-field class="col-12">
+			<input matInput placeholder="{{'IDP-SERVICE.AUTHENTICATION.FIELDS.USERNAME' | translate}}" name="username" formControlName="username" required>
+			<mat-error *ngIf="userRegistrationFormGroup.get('username').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<ngx-recaptcha2 *ngIf="recaptchaEnabled()" class="col-auto" [siteKey]="installationConfiguration.recaptchaSiteKey" [size]="installationConfiguration.recaptchaSize" [hl]="installationConfiguration.recaptchaLanguage" [theme]="installationConfiguration.recaptchaTheme" [type]="installationConfiguration.recaptchaType" formControlName="recaptcha">
+		</ngx-recaptcha2>
+	</div>
+	<div class="row row-register-actions">
+		<div class="col"></div>
+		<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.REGISTER' | translate}}</button></div>
+	</div>
+</form>

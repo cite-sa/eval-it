@@ -1,0 +1,70 @@
+<div class="row api-client-editor">
+	<div class="col-md-8 offset-md-2">
+		<mat-card>
+			<mat-card-title *ngIf="isNew">{{'USER-SERVICE.API-CLIENT-EDITOR.TITLE.NEW' | translate}}</mat-card-title>
+			<mat-card-title *ngIf="!isNew">{{formGroup.get('name').value}}</mat-card-title>
+			<mat-card-content>
+				<div class="row">
+					<mat-tab-group mat-stretch-tabs dynamicHeight class="col-12">
+						<mat-tab label="{{'USER-SERVICE.API-CLIENT-EDITOR.SERVICE-TAB' | translate}}">
+							<form (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+								<div class="row tab-container">
+									<mat-form-field class="col-md-12">
+										<mat-label>{{'USER-SERVICE.API-CLIENT-EDITOR.FIELDS.NAME' | translate}}</mat-label>
+										<input matInput type="text" name="api-client-name" formControlName="name" required>
+										<mat-error *ngIf="formGroup.get('name').hasError('backendError')">{{apiClient.validationErrorModel.getError('Name')}}</mat-error>
+										<mat-error *ngIf="formGroup.get('name').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+									</mat-form-field>
+								</div>
+								<div class="col-12 editor-actions">
+									<div class="row">
+										<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button">{{'USER-SERVICE.API-CLIENT-EDITOR.ACTIONS.CANCEL' | translate}}</button></div>
+										<div class="col"></div>
+										<div class="col-auto" *ngIf="authService.hasUserServicePermission(authService.userServicePermissionEnum.EditUserService) && !isDeleted"><button mat-raised-button color="primary" (click)="save()" type="submit">{{'USER-SERVICE.API-CLIENT-EDITOR.ACTIONS.SAVE' | translate}}</button></div>
+										<div class="col-auto" *ngIf="authService.hasUserServicePermission(authService.userServicePermissionEnum.DeleteUserService) && !isDeleted && !isNew"><button mat-raised-button color="primary" type="button" (click)="delete()">{{'USER-SERVICE.API-CLIENT-EDITOR.ACTIONS.DELETE' | translate}}</button></div>
+									</div>
+								</div>
+							</form>
+						</mat-tab>
+						<mat-tab *ngIf="editorModel.id" label="{{'USER-SERVICE.API-CLIENT-EDITOR.ROLES-TAB' | translate}}">
+							<app-api-client-roles-editor *ngIf="editorModel.id" [userId]="editorModel.id"></app-api-client-roles-editor>
+						</mat-tab>
+						<mat-tab *ngIf="editorModel.id" label="{{'USER-SERVICE.API-CLIENT-EDITOR.CREDENTIALS-TAB' | translate}}">
+							<app-api-client-keys-editor *ngIf="editorModel.id" [userId]="editorModel.id"></app-api-client-keys-editor>
+						</mat-tab>
+						<!-- <mat-tab label="{{'USER-SERVICE.API-CLIENT-EDITOR.CREDENTIALS-TAB' | translate}}"> -->
+						<!-- <table *ngIf="formGroup.get('credentials')['controls'] as credentials" class="col-12 table tab-container">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">{{'USER-SERVICE.API-CLIENT-EDITOR.CREDENTIALS.COLUMNS.PROVIDER' | translate}}</th>
+											<th scope="col">{{'USER-SERVICE.API-CLIENT-EDITOR.CREDENTIALS.COLUMNS.PUBLIC' | translate}}</th>
+											<th scope="col">{{'USER-SERVICE.API-CLIENT-EDITOR.CREDENTIALS.COLUMNS.REMOVE' | translate}}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let credential of credentials; let i = index">
+											<th scope="row">{{i + 1}}</th>
+											<td>{{idpEnumUtils.toCredentialProviderString(credential.get('provider').value)}}</td>
+											<td>{{getKeyPlaceHolder()}}</td>
+											<td>
+												<button mat-icon-button type="button" (click)="removeCredential(credential, i)">
+													<mat-icon>delete</mat-icon>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table> -->
+						<div class="col-12 editor-actions">
+							<div class="row">
+								<div class="col"></div>
+								<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button">{{'USER-SERVICE.API-CLIENT-EDITOR.ACTIONS.CANCEL' | translate}}</button></div>
+							</div>
+						</div>
+						<!-- </mat-tab> -->
+					</mat-tab-group>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

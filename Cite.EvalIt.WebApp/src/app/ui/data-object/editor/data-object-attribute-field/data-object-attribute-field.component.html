@@ -1,0 +1,116 @@
+ <mat-expansion-panel [formGroup]="formGroup">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{inputOption?.label}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.valueDisplay()}}
+            <mat-icon style="color:orange" *ngIf="this.formGroup?.touched && this.formGroup?.status == 'INVALID'">error_outline</mat-icon>
+            <mat-icon style="color:green" *ngIf="this.added">add</mat-icon>
+            <mat-icon style="color:red" *ngIf="this.removed">remove</mat-icon>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div formArrayName="values">
+        <ng-template [ngIf]="formGroup.get('attributeType').value == attrType['AbsoluteDecimalAttribute']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col" >
+                        <mat-label>{{this.enumUtils.toRegistrationInformationTypeString(this.inputOption.optionType)}}</mat-label>
+                        <input matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required>
+                        <span matSuffix>{{this.inputOption.measurementUnit}}</span>
+                        <mat-error *ngIf="value.hasError('notANumber')">{{'COMMONS.VALIDATION.NOT-NUMBER' | translate}}</mat-error>
+                        <mat-error *ngIf="value.hasError('outOfBounds')">{{'COMMONS.VALIDATION.OUT-OF-RANGE' | translate}} {{ boundsDisplay(this.inputOption.lowerBound, this.inputOption.upperBound)}}</mat-error>
+                        <mat-error *ngIf="value.hasError('noRegexpMatch')">{{'COMMONS.VALIDATION.NO-REGEXP' | translate}} {{this.inputOption.validationRegexp}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('attributeType').value == attrType['AbsoluteIntegerAttribute']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col">
+                        <mat-label>{{this.enumUtils.toRegistrationInformationTypeString(this.inputOption.optionType)}}</mat-label>
+                        <input matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required>
+                        <span matSuffix>{{this.inputOption.measurementUnit}}</span>
+                        <mat-error *ngIf="value.hasError('notAnInt')">{{'COMMONS.VALIDATION.NOT-INT' | translate}}</mat-error>
+                        <mat-error *ngIf="value.hasError('outOfBounds')">{{'COMMONS.VALIDATION.OUT-OF-RANGE' | translate}} {{ boundsDisplay(this.inputOption.lowerBound, this.inputOption.upperBound)}}</mat-error>
+                        <mat-error *ngIf="value.hasError('noRegexpMatch')">{{'COMMONS.VALIDATION.NO-REGEXP' | translate}} {{this.inputOption.validationRegexp}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('attributeType').value == attrType['PercentageAttribute']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col">
+                        <mat-label>{{this.enumUtils.toRegistrationInformationTypeString(this.inputOption.optionType)}}</mat-label>
+                        <input matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required>
+                        <span matSuffix>%</span>
+                        <mat-error *ngIf="value.hasError('notANumber')">{{'COMMONS.VALIDATION.NOT-NUMBER' | translate}}</mat-error>
+                        <mat-error *ngIf="value.hasError('outOfBounds')">{{'COMMONS.VALIDATION.OUT-OF-RANGE' | translate}} {{ boundsDisplay(this.inputOption.lowerBound, this.inputOption.upperBound)}}</mat-error>
+                        <mat-error *ngIf="value.hasError('noRegexpMatch')">{{'COMMONS.VALIDATION.NO-REGEXP' | translate}} {{this.inputOption.validationRegexp}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+
+        <ng-template [ngIf]="formGroup.get('attributeType').value == attrType['TextAttribute']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col">
+                        <mat-label>{{this.enumUtils.toRegistrationInformationTypeString(this.inputOption.optionType)}}</mat-label>
+                        <textarea matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required> </textarea>
+                        <mat-error *ngIf="value.hasError('noRegexpMatch')">{{'COMMONS.VALIDATION.NO-REGEXP' | translate}} {{this.inputOption.validationRegexp}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('attributeType').value == attrType['ScaleAttribute']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index">
+                    <mat-button-toggle-group [formControlName]="i">
+                        <mat-button-toggle *ngFor="let x of this.inputOption.inputScale" [value]="x.value">
+                            <mat-icon *ngIf="this.inputOption.scaleDisplayOption != scaleDisplayType.Label">{{x.iconIdentifier}} </mat-icon>
+                            <span *ngIf="this.inputOption.scaleDisplayOption != scaleDisplayType.Icon" > {{x.label}}</span>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('attributeType').value == attrType['SelectionAttribute']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index">
+                    <mat-label>{{this.enumUtils.toRegistrationInformationTypeString(this.inputOption.optionType)}}</mat-label>
+                    <div class="row">
+                        <mat-form-field class="col">
+                            <mat-select name="data-object-type-selection-name" [formControlName]="i" required >
+                                <mat-option *ngFor="let val of getInputSelectionOptions()" [value]="val.key">
+                                    {{val.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button *ngIf="canRemoveValue()" class="col-auto del-button" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+        </ng-template>
+
+        <button *ngIf="canAddValue()" mat-icon-button type="button" color="primary" (click)="addValue()"><mat-icon>add_circle</mat-icon></button>
+
+        <div *ngIf="this.added || this.removed" class="row justify-content-around">
+            <button class="col-2" mat-button mat-raised-button type="button" color="primary" (click)="emitAddEvent()">{{'APP.DATA-OBJECT-EDITOR.KEEP-ATTRIBUTE' | translate}}</button>
+            <button class="col-2" mat-button mat-raised-button type="button" color="warn" (click)="emitRemoveEvent()">{{'APP.DATA-OBJECT-EDITOR.REMOVE-ATTRIBUTE' | translate}}</button>
+        </div>
+    </div>
+</mat-expansion-panel>

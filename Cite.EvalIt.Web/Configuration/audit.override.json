@@ -1,0 +1,6 @@
+{
+	"Auditing": {
+		"ClaimContextEnricher": true,
+		"ClaimContextEnricherKeys": [ "neaniasSub" ]
+	}
+}

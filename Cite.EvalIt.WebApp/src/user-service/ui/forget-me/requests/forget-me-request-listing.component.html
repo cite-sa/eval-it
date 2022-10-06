@@ -1,0 +1,27 @@
+<div class="row forget-me-listing">
+	<div class="col-md-8 offset-md-2">
+
+		<h4>{{'USER-SERVICE.FORGET-ME-REQUEST-LISTING.TITLE' | translate}}</h4>
+
+		<div class="col-12 p-0 filter-row">
+			<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+		</div>
+		<div class="col-12 p-0 filter-row">
+			<app-forget-me-request-listing-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-forget-me-request-listing-filters>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="lookup.page.size" [defaultSort]="lookup.order?.items" [externalSorting]="true" (pageLoad)="onPageLoad($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+
+		<ng-template #responseTemplate ngx-datatable-cell-template let-row="row">
+			<div class="row">
+				<button *ngIf="canApproveOrDeclineRequest(row)" mat-icon-button class="col-auto" type="button" (click)="approveRequest(row)" matTooltip="{{'USER-SERVICE.FORGET-ME-REQUEST-LISTING.ACTIONS.APPROVE' | translate}}">
+					<mat-icon>done</mat-icon>
+				</button>
+				<button *ngIf="canApproveOrDeclineRequest(row)" mat-icon-button class="col-auto" type="button" (click)="declineRequest(row)" matTooltip="{{'USER-SERVICE.FORGET-ME-REQUEST-LISTING.ACTIONS.DECLINE' | translate}}">
+					<mat-icon>close</mat-icon>
+				</button>
+			</div>
+		</ng-template>
+	</div>
+</div>

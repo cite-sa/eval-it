@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup">
+    <button mat-icon-button  type="button" [color]="this.formGroup?.get('feedbackData.like').value ? 'primary' : ''" (click)="toggleLike()" [disabled]="!this.authService.hasPermission(authService.permissionEnum.EditDataObjectReviewFeedback)">
+        <mat-icon>thumb_up</mat-icon>
+    </button> 
+    
+    <span *ngIf="this.likeCount > 0" class="like-counter" matTooltip="{{'APP.DATA-OBJECT-REVIEW-FEEDBACK-PANEL.LIKE-TOOLTIP' | translate}}" matTooltipPosition="right">
+        <span [matMenuTriggerFor]="userMenu">{{this.likeCount}}</span>
+        
+        <mat-menu #userMenu="matMenu">
+            <app-data-object-review-feedback-user-menu [userList]="this.likeUsers" [anonymousCount]="this.anonymousCount" (nameClicked)="this.onUserClicked($event)"></app-data-object-review-feedback-user-menu>
+        </mat-menu>
+    </span>
+    <span *ngIf="this.likeCount == 0">{{ this.likeCount }}</span>
+
+    <button *ngIf="isMyFeedbackEmpty()" mat-stroked-button class="float-right" type="button" color="primary" (click)="formSubmit(this.visibilityType.Private)" [disabled]="!this.authService.hasPermission(authService.permissionEnum.EditDataObjectReviewFeedback) || this.formGroup.pristine">
+        Submit Feedback
+    </button>
+
+    <button *ngIf="!isMyFeedbackEmpty()" mat-stroked-button class="float-right" type="button" color="primary" (click)="dialogThenSubmit()" [disabled]="!this.authService.hasPermission(authService.permissionEnum.EditDataObjectReviewFeedback) || this.formGroup.pristine">
+        Submit Feedback
+    </button>
+
+</form>

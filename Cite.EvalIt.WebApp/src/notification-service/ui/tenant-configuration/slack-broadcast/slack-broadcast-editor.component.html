@@ -1,0 +1,61 @@
+<div *ngIf="formGroup" class="tenant-configuration-slack-broadcast-component row">
+	<table *ngIf="formGroup.get('webhooks')" class="col-12 table webhooks-table-container">
+		<thead>
+			<tr>
+				<th class="column-numbering-header">#</th>
+				<th>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.COLUMNS.NAME' | translate}}</th>
+				<th>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.COLUMNS.WEBHOOK' | translate}}</th>
+				<th class="column-actions-header">{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.COLUMNS.ACTIONS' | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let webhookFormGroup of formGroup.get('webhooks')['controls']; let i = index">
+				<th class="column-numbering">{{i + 1}}</th>
+				<td>
+					<mat-form-field class="col-md-12" floatLabel="never">
+						<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.FIELDS.NAME' | translate}}</mat-label>
+						<input matInput type="text" name="slack-webhook-name" [formControl]="webhookFormGroup.get('name')" required>
+						<mat-error *ngIf="webhookFormGroup.get('name').hasError('backendError')">{{webhookFormGroup.get('name').getError('backendError')?.message}}</mat-error>
+						<mat-error *ngIf="webhookFormGroup.get('name').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+					</mat-form-field>
+				</td>
+				<td>
+					<mat-form-field class="col-md-12" floatLabel="never">
+						<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.FIELDS.WEBHOOK' | translate}}</mat-label>
+						<input matInput [type]="webhookFormGroup.get('webhook').value === secretValue ? 'password' : 'text'" [formControl]="webhookFormGroup.get('webhook')" [readonly]="webhookFormGroup.get('webhook').value === secretValue" required>
+						<button mat-icon-button matSuffix *ngIf="webhookFormGroup.get('webhook').value === secretValue" [disabled]="webhookFormGroup.get('webhook').disabled" (click)="editSecret(webhookFormGroup.get('webhook'), 'webhook'+i)">
+							<mat-icon>edit</mat-icon>
+						</button>
+						<button mat-icon-button matSuffix *ngIf="shouldShowEditSecret.has('webhook'+i)" [disabled]="webhookFormGroup.get('webhook').disabled" (click)="cancelEditSecret(webhookFormGroup.get('webhook'), 'webhook'+i)">
+							<mat-icon>cancel</mat-icon>
+						</button>
+						<mat-error *ngIf="webhookFormGroup.get('webhook').hasError('backendError')">{{webhookFormGroup.get('webhook').getError('backendError').message}}</mat-error>
+						<mat-error *ngIf="webhookFormGroup.get('webhook').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+						<mat-hint>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.HINT' | translate}}</mat-hint>
+					</mat-form-field>
+				</td>
+				<td class="column-actions">
+					<button mat-icon-button type="button" (click)="removeWebhook(i)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<button mat-icon-button type="button" class="col-auto" (click)="addWebhookItem()">
+		<mat-icon>add</mat-icon>
+	</button>
+	<div class="col-12">
+		<div class="row actions-row">
+			<div class="col"></div>
+			<div class="col-auto" *ngIf="editorModel.id"><button mat-raised-button color="primary" (click)="delete()">
+					{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.ACTIONS.DELETE' | translate}}
+				</button>
+			</div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="formSubmit()">
+					{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SLACK-BROADCAST.ACTIONS.SAVE' | translate}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

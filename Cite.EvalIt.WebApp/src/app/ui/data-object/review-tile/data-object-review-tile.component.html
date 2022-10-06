@@ -1,0 +1,31 @@
+<div *ngIf="dataObjectReview">
+	<mat-card>
+		<mat-card-title class="mb-0" > 
+			<span [ngClass]="this.dataObjectReview.user?.name ? 'selectable' : ''" (click)="onNameClicked()">
+				{{this.dataObjectReview.user?.name ?? (('APP.DATA-OBJECT-REVIEW-LISTING.ANONYMOUS-USER' | translate) + (this.dataObjectReview.isMine ? ' (' + ('APP.DATA-OBJECT-REVIEW-LISTING.IS-MINE' | translate) + ')' : "")) }}
+			</span>
+			<button class="float-right" *ngIf="dataObjectReview.canEdit" mat-icon-button  type="button" color="primary" (click)="onEditClicked()">
+				<mat-icon>edit</mat-icon>
+			</button>			
+			<button class="float-right" mat-icon-button  type="button" color="primary" (click)="onViewClicked()">
+				<mat-icon>visibility</mat-icon>
+			</button>
+		</mat-card-title>
+		<mat-card-subtitle>
+			{{review.createdAt | dateTimeFormatter:"short"}}
+		</mat-card-subtitle>
+		<mat-card-content class="pt-3">
+			<mat-label>Rank: {{review.rankScore != null ? (review.rankScore | RankScore ) : "--%"}}</mat-label>
+			<div *ngFor="let eval of getSortedEvaluations()">
+				<app-data-object-review-tile-field *ngIf="getOptionById(eval.optionId)?.isActive" [evaluation]="eval" [evalOption]="getOptionById(eval.optionId)"></app-data-object-review-tile-field>
+			</div>
+			<app-data-object-review-feedback-panel
+				[feedback]="this.feedback"
+				[objId]="this.review.dataObjectId"
+				[reviewId]="this.review.id"
+				(nameClicked)="this.userNavigate($event)"
+				(refreshReview)="this.onRefreshReview()"
+			></app-data-object-review-feedback-panel>
+		</mat-card-content>
+	</mat-card>
+</div>

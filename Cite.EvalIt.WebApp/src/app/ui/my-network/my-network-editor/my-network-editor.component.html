@@ -1,0 +1,31 @@
+<div class="row app-user-network-editor">
+	<div class="col-md-8 offset-md-2">
+		<mat-card *ngIf="formGroup">
+			<mat-card-title *ngIf="isNew">{{'APP.APP-USER-MY-NETWORK-EDITOR.NAME.NEW' | translate}}</mat-card-title>
+			<mat-card-title *ngIf="!isNew">{{currentUser.name}}</mat-card-title>
+			<mat-card-content>
+				<form *ngIf="formGroup" (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+					<div class="row">
+						<mat-form-field class="col-md-12" *ngIf="!this.currentUser">
+							<mat-label>{{'APP.APP-USER-MY-NETWORK-EDITOR.FIELDS.NAME' | translate}}</mat-label>
+							<app-single-auto-complete (optionSelected)="setValue($event)" [configuration]="userSingleAutocompleteConfiguration">
+							</app-single-auto-complete>
+							<mat-error *ngIf="formGroup.get('id').hasError('backendError')">{{formGroup.get('id').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+						<mat-form-field class="col-md-12">
+							<mat-label>{{'APP.APP-USER-MY-NETWORK-EDITOR.FIELDS.RELATIONSHIP' | translate}}</mat-label>
+                            <mat-select name="user-relationship" formControlName="relationship" required>
+								<mat-option *ngFor="let val of userNetworkRelationshipKeys" [value]="val">
+									{{this.userNetworkRelationship[val]}}
+								</mat-option>
+							</mat-select>
+							<mat-error *ngIf="formGroup.get('relationship').hasError('backendError')">{{formGroup.get('relationship').getError('backendError')?.message}}</mat-error>
+							<mat-error *ngIf="formGroup.get('relationship').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+						</mat-form-field>
+					</div>
+					<app-editor-actions-component [canDelete]="!isDeleted && !isNew" [canSave]="true" (onDelete)="delete()" (onCancel)="cancel()" (onSave)="save()"></app-editor-actions-component>
+				</form>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

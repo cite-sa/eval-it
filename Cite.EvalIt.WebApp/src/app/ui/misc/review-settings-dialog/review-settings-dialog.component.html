@@ -1,0 +1,10 @@
+<div>
+    <button mat-menu-item (click)="select(this.visibilityType.Private)">Private</button>
+    <button mat-menu-item (click)="select(this.visibilityType.Trusted)">Trusted</button>
+    <button mat-menu-item [matMenuTriggerFor]="anonymityMenu">Public ></button>
+</div>
+
+<mat-menu #anonymityMenu="matMenu">
+    <button mat-menu-item (click)="select(this.visibilityType.Public, this.anonymityType.Anonymous)">Anonymous</button>
+    <button mat-menu-item (click)="select(this.visibilityType.Public, this.anonymityType.Signed)">Signed</button>
+</mat-menu>

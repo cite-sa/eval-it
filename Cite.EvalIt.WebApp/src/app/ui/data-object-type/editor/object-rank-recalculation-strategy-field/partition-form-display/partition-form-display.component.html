@@ -1,0 +1,58 @@
+<div *ngIf="!this.formGroup.disabled" [formGroup]="formGroup">
+                
+    <mat-form-field class="col-md-12">
+        <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY.RANGE-INTERPRETATION' | translate}}</mat-label>
+        <mat-select name="range-interpretation" formControlName="rangeInterpretation" required>
+            <mat-option *ngFor="let val of rangeInterpretationKeys" [value]="val">
+                {{this.rangeInterpretationType[val]}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="formGroup.get('rangeInterpretation').hasError('backendError')">{{formGroup.get('rangeInterpretation').getError('backendError')?.message}}</mat-error>
+    </mat-form-field>
+
+    <div class="row pt-3" *ngFor="let bounds of formGroup.get('rangeBounds').controls; let i=index">
+        <mat-form-field class="col-1 bound-type-select" formArrayName="rangeBounds" >
+            <span [formGroupName]="i">
+                <mat-select name="range-bound-type" formControlName="upperBoundType" required>
+                    <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                        {{this.boundSymbols[val]}}
+                    </mat-option>
+                </mat-select>
+            </span>
+        </mat-form-field>
+
+        <div class="col-3" formArrayName="rangeBounds">        
+            <mat-form-field [formGroupName]="i">
+                <mat-label>{{ "APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY." + this.partitionTypeString + (this.formGroup.get('rangeInterpretation')?.value != this.rangeInterpretationType.Percentage ? ".COUNT-UPPER-BOUND"  : ".PERCENTAGE-UPPER-BOUND" )| translate}}</mat-label>
+                <input matInput type="number" name="range-bounds" formControlName="value" required>
+                <span matSuffix *ngIf="this.formGroup.get('rangeInterpretation')?.value == this.rangeInterpretationType.Percentage">%</span>
+                <mat-error *ngIf="formGroup.get('rangeBounds').hasError('backendError')">{{formGroup.get('rangeBounds').getError('backendError')?.message}}</mat-error>
+                <mat-error *ngIf="formGroup.get('rangeBounds').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="offset-3 col-4" formArrayName="rangeValues" >
+            <mat-label>{{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY." + this.partitionTypeString + ".RANGE-VALUE" | translate}}</mat-label>
+            <input matInput type="number" name="ranking-profile-range-bounds" [formControlName]="i" required>
+            <mat-error *ngIf="formGroup.get('rangeValues').hasError('backendError')">{{formGroup.get('rangeValues').getError('backendError')?.message}}</mat-error>
+            <mat-error *ngIf="formGroup.get('rangeValues').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+        </mat-form-field>
+        <button *ngIf="!formGroup.disabled" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeRange(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <div class="row pt-3">
+        <mat-form-field class="offset-7 col-4" formArrayName="rangeValues">
+            <mat-label>{{"APP.DATA-OBJECT-TYPE-EDITOR.OBJECT-RANK-RECALCULATION-STRATEGY." + this.partitionTypeString + ".RANGE-REST-VALUE" | translate}}</mat-label>
+            <input matInput type="number" name="ranking-profile-range-bounds" [formControlName]="this.formGroup.get('rangeBounds').controls.length" required>
+            <mat-error *ngIf="formGroup.get('rangeValues').hasError('backendError')">{{formGroup.get('rangeValues').getError('backendError')?.message}}</mat-error>
+            <mat-error *ngIf="formGroup.get('rangeValues').at(this.formGroup.get('rangeBounds').controls.length).hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+        </mat-form-field>
+    </div>
+    <button *ngIf="!formGroup.get('rangeBounds').disabled" class="col-auto" mat-icon-button color="primary" type='button' (click)="addRange()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-error *ngIf="formGroup.get('rangeBounds').hasError('isNonIncreasing')">{{'COMMONS.VALIDATION.NON-INCREASING-UPPER-BOUNDS' | translate}}</mat-error>
+    <mat-error *ngIf="formGroup.hasError('outOfPercentageRange')">{{'COMMONS.VALIDATION.OUT-OF-PERCENTAGE-RANGE-ERROR' | translate}}</mat-error>
+
+</div>

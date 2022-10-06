@@ -1,0 +1,59 @@
+<div *ngIf="!checkMail && !autoLogin && !hasInvalidGrant" class="direct-link row">
+	<div class="col-md-4 offset-md-4">
+		<mat-card>
+			<mat-card-content>
+				<div class="row">
+					<h3 class="col-12" style="text-align: center" class="col-md-12">{{'IDP-SERVICE.AUTHENTICATION.TITLES.LOGIN' | translate}}</h3>
+				</div>
+				<form class="row" *ngIf="formGroup" (ngSubmit)="login()" [formGroup]="formGroup">
+					<mat-form-field class="col-md-12">
+						<input matInput placeholder="{{'IDP-SERVICE.AUTHENTICATION.FIELDS.PASSWORD' | translate}}" type="text" name="password"
+							formControlName="password" required>
+						<mat-error *ngIf="formGroup.get('password').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' |
+							translate}}</mat-error>
+					</mat-form-field>
+					<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.LOGIN' |
+							translate}}</button></div>
+				</form> 
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>
+<div class="row hasInvalidGrant" *ngIf="hasInvalidGrant">
+	<div class="col-md-6 offset-md-3">
+		<mat-card>
+			<mat-card-header>
+				<div mat-card-avatar>
+					<mat-icon class="text-warning">warning</mat-icon>
+				</div>
+				<mat-card-title>{{'IDP-SERVICE.AUTHENTICATION.TITLES.FAILED-LOGIN' | translate}}</mat-card-title>
+				<mat-card-subtitle>{{'IDP-SERVICE.AUTHENTICATION.TITLES.FAILED-LOGIN-SUBTITLE' | translate}}
+				</mat-card-subtitle>
+			</mat-card-header>
+			<mat-card-content>
+				{{'IDP-SERVICE.AUTHENTICATION.TITLES.FAILED-LOGIN-CLAIM-MAIL-OTP' | translate}}
+			</mat-card-content>
+			<mat-card-actions class="text-right">
+				<button mat-button color="primary" type="button" (click)="backUrl()"
+					mat-button>{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.BACK-TO-LOGIN' | translate}}</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+</div>
+<div class="row checkMail" *ngIf="checkMail">
+	<div class="col-md-6 offset-md-3">
+		<mat-card>
+			<mat-card-header>
+				<div mat-card-avatar><mat-icon class="text-success">done</mat-icon></div>
+				<mat-card-title>{{'IDP-SERVICE.AUTHENTICATION.TITLES.SUCCESSFUL-REQUEST' | translate}}</mat-card-title>	
+				<mat-card-subtitle>{{'IDP-SERVICE.AUTHENTICATION.TITLES.SUCCESSFUL-REQUEST-SUBTITLE' | translate}}</mat-card-subtitle>			
+			</mat-card-header>
+			<mat-card-content>				
+				{{'IDP-SERVICE.AUTHENTICATION.TITLES.SUCCESSFUL-REQUEST-CHECK-MAIL' | translate}}							
+			</mat-card-content>
+			<mat-card-actions class="text-right">
+				<button mat-button color="primary" type="button" (click)="backUrl()" mat-button>{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.BACK-TO-LOGIN' | translate}}</button>
+			</mat-card-actions>
+		</mat-card>
+	</div>
+</div>

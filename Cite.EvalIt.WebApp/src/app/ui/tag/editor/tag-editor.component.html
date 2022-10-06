@@ -1,0 +1,56 @@
+<div class="row tag-editor">
+	<div class="col-md-8 offset-md-2">
+		<mat-card>
+			<mat-card-title *ngIf="isNew">{{'APP.TAG-EDITOR.TITLE.NEW' | translate}}</mat-card-title>
+			<mat-card-title *ngIf="!isNew">{{formGroup.get('label').value}}</mat-card-title>
+			<mat-card-content>
+				<form (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+					<div class="row">
+						<mat-form-field class="col-md-12">
+							<mat-label>{{'APP.TAG-EDITOR.FIELDS.LABEL' | translate}}</mat-label>
+							<input matInput type="text" name="tag-label" formControlName="label" required>
+							<mat-error *ngIf="formGroup.get('label').hasError('backendError')">{{formGroup.get('label').getError('backendError')?.message}}</mat-error>
+							<mat-error *ngIf="formGroup.get('label').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+						</mat-form-field>
+
+						<mat-form-field class="col-md-12">
+							<mat-label>{{'APP.TAG-EDITOR.FIELDS.TYPE' | translate}}</mat-label>
+							<mat-select name="type" formControlName="type" required>
+								<mat-option *ngFor="let val of tagTypeKeys" [value]="val">
+									{{this.tagType[val]}}
+								</mat-option>
+							</mat-select>
+							<mat-error *ngIf="formGroup.get('type').hasError('backendError')">{{formGroup.get('type').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+
+						<mat-form-field class="col-md-12">
+							<mat-label>{{'APP.TAG-EDITOR.FIELDS.APPLIESTO' | translate}}</mat-label>
+							<mat-select name="appliesTo" formControlName="appliesTo" required>
+								<mat-option *ngFor="let val of tagAppliesToKeys" [value]="val">
+									{{this.tagAppliesTo[val]}}
+								</mat-option>
+							</mat-select>
+							<mat-error *ngIf="formGroup.get('appliesTo').hasError('backendError')">{{formGroup.get('type').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+					</div>
+					<div class="pl-3" *ngIf="!isNew">
+						<div class="row" *ngIf="this.tag.appliesTo != this.tagAppliesTo.Object">
+							<div>
+								<mat-label>{{'APP.TAG-EDITOR.FIELDS.ASSOCIATED-USERS' | translate}} : </mat-label>
+								<mat-label>{{this.tag.associatedUsers.length}}</mat-label>
+							</div>
+						</div>
+						<div class="row" *ngIf="this.tag.appliesTo != this.tagAppliesTo.User">
+							<div>
+								<mat-label>{{'APP.TAG-EDITOR.FIELDS.ASSOCIATED-OBJECTS' | translate}} : </mat-label>
+								<mat-label>{{this.tag.associatedDataObjects.length}}</mat-label>
+							</div>
+						</div>
+					</div>
+					
+					<app-editor-actions-component [canDelete]="authService.hasPermission(authService.permissionEnum.DeleteTag) && !isDeleted && !isNew" [canSave]="authService.hasPermission(authService.permissionEnum.EditTag) && !isDeleted" (onDelete)="delete()" (onCancel)="cancel()" (onSave)="save()"></app-editor-actions-component>
+				</form>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

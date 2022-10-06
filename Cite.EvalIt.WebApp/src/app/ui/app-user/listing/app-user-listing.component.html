@@ -1,0 +1,16 @@
+<div class="row app-user-listing">
+	<div class="col-md-8 offset-md-2">
+
+		<h4>{{'APP.APP-USER-LISTING.TITLE' | translate}}</h4>
+
+		<div class="col-12 p-0 filter-row">
+			<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+		</div>
+		<div class="col-12 p-0 filter-row">
+			<app-app-user-listing-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-app-user-listing-filters>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="lookup.page.size" [defaultSort]="lookup.order?.items" [externalSorting]="true"  (rowActivated)="onRowActivated($event)" (pageLoad)="alterPage($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="row access-token-listing">
+	<div class="col-md-8 offset-md-2">
+
+		<h4>{{'IDP-SERVICE.ACCESS-TOKEN-LISTING.TITLE' | translate}}</h4>
+
+		<div class="col-12 p-0 user-settings-selector">
+			<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+		</div>
+		<div class="col-12 p-0 filter-row">
+			<app-access-token-listing-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-access-token-listing-filters>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="lookup.page.size" [defaultSort]="lookup.order?.items" [externalSorting]="true" (pageLoad)="onPageLoad($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+
+		<ng-template #deleteColumnTemplate ngx-datatable-cell-template let-row="row">
+			<button mat-icon-button color="primary" (click)="deleteRow(row)">
+				<mat-icon>delete</mat-icon>
+			</button>
+		</ng-template>
+	</div>
+</div>

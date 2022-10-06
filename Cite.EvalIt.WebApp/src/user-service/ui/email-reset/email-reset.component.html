@@ -1,0 +1,12 @@
+<div class="email-reset">
+	<div class="col-md-4 offset-md-4">
+		<mat-card>
+			<mat-card-title>{{'USER-SERVICE.EMAIL-RESET.TITLE' | translate}}</mat-card-title>
+			<mat-card-content>
+				<div *ngIf="loading">{{'USER-SERVICE.EMAIL-RESET.LOADING' | translate}}</div>
+				<div *ngIf="!loading && succeeded">{{'USER-SERVICE.EMAIL-RESET.RESULT.SUCCESS' | translate}}</div>
+				<div *ngIf="!loading && !succeeded">{{'USER-SERVICE.EMAIL-RESET.RESULT.FAILURE' | translate}}</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

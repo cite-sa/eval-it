@@ -1,0 +1,41 @@
+<div *ngIf="formGroup" class="tenant-configuration-user-locale-component row">
+	<mat-form-field class="col-md-4">
+		<mat-label>{{'USER-SERVICE.TENANT-CONFIGURATION.USER-LOCALE-EDITOR.FIELDS.TIMEZONE' | translate}}</mat-label>
+		<input matInput autocomplete="nope" [matAutocomplete]="timezoneAuto" type="text" name="timezone" [formControl]="formGroup.get('timezone')" required>
+		<mat-error *ngIf="formGroup.get('timezone').hasError('backendError')">{{formGroup.get('timezone').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('timezone').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		<mat-autocomplete autoActiveFirstOption #timezoneAuto="matAutocomplete">
+			<mat-option *ngFor="let timezone of filteredTimezones" [value]="timezone">{{timezone | timezoneInfoDisplay}}</mat-option>
+		</mat-autocomplete>
+	</mat-form-field>
+	<mat-form-field class="col-md-4">
+		<mat-label>{{'USER-SERVICE.TENANT-CONFIGURATION.USER-LOCALE-EDITOR.FIELDS.CULTURE' | translate}}</mat-label>
+		<input matInput autocomplete="nope" [matAutocomplete]="cultureAuto" type="text" name="culture" [formControl]="formGroup.get('culture')" required>
+		<mat-error *ngIf="formGroup.get('culture').hasError('backendError')">{{formGroup.get('culture').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('culture').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		<mat-autocomplete autoActiveFirstOption #cultureAuto="matAutocomplete">
+			<mat-option *ngFor="let culture of filteredCultures" [value]="culture.name">{{culture | cultureInfoDisplay}}</mat-option>
+		</mat-autocomplete>
+	</mat-form-field>
+	<mat-form-field class="col-md-4">
+		<mat-label>{{'USER-SERVICE.TENANT-CONFIGURATION.USER-LOCALE-EDITOR.FIELDS.LANGUAGE' | translate}}</mat-label>
+		<mat-select name="language" [formControl]="formGroup.get('language')" required>
+			<mat-option *ngFor="let languageType of languageTypeValues" [value]="languageService.getLanguageValue(languageType)">{{appEnumUtils.toLanguageTypeString(languageType)}}</mat-option>
+		</mat-select>
+		<mat-error *ngIf="formGroup.get('language').hasError('backendError')">{{formGroup.get('language').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('language').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<div class="col-12">
+		<div class="row actions-row">
+			<div class="col"></div>
+			<div class="col-auto" *ngIf="editorModel.id"><button mat-raised-button color="primary" (click)="delete()">
+					{{'USER-SERVICE.TENANT-CONFIGURATION.USER-LOCALE-EDITOR.ACTIONS.DELETE' | translate}}
+				</button>
+			</div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="formSubmit()">
+					{{'USER-SERVICE.TENANT-CONFIGURATION.USER-LOCALE-EDITOR.ACTIONS.SAVE' | translate}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

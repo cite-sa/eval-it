@@ -1,0 +1,55 @@
+<div class="row data-object-viewer">
+	<div class="col-md-12" *ngIf="dataObject">
+		<mat-card>
+			<mat-card-title class="mb-0" >
+				{{dataObject.title}}
+				<button class="float-right" *ngIf="authService.hasPermission(authService.permissionEnum.EditDataObject)" mat-icon-button  type="button" color="primary" (click)="onEditClicked()">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button class="float-right" mat-icon-button  type="button" color="primary" (click)="onViewClicked()">
+					<mat-icon>visibility</mat-icon>
+				</button>
+			</mat-card-title>
+			<mat-card-subtitle>
+				{{dataObject.createdAt | dateTimeFormatter:"short"}}
+			</mat-card-subtitle>
+			<mat-card-content>
+				<mat-tab-group mat-stretch-tabs dynamicHeight>
+					<mat-tab label="Object">
+						<div class="row pt-3 pb-3" *ngIf="this.author">
+                            <mat-label class="col-4 font-weight-bold">{{'APP.DATA-OBJECT-VIEWER.AUTHOR' | translate}}</mat-label>
+                            <mat-label class="col-4">{{this.author}}</mat-label>
+						</div>
+						<mat-divider></mat-divider>
+						<div class="row pt-3 pb-3">
+                            <mat-label class="col-4 font-weight-bold">{{'APP.DATA-OBJECT-VIEWER.DESCRIPTION' | translate}}</mat-label>
+                            <mat-label class="col-4">{{dataObject.description}}</mat-label>
+						</div>
+						<mat-divider></mat-divider>
+						<div class="row pt-3 pb-3">
+							<mat-label class="col-4 font-weight-bold">{{'APP.DATA-OBJECT-VIEWER.DATA-OBJECT-TYPE-NAME' | translate}}</mat-label>
+							<mat-label class="col-4">{{dataObject.dataObjectType.name}}</mat-label>
+						</div>
+						<mat-divider></mat-divider>
+                        <div class="row pt-3">
+                            <mat-label class="col-3 font-weight-bold">{{'APP.DATA-OBJECT-VIEWER.PIDS' | translate}}:</mat-label>
+						</div>
+                        <div *ngFor="let userDefinedId of dataObject.userDefinedIds">
+                            <div class="row">
+                                <mat-label *ngIf="this.userDefinedId.type" class="col-3 offset-1 font-weight-bold">{{this.pidType[this.userDefinedId.type]}}</mat-label>
+                                <mat-label *ngIf="!this.userDefinedId.type" class="col-3 offset-1 font-weight-bold">{{this.userDefinedId.key}}</mat-label>
+                                <mat-label class="col-3">{{this.userDefinedId.value}}</mat-label>
+							</div>
+						</div>
+					</mat-tab>
+					<mat-tab label="Attributes">
+                        <div *ngFor="let attr of getSortedAttributes()">
+                            <app-data-object-attribute-field-tile *ngIf="getOptionById(attr.optionId)?.isActive" [attribute]="attr" [inputOption]="getOptionById(attr.optionId)"></app-data-object-attribute-field-tile>
+                            <app-data-object-attribute-inactive-field-tile *ngIf="!getOptionById(attr.optionId)?.isActive" [attribute]="attr" [inputOption]="getOptionById(attr.optionId)"></app-data-object-attribute-inactive-field-tile>
+                        </div>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

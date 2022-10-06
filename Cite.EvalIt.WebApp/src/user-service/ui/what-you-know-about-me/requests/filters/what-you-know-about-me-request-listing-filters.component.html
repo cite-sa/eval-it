@@ -1,0 +1,48 @@
+<div class="row what-you-know-about-me-listing-filters">
+	<div class="col-12 p-0">		
+		<div class="row mb-3">
+			<div class="col-3 align-self-center">
+				<button class="what-you-know-about-me-filters-btn" mat-stroked-button [matMenuTriggerFor]="filtersMenu">
+					<i class="fa fa-2x fa-filter filter-icon"></i>
+					<span>{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.SEARCH-FILTER' | translate}}</span>
+					<span class="opened-filters">{{countOpenFilters()}}</span>
+					<i class="material-icons">keyboard_arrow_down</i>
+				</button>
+			</div>
+			<app-text-filter *ngIf="filterSelections['likeOption']" class="col-6 text-filter" [(value)]="filter.like" [disableTransform]="false" (valueChange)="onFilterChange()"></app-text-filter>
+			<div class="col-3 d-flex align-items-center toggle-col" *ngIf="filterSelections['isActiveOption']">
+				<mat-slide-toggle [(ngModel)]="isActive" class="toggle col-auto w-100">
+					{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.SHOW-INACTIVE' | translate}}
+				</mat-slide-toggle>			
+			</div>
+			<mat-form-field *ngIf="filterSelections['isValidatedOption']" class="col-auto">
+				<mat-label>{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.IS-VALIDATED' | translate}}</mat-label>
+				<mat-select [(ngModel)]="isValidated" multiple>
+					<mat-option *ngFor="let whatYouKnowAboutMeValidationValue of whatYouKnowAboutMeValidationEnumValues" [value]="whatYouKnowAboutMeValidationValue">{{enumUtils.toWhatYouKnowAboutMeValidationString(whatYouKnowAboutMeValidationValue)}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field *ngIf="filterSelections['stateOption']" class="col-auto">
+				<mat-label>{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.STATE' | translate}}</mat-label>
+				<mat-select [(ngModel)]="state" multiple>
+					<mat-option *ngFor="let whatYouKnowAboutMeStateValue of whatYouKnowAboutMeStateEnumValues" [value]="whatYouKnowAboutMeStateValue">{{enumUtils.toWhatYouKnowAboutMeStateString(whatYouKnowAboutMeStateValue)}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+</div>
+<mat-menu #filtersMenu="matMenu">
+	<div class="filters-menu-container">
+		<div class="filters-menu-header col-md-12">
+			<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); selectAll()">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.ALL-FILTERS' | translate}}</button>
+			<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); deselectAll() ">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.NO-FILTERS' | translate}}</button>
+		</div>
+		<div class="col-md-12 d-flex flex-row pt-3">
+			<div class="col d-flex flex-column">
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['likeOption']" (ngModelChange)="checkBoxChanged($event, 'like')" (click)="$event.stopPropagation()">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.LIKE' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['isActiveOption']" (ngModelChange)="checkBoxChanged($event, 'isActive')" (click)="$event.stopPropagation()">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.SHOW-INACTIVE' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['stateOption']" (ngModelChange)="checkBoxChanged($event, 'state')" (click)="$event.stopPropagation()">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.STATE' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['isValidatedOption']" (ngModelChange)="checkBoxChanged($event, 'isValidated')" (click)="$event.stopPropagation()">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING.FILTER.IS-VALIDATED' | translate}}</mat-checkbox>
+			</div>
+		</div>
+	</div>
+</mat-menu>

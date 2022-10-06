@@ -1,0 +1,56 @@
+<div class="row totp">
+	<div *ngIf="!totpEnabled && !totpKeyInfo" class="col-12">
+		<div class="row">
+			<h4 class="col-12 header-centered">{{'IDP-SERVICE.TOTP-SETUP.ENABLE-TITLE' | translate}}</h4>
+			<div class="col"></div>
+			<button mat-raised-button color="primary" (click)="enable()" class="actions-row">{{'IDP-SERVICE.TOTP-SETUP.ACTIONS.ENABLE' | translate}}</button>
+			<div class="col"></div>
+		</div>
+	</div>
+	<div *ngIf="totpEnabled && !totpKeyInfo" class="col-12">
+		<div class="row">
+			<h4 class="col-12 header-centered">{{'IDP-SERVICE.TOTP-SETUP.DISABLE-TITLE' | translate}}</h4>
+			<div class="col"></div>
+			<button mat-raised-button color="primary" (click)="disable()" class="actions-row">{{'IDP-SERVICE.TOTP-SETUP.ACTIONS.DISABLE' | translate}}</button>
+			<div class="col"></div>
+		</div>
+	</div>
+	<div *ngIf="totpKeyInfo && currentRegisterStep == totpRegisterStepEnum.QRCode" class="col-12">
+		<div class="row">
+			<h4 class="col-12 header-centered">{{'IDP-SERVICE.TOTP-SETUP.QR-CODE-MESSAGE' | translate}}</h4>
+			<div class="col"></div>
+			<app-qr-code class="col-auto qr-code-image" [attr.title]="''" [text]="totpKeyInfo.provisionUrl"></app-qr-code>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<h4 class="col-12 header-centered">{{'IDP-SERVICE.TOTP-SETUP.MANUAL-INPUT' | translate}}</h4>
+			<div class="col"></div>
+			<h6 class="col-auto">{{totpKeyInfo.provisionSecret}}</h6>
+			<div class="col"></div>
+		</div>
+		<div class="row">
+			<h4 class="col-12 header-centered back-up-row">{{'IDP-SERVICE.TOTP-SETUP.BACKUP-CODE' | translate}}</h4>
+			<div class="col"></div>
+			<h6 class="col-auto">{{totpKeyInfo.overrideSecret}}</h6>
+			<div class="col"></div>
+		</div>
+		<div class="row actions-row">
+			<button mat-raised-button color="primary" class="col-auto" (click)="reset()">{{'IDP-SERVICE.TOTP-SETUP.ACTIONS.CANCEL' | translate}}</button>
+			<div class="col"></div>
+			<button mat-raised-button color="primary" class="col-auto" (click)="currentRegisterStep = totpRegisterStepEnum.Verification">{{'IDP-SERVICE.TOTP-SETUP.ACTIONS.NEXT' | translate}}</button>
+		</div>
+	</div>
+	<div *ngIf="totpKeyInfo && currentRegisterStep == totpRegisterStepEnum.Verification" class="col-12">
+		<div class="row">
+			<h4 class="col-12 header-centered">{{'IDP-SERVICE.TOTP-SETUP.VERIFICATION-TITLE' | translate}}</h4>
+			<div class="col"></div>
+			<app-totp-input class="col-md-6" placeholder="{{'IDP-SERVICE.TOTP-SETUP.CODE' | translate}}" [(ngModel)]="totpKey" [required]="true"></app-totp-input>
+			<div class="col"></div>
+		</div>
+		<div class="row actions-row">
+			<button mat-raised-button color="primary" class="col-auto" (click)="reset()">{{'IDP-SERVICE.TOTP-SETUP.ACTIONS.CANCEL' | translate}}</button>
+			<div class="col"></div>
+			<button mat-raised-button color="primary" class="col-auto" (click)="verifyAndRegisterKey()">{{'IDP-SERVICE.TOTP-SETUP.ACTIONS.VERIFY' | translate}}</button>
+		</div>
+	</div>
+</div>

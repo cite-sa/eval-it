@@ -1,0 +1,8 @@
+<mat-button-toggle-group multiple>
+    <mat-button-toggle class="sort-field" (change)="this.onSortChange($event)" *ngFor="let sortBy of sort" [value]="sortBy[0]">{{sortBy[1] | translate}}
+        <span *ngIf="sortBy[0] == this.currentSortColumn">
+            <mat-icon *ngIf="this.sortDirection == 'asc'">keyboard_arrow_up</mat-icon>
+            <mat-icon *ngIf="this.sortDirection == 'desc'">keyboard_arrow_down</mat-icon>
+        </span>
+    </mat-button-toggle>
+</mat-button-toggle-group>

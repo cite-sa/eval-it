@@ -1,0 +1,29 @@
+<div *ngIf="review" class="pt-3 col-md-8 offset-md-2">
+	<mat-card>
+		<mat-card-title class="mb-0" > 
+			<small>By</small>
+			<span [ngClass]="this.name ? 'selectable' : ''" (click)="onNameClicked()">
+				{{this.name ? this.name : ('APP.DATA-OBJECT-REVIEW-LISTING.ANONYMOUS-USER' | translate) }}
+			</span>
+
+			<button class="float-right" *ngIf="review.canEdit" mat-icon-button  type="button" color="primary" (click)="toEditor()">
+				<mat-icon>edit</mat-icon>
+			</button>
+	</mat-card-title>
+	<mat-card-subtitle>
+		{{review.createdAt | dateTimeFormatter:"short"}}
+	</mat-card-subtitle>
+		
+		<span class="h4" *ngIf="this.object">
+			Review of
+			<span class="selectable" (click)="toObject()">
+				{{this.object.title}}
+			</span>
+		</span>		
+		<mat-card-content class="pt-3">
+			<div *ngFor="let eval of getSortedEvaluations()">
+				<app-data-object-review-field-viewer *ngIf="getOptionById(eval.optionId)?.isActive" [evaluation]="eval" [evalOption]="getOptionById(eval.optionId)"></app-data-object-review-field-viewer>
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>

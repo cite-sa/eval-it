@@ -1,0 +1,43 @@
+<div class="row data-object-review-listing-filters">
+	<div class="col-12 p-0">		
+		<div class="row mb-3">
+			<div class="col-3 align-self-center">
+				<button class="data-object-tag-listing-filters-btn" mat-stroked-button [matMenuTriggerFor]="filtersMenu">
+					<i class="fa fa-2x fa-filter filter-icon"></i>
+					<span>{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.SEARCH-FILTER' | translate}}</span>
+					<span class="opened-filters"> {{countOpenFilters()}}</span>
+					<i class="material-icons">keyboard_arrow_down</i>
+				</button>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<mat-form-field  *ngIf="filterSelections['userOption']" class="col-6">
+				<mat-label>{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.USER' | translate}}</mat-label>
+				<app-multiple-auto-complete [(ngModel)]="appUsers" [configuration]="appUserMultipleAutocompleteConfiguration">
+				</app-multiple-auto-complete>
+			</mat-form-field>
+			<!-- <mat-form-field *ngIf="filterSelections['anonymousOption']" class="col-6">
+				<mat-label>{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.ANONYMITY' | translate}}</mat-label>
+				<mat-select [(ngModel)]="anonymityTypes" multiple>
+					<mat-option *ngFor="let val of anonymityTypeKeys" [value]="val">
+						{{this.anonymityType[val]}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field> -->
+		</div>
+	</div>
+	<mat-menu #filtersMenu="matMenu">
+		<div class="filters-menu-container">
+			<div class="filters-menu-header col-md-12">
+				<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); selectAll()">{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.ALL-FILTERS' | translate}}</button>
+				<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); deselectAll() ">{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.NO-FILTERS' | translate}}</button>
+			</div>
+			<div class="col-md-12 d-flex flex-row pt-3">
+				<div class="col d-flex flex-column">
+					<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['userOption']" (ngModelChange)="checkBoxChanged($event, 'userIds')" (click)="$event.stopPropagation()">{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.USERIDS' | translate}}</mat-checkbox>
+					<!-- <mat-checkbox class="filter-option" [(ngModel)]="filterSelections['anonymousOption']" (ngModelChange)="checkBoxChanged($event, 'anonymity')" (click)="$event.stopPropagation()">{{'APP.DATA-OBJECT-REVIEW-LISTING.FILTER.ANONYMITY' | translate}}</mat-checkbox> -->
+				</div>
+			</div>
+		</div>
+	</mat-menu>
+</div>

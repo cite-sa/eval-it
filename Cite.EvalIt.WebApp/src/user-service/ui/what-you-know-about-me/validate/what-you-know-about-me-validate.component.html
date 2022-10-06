@@ -1,0 +1,20 @@
+<div class="row what-you-know-about-me-validate">
+
+	<div class="col-12 row">
+		<div class="col"></div>
+		<h4 *ngIf="completed" class="col-auto">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-VALIDATE.COMPLETED' | translate}}</h4>
+		<div class="col"></div>
+	</div>
+
+	<div class="col-12 row">
+		<div class="col"></div>
+		<h4 *ngIf="!completed" class="col-auto">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-VALIDATE.PROCESSING' | translate}}</h4>
+		<div class="col"></div>
+	</div>
+
+	<div class="col-12 row">
+		<div class="col"></div>
+		<a *ngIf="completed" class="col-auto" routerLink="/">{{'USER-SERVICE.WHAT-YOU-KNOW-ABOUT-ME-VALIDATE.BACK' | translate}}</a>
+		<div class="col"></div>
+	</div>
+</div>

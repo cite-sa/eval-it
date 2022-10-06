@@ -1,0 +1,30 @@
+<div class="app-rank-recalculation-listing">
+	<div>
+
+		<h4>{{'APP.RANK-RECALCULATION-TASK-LISTING.TITLE' | translate}}</h4>
+
+		<div class="col-12 p-0 filter-row">
+			<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+		</div>
+		<div class="col-12 p-0 filter-row">
+			<app-rank-recalculation-task-listing-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-rank-recalculation-task-listing-filters>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="lookup.page.size" [defaultSort]="lookup.order?.items" [externalSorting]="true"(pageLoad)="alterPage($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+
+        <ng-template #RequestingUserTemplate ngx-datatable-cell-template let-row="row">
+			<span *ngIf="userMap.has(row.requestingUserId)">
+				{{userMap.get(row.requestingUserId)?.name}}
+			</span>
+		</ng-template>
+
+        <ng-template #RankRecalculationTaskControlTemplate ngx-datatable-cell-template let-row="row">
+			<button mat-button mat-raised-button type="button" color="primary" (click)="this.cancelTask(row.id)" *ngIf="[statusType.Pending,statusType.Processing].includes(row.taskStatus)" [disabled]="this.authService.userId() != row.requestingUserId">Cancel</button>
+		</ng-template>
+
+        <div class="pt-3 float-right">
+            <button mat-button mat-raised-button type="button" (click)="this.startTask()" color="primary">Start New Recalculation Task</button>
+        </div>
+	</div>
+</div>

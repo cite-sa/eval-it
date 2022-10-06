@@ -1,0 +1,12 @@
+<div class="app-user-tag-listing">
+	<div class="col-12 p-0 filter-row">
+		<app-app-user-tag-listing-filters [(filter)]="clientLookup" (filterChange)="clientFilterChange($event)"></app-app-user-tag-listing-filters>
+	</div>
+
+	<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="clientLookup.pageSize" [defaultSort]="lookup.order?.items" [externalPaging]="false"  (rowActivated)="onRowActivated($event)" (pageLoad)="onPageLoad($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+	</app-listing>
+
+	<button *ngIf="authService.hasPermission(authService.permissionEnum.EditUser) && !this.viewOnly" mat-fab class="mat-fab-bottom-right" (click)="onNewItem()">
+		<mat-icon class="mat-24">add</mat-icon>
+	</button>
+</div>

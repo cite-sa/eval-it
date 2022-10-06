@@ -1,0 +1,15 @@
+export enum AdminErrorCodes{
+    HashConflict = 100,
+    Forbidden = 101,
+    SystemError = 102,
+    StaleAPIKey = 103,
+    InvalidApiKey = 104,
+    ModelValidation = 105,
+    TenantCodeImmutable = 106,
+    TenantInfrastructureImmutable = 107,
+    TenantNotPersisted = 108,
+    BlockingConsent = 109,
+    MissingTotpToken = 110,
+    NonPersonPrincipal = 111,
+    TokenConsumed = 112,
+}

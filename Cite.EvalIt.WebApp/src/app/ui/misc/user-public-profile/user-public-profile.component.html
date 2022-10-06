@@ -1,0 +1,59 @@
+<div class="row pt-3">
+    <div class="col-8 offset-2">
+        <mat-card *ngIf="this.user" class="mb-3">
+			<mat-card-title class="mb-0" >
+                {{this.user.name}}
+			</mat-card-title>
+            <mat-card-content>
+                <div class="row pt-3 pb-3">
+                    <mat-label class="col-4 font-weight-bold">{{'APP.USER-PUBLIC-PROFILE.REVIEW-COUNT' | translate}}</mat-label>
+                    <mat-label class="col-4">{{this.reviewCount}}</mat-label>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="row pt-3 pb-3">
+                    <mat-label class="col-4 font-weight-bold">{{'APP.USER-PUBLIC-PROFILE.OBJECT-COUNT' | translate}}</mat-label>
+                    <mat-label class="col-4">{{this.objectCount}}</mat-label>
+                </div>
+            </mat-card-content>
+		</mat-card>
+        
+        <mat-card *ngIf="user" class="mb-3">
+            <mat-card-title class="mb-0" >
+                {{'APP.USER-PUBLIC-PROFILE.USER-TAGS' | translate}}
+			</mat-card-title>
+            <mat-card-content>
+                <app-app-user-tag-listing  [user]="this.user" [viewOnly]="true"></app-app-user-tag-listing>
+            </mat-card-content>
+        </mat-card>
+        
+        <div *ngIf="this.sampleReviews?.length > 0">
+            <h4>{{'APP.USER-PUBLIC-PROFILE.RECENT-REVIEWS' | translate}}</h4>
+            <div class="row pb-3" >
+                <app-data-object-review-tile
+                    class="col-xl-4 pt-3"
+                    *ngFor="let review of this.sampleReviews"
+                    [review]="review"
+                    [names]="this.names"
+                    [feedback]="this.getFeedbackByReviewId(review.id)"
+                    (editClicked)="this.onReviewEditClicked($event)"
+                    (viewClicked)="this.onReviewViewClicked($event)"
+                >
+                </app-data-object-review-tile>
+            </div>
+        </div>
+
+        <div *ngIf="this.sampleObjects?.length > 0">
+            <h4>{{'APP.USER-PUBLIC-PROFILE.RECENT-OBJECTS' | translate}}</h4>
+            <div class="row pb-3" >
+                <app-data-object-tile
+                    class="col-xl-4 pt-3"
+                    *ngFor="let dataObject of this.sampleObjects"
+                    [dataObject]="dataObject"
+                    (editClicked)="this.onObjectEditClicked($event)"
+                    (viewClicked)="this.onObjectViewClicked($event)"
+                >
+                </app-data-object-tile>
+            </div>
+        </div>
+    </div>
+</div>

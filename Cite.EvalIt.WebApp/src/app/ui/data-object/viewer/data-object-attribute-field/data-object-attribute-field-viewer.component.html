@@ -1,0 +1,73 @@
+ <mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{inputOption?.label}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.valueDisplay()}}
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    
+    <div>
+        <ng-template [ngIf]="attribute.attributeType == attrType['AbsoluteDecimalAttribute']">
+            <div *ngFor="let value of attribute.values; let i=index" class="row">
+                <mat-label class="col-4">{{value}} {{this.inputOption.measurementUnit}}</mat-label>
+            </div>
+            <div *ngIf="attribute.values.length == 0">
+                <mat-label class="col-4">{{'APP.DATA-OBJECT-VIEWER.NO-VALUE' | translate}}</mat-label>
+            </div>
+        </ng-template>
+
+        <ng-template [ngIf]="attribute.attributeType == attrType['AbsoluteIntegerAttribute']">
+            <div *ngFor="let value of attribute.values; let i=index" class="row">
+                <mat-label class="col-4">{{value}} {{this.inputOption.measurementUnit}}</mat-label>
+            </div>
+            <div *ngIf="attribute.values.length == 0">
+                <mat-label class="col-4">{{'APP.DATA-OBJECT-VIEWER.NO-VALUE' | translate}}</mat-label>
+            </div>
+        </ng-template>
+
+        <ng-template [ngIf]="attribute.attributeType == attrType['PercentageAttribute']">
+            <div *ngFor="let value of attribute.values; let i=index" class="row">
+                <mat-label class="col-4">{{value}}%</mat-label>
+            </div>
+            <div *ngIf="attribute.values.length == 0">
+                <mat-label class="col-4">{{'APP.DATA-OBJECT-VIEWER.NO-VALUE' | translate}}</mat-label>
+            </div>
+        </ng-template>
+
+
+        <ng-template [ngIf]="attribute.attributeType == attrType['TextAttribute']">
+            <div *ngFor="let value of attribute.values; let i=index" class="row">
+                <mat-label class="col-4">{{value}}</mat-label>
+            </div>
+            <div *ngIf="attribute.values.length == 0">
+                <mat-label class="col-4">{{'APP.DATA-OBJECT-VIEWER.NO-VALUE' | translate}}</mat-label>
+            </div>
+        </ng-template>
+
+        <ng-template [ngIf]="attribute.attributeType == attrType['ScaleAttribute']">
+            <div *ngFor="let value of attribute.values; let i=index">
+                <mat-button-toggle-group>
+                    <mat-button-toggle *ngFor="let x of this.inputOption.inputScale" [value]="x.value" [disabled]="value != x.value" [checked]="value == x.value">
+                        <mat-icon *ngIf="x.scaleDisplayOption != scaleDisplayType.Label">{{x.iconIdentifier}} </mat-icon>
+                        <span *ngIf="x.scaleDisplayOption != scaleDisplayType.Icon" > {{x.label}}</span>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div *ngIf="attribute.values.length == 0">
+                <mat-label class="col-4">{{'APP.DATA-OBJECT-VIEWER.NO-VALUE' | translate}}</mat-label>
+            </div>
+        </ng-template>
+
+        <ng-template [ngIf]="attribute.attributeType == attrType['SelectionAttribute']">
+            <div *ngFor="let value of attribute.values; let i=index" class="row">
+                <mat-label class="col-4 font-weight-bold">{{value}}</mat-label>
+                <mat-label class="col-4">{{vals[i]}}</mat-label>
+            </div>
+            <div *ngIf="attribute.values.length == 0">
+                <mat-label class="col-4">{{'APP.DATA-OBJECT-VIEWER.NO-VALUE' | translate}}</mat-label>
+            </div>
+        </ng-template>
+    </div>
+</mat-expansion-panel>

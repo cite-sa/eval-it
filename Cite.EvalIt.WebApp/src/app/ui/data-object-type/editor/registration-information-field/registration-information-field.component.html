@@ -1,0 +1,283 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{this.formGroup.get('label').value ? this.formGroup.get('label').value : "APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.NEW-VALUE" | translate}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.enumUtils.toRegistrationInformationTypeString(this.formGroup.get('optionType').value)}}
+            <mat-icon style="color:orange" *ngIf="this.formGroup?.touched && this.formGroup?.status == 'INVALID'">error_outline</mat-icon>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="info-editor" [formGroup]="formGroup">
+        <div class="row">
+            <mat-form-field [ngClass]="formGroup.get('optionType').value == infoType['ScaleInputOption'] || formGroup.get('optionType').value == infoType['SelectionInputOption'] ? 'col-12' : 'col-6'">
+                <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.LABEL' | translate}}</mat-label>
+                <input matInput type="text" name="data-object-type-label" formControlName="label" required>
+                <mat-error *ngIf="formGroup.get('label').hasError('backendError')">{{formGroup.get('label').getError('backendError')?.message}}</mat-error>
+                <mat-error *ngIf="formGroup.get('label').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                <mat-error *ngIf="formGroup.get('label').hasError('maxlength')">{{'COMMONS.VALIDATION.MAX-LENGTH' | translate}} (250)</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="col-6" *ngIf="formGroup.get('optionType').value == infoType['AbsoluteDecimalInputOption'] || formGroup.get('optionType').value == infoType['AbsoluteIntegerInputOption'] || formGroup.get('optionType').value == infoType['PercentageInputOption'] || formGroup.get('optionType').value == infoType['TextInputOption']">
+                <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.VALIDATION-REGEXP' | translate}}</mat-label>
+                <input matInput type="text" name="data-object-type-validation-regexp" formControlName="validationRegexp" >
+                <mat-error *ngIf="formGroup.get('label').hasError('backendError')">{{formGroup.get('validationRegexp').getError('backendError')?.message}}</mat-error>
+            </mat-form-field>
+        </div>
+        
+        
+        <div *ngIf="formGroup.get('optionType').value == infoType['AbsoluteDecimalInputOption']">
+
+            <div *ngIf="!formGroup.get('upperBound').disabled || (formGroup.get('upperBound')?.value?.value != null)" class="row" formGroupName="upperBound">
+                
+                <mat-label class="col-2">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND-LABEL" | translate}}</mat-label>
+
+                <mat-form-field  class="col-3">
+                    <mat-select name="upper-bound-type" formControlName="upperBoundType">
+                        <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                            {{this.boundSymbols[val]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col">
+
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND" | translate}}</mat-label>
+                    <input matInput type="number" name="range-bounds" formControlName="value">
+                    <mat-error *ngIf="formGroup.get('upperBound').hasError('backendError')">{{formGroup.get('upperBound').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('upperBound').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div *ngIf="!formGroup.get('lowerBound').disabled || (formGroup.get('lowerBound')?.value?.value != null)" class="row" formGroupName="lowerBound">
+
+                <mat-label class="col-2">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.LOWER-BOUND-LABEL" | translate}}</mat-label>
+
+                <mat-form-field class="col-3">
+                    <mat-select name="lower-bound-type" formControlName="upperBoundType">
+                        <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                            {{this.lowerBoundSymbols[val]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col">
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.LOWER-BOUND" | translate}}</mat-label>
+                    <input matInput type="number" name="range-bounds" formControlName="value">
+                    <mat-error *ngIf="formGroup.get('lowerBound').hasError('backendError')">{{formGroup.get('lowerBound').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('lowerBound').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+                <mat-form-field class="col" >
+                    <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.MEASUREMENT-UNIT' | translate}}</mat-label>
+                    <input matInput type="text" name="data-object-type-name" formControlName="measurementUnit" required>
+                    <mat-error *ngIf="formGroup.get('measurementUnit').hasError('backendError')">{{formGroup.get('measurementUnit').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('measurementUnit').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('measurementUnit').hasError('maxlength')">{{'COMMONS.VALIDATION.MAX-LENGTH' | translate}} (250)</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div *ngIf="formGroup.get('optionType').value == infoType['AbsoluteIntegerInputOption']">
+
+            <div *ngIf="!formGroup.get('upperBound').disabled || (formGroup.get('upperBound')?.value?.value != null)" class="row" formGroupName="upperBound">
+                
+                <mat-label class="col-2">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND-LABEL" | translate}}</mat-label>
+
+                <mat-form-field  class="col-3">
+                    <mat-select name="upper-bound-type" formControlName="upperBoundType">
+                        <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                            {{this.boundSymbols[val]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col">
+
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND" | translate}}</mat-label>
+                    <input matInput type="number" name="range-bounds" formControlName="value">
+                    <mat-error *ngIf="formGroup.get('upperBound').hasError('backendError')">{{formGroup.get('upperBound').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('upperBound').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div *ngIf="!formGroup.get('lowerBound').disabled || (formGroup.get('lowerBound')?.value?.value != null)" class="row" formGroupName="lowerBound">
+
+                <mat-label class="col-2">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.LOWER-BOUND-LABEL" | translate}}</mat-label>
+
+                <mat-form-field class="col-3">
+                    <mat-select name="lower-bound-type" formControlName="upperBoundType">
+                        <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                            {{this.lowerBoundSymbols[val]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col">
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.LOWER-BOUND" | translate}}</mat-label>
+                    <input matInput type="number" name="range-bounds" formControlName="value">
+                    <mat-error *ngIf="formGroup.get('lowerBound').hasError('backendError')">{{formGroup.get('lowerBound').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('lowerBound').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+                <mat-form-field class="col" >
+                    <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.MEASUREMENT-UNIT' | translate}}</mat-label>
+                    <input matInput type="text" name="data-object-type-name" formControlName="measurementUnit" required>
+                    <mat-error *ngIf="formGroup.get('measurementUnit').hasError('backendError')">{{formGroup.get('measurementUnit').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('measurementUnit').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('measurementUnit').hasError('maxlength')">{{'COMMONS.VALIDATION.MAX-LENGTH' | translate}} (250)</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        
+        
+        <div *ngIf="formGroup.get('optionType').value == infoType['PercentageInputOption']">
+
+            <div *ngIf="!formGroup.get('upperBound').disabled || (formGroup.get('upperBound')?.value?.value != null)" class="row" formGroupName="upperBound">
+                
+                <mat-label class="col-2">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND-LABEL" | translate}}</mat-label>
+
+                <mat-form-field  class="col-3">
+                    <mat-select name="upper-bound-type" formControlName="upperBoundType">
+                        <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                            {{this.boundSymbols[val]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col">
+
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.UPPER-BOUND" | translate}}</mat-label>
+                    <input matInput type="number" name="range-bounds" formControlName="value">
+                    <mat-error *ngIf="formGroup.get('upperBound').hasError('backendError')">{{formGroup.get('upperBound').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('upperBound').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div *ngIf="!formGroup.get('lowerBound').disabled || (formGroup.get('lowerBound')?.value?.value != null)" class="row" formGroupName="lowerBound">
+
+                <mat-label class="col-2">{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.LOWER-BOUND-LABEL" | translate}}</mat-label>
+
+                <mat-form-field class="col-3">
+                    <mat-select name="lower-bound-type" formControlName="upperBoundType">
+                        <mat-option *ngFor="let val of this.boundKeys" [value]="val">
+                            {{this.lowerBoundSymbols[val]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col">
+                    <mat-label>{{"APP.DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR.RANKING-PROFILE.LOWER-BOUND" | translate}}</mat-label>
+                    <input matInput type="number" name="range-bounds" formControlName="value">
+                    <mat-error *ngIf="formGroup.get('lowerBound').hasError('backendError')">{{formGroup.get('lowerBound').getError('backendError')?.message}}</mat-error>
+                    <mat-error *ngIf="formGroup.get('lowerBound').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+
+            </div>
+
+        </div>
+
+        <div *ngIf="formGroup.get('optionType').value == infoType['TextInputOption']">
+        </div>
+        
+        <ng-template [ngIf]="formGroup.get('optionType').value == infoType['ScaleInputOption']">
+            <div *ngFor="let scaleObject of formGroup.get('inputScale').controls; let i=index" formArrayName="inputScale">
+                <div class="row" [formGroupName]="i">
+                    <mat-form-field class="col">
+                        <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.SCALE.LABEL' | translate}}</mat-label>
+                        <input matInput type="text" name="data-object-type-scale-label" [value]="scaleObject.label" formControlName="label" required>
+                        <mat-error *ngIf="scaleObject.get('label').hasError('backendError')">{{formGroup.get('label').getError('backendError')?.message}}</mat-error>
+                        <mat-error *ngIf="scaleObject.get('label').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                        <mat-error *ngIf="scaleObject.get('label').hasError('maxlength')">{{'COMMONS.VALIDATION.MAX-LENGTH' | translate}} (250)</mat-error>        
+                    </mat-form-field>
+                    <mat-form-field class="col-2">
+                        <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.SCALE.ICON-IDENTIFIER' | translate}}</mat-label>
+                        <mat-select name="data-object-type-selection-name" formControlName="iconIdentifier" required>
+                            <mat-select-trigger>
+                                <mat-icon>
+                                    {{scaleObject.get('iconIdentifier')?.value ? scaleObject.get('iconIdentifier').value : ""}}
+                                </mat-icon>
+                            </mat-select-trigger>
+                            <mat-option *ngFor="let val of this.scaleIconKeys" [value]="this.scaleIcons[val]" [disabled]="isScaleOptionDisabled(val)">
+                                <mat-icon>{{this.scaleIcons[val]}}</mat-icon>
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="scaleObject.get('iconIdentifier').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                    </mat-form-field>
+                    <span [ngClass]="'pt-3 pl-3 col-2' + (scaleObject.disabled ? ' disabled-text' : '')" *ngIf="scaleObject.value.value != undefined || scaleObject.value.value != null">
+                        <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.SCALE.VALUE' | translate}} : </mat-label>
+                        <mat-label>{{scaleObject.value.value}}</mat-label>
+                    </span>
+                    <button *ngIf="!formGroup.disabled" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeScaleOption(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+        
+        <ng-template [ngIf]="formGroup.get('optionType').value == infoType['SelectionInputOption']">
+            <div *ngFor="let pair of formGroup.get('inputSelectionOptions').controls; let i=index" formArrayName="inputSelectionOptions">
+                <div class="row" [formGroupName]="i">
+                    <mat-form-field class="col">
+                        <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.SELECTION.KEY' | translate}}</mat-label>
+                        <input matInput type="text" name="data-object-type-selection-key" [value]="pair.value.key" formControlName="key" required>
+                        <mat-error *ngIf="pair.get('key').hasError('backendError')">{{formGroup.get('key').getError('backendError')?.message}}</mat-error>
+                        <mat-error *ngIf="pair.get('key').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                        <mat-error *ngIf="pair.get('key').hasError('maxlength')">{{'COMMONS.VALIDATION.MAX-LENGTH' | translate}} (250)</mat-error>        
+                    </mat-form-field>
+                    <mat-form-field class="col">
+                        <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.SELECTION.VALUE' | translate}}</mat-label>
+                        <input matInput type="text" name="data-object-type-selection-name" [value]="pair.value.value" formControlName="value" required>
+                        <mat-error *ngIf="pair.get('value').hasError('backendError')">{{formGroup.get('key').getError('backendError')?.message}}</mat-error>
+                        <mat-error *ngIf="pair.get('value').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                        <mat-error *ngIf="pair.get('value').hasError('maxlength')">{{'COMMONS.VALIDATION.MAX-LENGTH' | translate}} (250)</mat-error>        
+                        
+                    </mat-form-field>
+                    <button *ngIf="!formGroup.disabled" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeSelection(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <mat-error *ngIf="formGroup.get('inputSelectionOptions').hasError('hasDuplicate')">Duplicate Key Error!</mat-error>
+        </ng-template>
+        
+        <div class="row">
+            <span *ngIf="formGroup.get('optionType').value == infoType['ScaleInputOption']">
+                <mat-form-field class="col-auto">
+                    <mat-label>{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.SCALE.DISPLAY-TYPE' | translate}}</mat-label>
+                    <mat-select name="data-object-scale-display-option" formControlName="scaleDisplayOption" required>
+                        <mat-option *ngFor="let val of this.scaleDisplayKeys" [value]="val" [disabled]="isScaleOptionDisabled(val)">
+                            <span>{{this.scaleDisplayType[val]}}</span>
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.get('scaleDisplayOption').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+                </mat-form-field>
+            </span>
+            <mat-slide-toggle class="col-3" formControlName="isMandatory">{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.IS-MANDATORY' | translate}}</mat-slide-toggle>
+            <mat-slide-toggle class="col-3" formControlName="multiValue">{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.FIELDS.MULTI-VALUE' | translate}}</mat-slide-toggle>
+        </div>
+        
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-auto" *ngIf="formGroup.get('optionType').value == infoType['SelectionInputOption'] && !formGroup.disabled">
+                <button type='button' mat-raised-button color="primary" (click)="addSelection()">{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.NEW-SELECTION-VALUE' | translate}}</button>
+            </div>
+            <div class="col-auto" *ngIf="formGroup.get('optionType').value == infoType['ScaleInputOption'] && !formGroup.disabled">
+                <button type='button' mat-raised-button color="primary" (click)="addScaleOption()">{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.NEW-SCALE-VALUE' | translate}}</button>
+            </div>
+            <div class="col-auto">
+                <button type='button' mat-raised-button color="warn" (click)="emitIndexEvent()">{{'APP.DATA-OBJECT-TYPE-EDITOR.REGISTRATION-INFORMATION.DELETE-OPTION' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</mat-expansion-panel>
+

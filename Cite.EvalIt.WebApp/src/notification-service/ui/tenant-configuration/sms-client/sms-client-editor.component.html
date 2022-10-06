@@ -1,0 +1,39 @@
+<div *ngIf="formGroup" class="tenant-configuration-sms-client-component row">
+	<mat-form-field class="col-md-4">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SMS-CLIENT-EDITOR.FIELDS.APPLICATION-ID' | translate}}</mat-label>
+		<input matInput type="text" [formControl]="formGroup.get('applicationId')" required>
+		<mat-error *ngIf="formGroup.get('applicationId').hasError('backendError')">{{formGroup.get('applicationId').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('applicationId').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<mat-form-field class="col-md-4">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SMS-CLIENT-EDITOR.FIELDS.APPLICATION-SECRET' | translate}}</mat-label>
+		<input matInput [type]="formGroup.get('applicationSecret').value === secretValue ? 'password' : 'text'" [formControl]="formGroup.get('applicationSecret')" [readonly]="formGroup.get('applicationSecret').value === secretValue" required>
+		<button mat-icon-button matSuffix *ngIf="formGroup.get('applicationSecret').value === secretValue" [disabled]="formGroup.get('applicationSecret').disabled" (click)="editSecret(formGroup.get('applicationSecret'), 'applicationSecret')">
+			<mat-icon>edit</mat-icon>
+		</button>
+		<button mat-icon-button matSuffix *ngIf="shouldShowEditSecret.has('applicationSecret')" [disabled]="formGroup.get('applicationSecret').disabled" (click)="cancelEditSecret(formGroup.get('applicationSecret'), 'applicationSecret')">
+			<mat-icon>cancel</mat-icon>
+		</button>
+		<mat-error *ngIf="formGroup.get('applicationSecret').hasError('backendError')">{{formGroup.get('applicationSecret').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('applicationSecret').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<mat-form-field class="col-md-4">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SMS-CLIENT-EDITOR.FIELDS.SEND-AS-NAME' | translate}}</mat-label>
+		<input matInput type="text" [formControl]="formGroup.get('sendAsName')" required>
+		<mat-error *ngIf="formGroup.get('sendAsName').hasError('backendError')">{{formGroup.get('sendAsName').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('sendAsName').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<div class="col-12">
+		<div class="row actions-row">
+			<div class="col"></div>
+			<div class="col-auto" *ngIf="editorModel.id"><button mat-raised-button color="primary" (click)="delete()">
+					{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SMS-CLIENT-EDITOR.ACTIONS.DELETE' | translate}}
+				</button>
+			</div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="formSubmit()">
+					{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.SMS-CLIENT-EDITOR.ACTIONS.SAVE' | translate}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

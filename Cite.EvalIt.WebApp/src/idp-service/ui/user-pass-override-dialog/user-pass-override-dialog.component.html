@@ -1,0 +1,28 @@
+	<form *ngIf="formGroup" (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+		<div class="row">
+			<h4 class="col-md-12">{{'IDP-SERVICE.USER-PASS-OVERRIDE-DIALOG.TITLE' | translate}}</h4>
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'IDP-SERVICE.USER-PASS-OVERRIDE-DIALOG.FIELDS.USERNAME' | translate}}</mat-label>
+				<input matInput type="text" name="username" formControlName="username" required>
+				<mat-error *ngIf="formGroup.get('username').hasError('backendError')">{{formGroup.get('username').getError('backendError')}}</mat-error>
+				<mat-error *ngIf="formGroup.get('username').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+			</mat-form-field>
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'IDP-SERVICE.USER-PASS-OVERRIDE-DIALOG.FIELDS.PASSWORD' | translate}}</mat-label>
+				<input matInput type="password" name="password" formControlName="password" required>
+				<mat-error *ngIf="formGroup.get('password').hasError('backendError')">{{formGroup.get('password').getError('backendError')}}</mat-error>
+				<mat-error *ngIf="formGroup.get('password').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+			</mat-form-field>
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'IDP-SERVICE.USER-PASS-OVERRIDE-DIALOG.FIELDS.PASSWORD-REPEAT' | translate}}</mat-label>
+				<input matInput type="password" name="passwordRepeat" formControlName="passwordRepeat" required>
+				<mat-error *ngIf="formGroup.get('passwordRepeat').hasError('backendError') || formGroup.get('passwordRepeat').hasError('customError')">{{formGroup.get('passwordRepeat').getError('backendError')}}</mat-error>
+				<mat-error *ngIf="formGroup.get('passwordRepeat').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+			</mat-form-field>
+			<mat-error class="col-md-12" *ngIf="hasPasswordMismatchError()">{{'COMMONS.VALIDATION.PASSWORD-MISMATCH' | translate}}</mat-error>
+		</div>
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'IDP-SERVICE.USER-PASS-OVERRIDE-DIALOG.ACTIONS.SUBMIT' | translate}}</button></div>
+		</div>
+	</form>

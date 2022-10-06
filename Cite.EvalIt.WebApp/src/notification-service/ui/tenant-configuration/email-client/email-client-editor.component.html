@@ -1,0 +1,53 @@
+<div *ngIf="formGroup" class="tenant-configuration-email-client-component row">
+	<mat-checkbox class="col-md-6" [formControl]="formGroup.get('requiresCredentials')">{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.REQUIRES-CREDENTIALS' | translate}}</mat-checkbox>
+	<mat-checkbox class="col-md-6" [formControl]="formGroup.get('enableSSL')">{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.ENABLE-SSL' | translate}}</mat-checkbox>
+	<mat-form-field class="col-md-6">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.HOST-SERVER' | translate}}</mat-label>
+		<input matInput type="text" [formControl]="formGroup.get('hostServer')" required>
+		<mat-error *ngIf="formGroup.get('hostServer').hasError('backendError')">{{formGroup.get('hostServer').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('hostServer').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<mat-form-field class="col-md-6">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.HOST-PORT-NUMBER' | translate}}</mat-label>
+		<input matInput type="number" [formControl]="formGroup.get('hostPortNo')" required>
+		<mat-error *ngIf="formGroup.get('hostPortNo').hasError('backendError')">{{formGroup.get('hostPortNo').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('hostPortNo').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<mat-form-field class="col-md-6">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.EMAIL-ADDRESS' | translate}}</mat-label>
+		<input matInput type="text" [formControl]="formGroup.get('emailAddress')" required>
+		<mat-error *ngIf="formGroup.get('emailAddress').hasError('backendError')">{{formGroup.get('emailAddress').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('emailAddress').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<mat-form-field class="col-md-6">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.EMAIL-USERNAME' | translate}}</mat-label>
+		<input matInput type="text" [formControl]="formGroup.get('emailUsername')" required>
+		<mat-error *ngIf="formGroup.get('emailUsername').hasError('backendError')">{{formGroup.get('emailUsername').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('emailUsername').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<mat-form-field class="col-md-6">
+		<mat-label>{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.FIELDS.EMAIL-PASSWORD' | translate}}</mat-label>
+		<input matInput [type]="formGroup.get('emailPassword').value === secretValue ? 'password' : 'text'" [formControl]="formGroup.get('emailPassword')" [readonly]="formGroup.get('emailPassword').value === secretValue" required>
+		<button mat-icon-button matSuffix *ngIf="formGroup.get('emailPassword').value === secretValue" [disabled]="formGroup.get('emailPassword').disabled" (click)="editSecret(formGroup.get('emailPassword'), 'emailPassword')">
+			<mat-icon>edit</mat-icon>
+		</button>
+		<button mat-icon-button matSuffix *ngIf="shouldShowEditSecret.has('emailPassword')" [disabled]="formGroup.get('emailPassword').disabled" (click)="cancelEditSecret(formGroup.get('emailPassword'), 'emailPassword')">
+			<mat-icon>cancel</mat-icon>
+		</button>
+		<mat-error *ngIf="formGroup.get('emailPassword').hasError('backendError')">{{formGroup.get('emailPassword').getError('backendError').message}}</mat-error>
+		<mat-error *ngIf="formGroup.get('emailPassword').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+	</mat-form-field>
+	<div class="col-12">
+		<div class="row actions-row">
+			<div class="col"></div>
+			<div class="col-auto" *ngIf="editorModel.id"><button mat-raised-button color="primary" (click)="delete()">
+					{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.ACTIONS.DELETE' | translate}}
+				</button>
+			</div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="formSubmit()">
+					{{'NOTIFICATION-SERVICE.TENANT-CONFIGURATION.EMAIL-CLIENT-EDITOR.ACTIONS.SAVE' | translate}}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

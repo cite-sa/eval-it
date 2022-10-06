@@ -1,0 +1,88 @@
+{
+	"ErrorThesaurus": {
+		"HashConflict": {
+			"Code": 100,
+			"Message": "there is a hash conflict for the item modifed. please reload to get the latest changes"
+		},
+		"Forbidden": {
+			"Code": 101,
+			"Message": "insufficient rights"
+		},
+		"SystemError": {
+			"Code": 102,
+			"Message": "an unexpected system error occured"
+		},
+		"MissingTenant": {
+			"Code": 103,
+			"Message": "tenant scope not provided"
+		},
+		"InvalidApiKey": {
+			"Code": 104,
+			"Message": "provided APIKey not valid"
+		},
+		"StaleAPIKey": {
+			"Code": 105,
+			"Message": "there was a problem authorizing you with your API key. Please try again. Contact the system administrator if the problem persists"
+		},
+		"ModelValidation": {
+			"Code": 106,
+			"Message": null
+		},
+		"SensitiveInfo": {
+			"Code": 107,
+			"Message": "you are attempting to access sensitive information. please don't do that"
+		},
+		"NonPersonPrincipal": {
+			"Code": 108,
+			"Message": "the operation is available only to person users"
+		},
+		"Routee_AuthenticationFailed": {
+			"Code": 109,
+			"Message": "could not retrieve access token"
+		},
+		"Routee_SendSmsFailed": {
+			"Code": 110,
+			"Message": "could not send sms"
+		},
+		"Routee_TrackSmsFailed": {
+			"Code": 111,
+			"Message": "could not retrieve tracking status for sms"
+		},
+		"Slack_BroadcastFailed": {
+			"Code": 112,
+			"Message": "could not broadcast message through slack"
+		},
+		"BlockingConsent": {
+			"Code": 113,
+			"Message": "user consents are not sufficient to complete the operation"
+		},
+		"WhatYouKnowAboutMeIncompatibleState": {
+			"Code": 114,
+			"Message": "the what you know about me request is in incompatible state with respect to the action"
+		},
+		"ExistingPrimaryNotificationTemplate": {
+			"Code": 115,
+			"Message": "there is already a notification template set as primary"
+		},
+		"SingleTenantConfigurationPerTypeSupported": {
+			"Code": 116,
+			"Message": "a single tenant configuration entry per config type is supported"
+		},
+		"IncompatibleTenantConfigurationTypes": {
+			"Code": 117,
+			"Message": "the provided tenant configuration type is incompatible"
+		},
+		"MissingTotpToken": {
+			"Code": 118,
+			"Message": "totp token not provided"
+		},
+		"OverlappingTenantConfigurationNotifierList": {
+			"Code": 119,
+			"Message": "Overlapping Tenant Configuration Notifier List"
+		},
+		"NotificationKindMustBeSet": {
+			"Code": 120,
+			"Message": "notification kind must be set"
+		}
+	}
+}

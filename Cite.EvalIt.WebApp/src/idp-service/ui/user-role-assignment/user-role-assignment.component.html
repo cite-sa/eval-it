@@ -1,0 +1,47 @@
+<div class="row user-role-assignment">
+
+	<div class="col-md-12">
+
+		<div class="row">
+			<div class="col-md-12 col-center-align">
+				<h4>{{'IDP-SERVICE.USER-ROLE-ASSIGNMENT.TITLE' | translate}}</h4>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 filter-row">
+
+				<app-user-role-assignment-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-user-role-assignment-filters>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 col-center-align">
+				<div *ngIf="this.unsavedUsers.size > 0" class="unsaved-changes-container">
+					<span>{{'IDP-SERVICE.USER-ROLE-ASSIGNMENT.UNSAVED-CHANGES' | translate}}</span>
+					<!-- <button mat-raised-button color="primary" (click)="saveAllChanges()" type="button">{{'IDP-SERVICE.USER-ROLE-ASSIGNMENT.ACTIONS.SAVE-ALL' | translate}}</button> -->
+					<button mat-raised-button color="primary" (click)="discardAllChanges()" type="button">{{'IDP-SERVICE.USER-ROLE-ASSIGNMENT.ACTIONS.DISCARD-ALL' | translate}}</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 col-center-align">
+				<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="lookup.page.size" [defaultSort]="lookup.order?.items" [externalSorting]="true" (pageLoad)="onPageLoad($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+				</app-listing>
+			</div>
+		</div>
+
+		<ng-template #userRoleEditorTemplate ngx-datatable-cell-template let-row="row">
+			<app-user-role-editor [item]="row" [unsavedUser]="this.unsavedUsers.get(row.id)" (onRolesChanged)="onRolesChanged(row.id, $event)" (onRolesSaved)="onRolesSaved(row.id)" (onRolesEditCanceled)="onRolesEditCanceled(row.id)">
+			</app-user-role-editor>
+		</ng-template>
+
+	</div>
+
+</div>

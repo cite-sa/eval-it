@@ -1,0 +1,22 @@
+<div class="row api-client-listing">
+	<div class="col-md-8 offset-md-2">
+
+		<h4>{{'USER-SERVICE.API-CLIENT-LISTING.TITLE' | translate}}</h4>
+
+		<div class="col-12">
+			<div class="col-12 p-0 user-settings-selector">
+				<app-user-settings-selector [key]="userSettingsKey" [lookup]="lookup" (onSettingSelected)="changeSetting($event)" [autoSelectUserSettings]="autoSelectUserSettings"></app-user-settings-selector>
+			</div>
+			<div class="col-12 p-0 filter-row">
+				<app-api-client-listing-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-api-client-listing-filters>
+			</div>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="lookup.page.size" [defaultSort]="lookup.order?.items" [externalSorting]="true" (rowActivated)="onRowActivated($event)" (pageLoad)="onPageLoad($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+
+		<button *ngIf="authService.hasUserServicePermission(authService.userServicePermissionEnum.EditUserService)" mat-fab class="mat-fab-bottom-right" [routerLink]=" ['./new'] ">
+			<mat-icon class="mat-24">add</mat-icon>
+		</button>
+	</div>
+</div>

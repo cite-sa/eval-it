@@ -1,0 +1,19 @@
+<div class="row user-consents">
+	<div class="col-md-8 offset-md-2">
+		<mat-card>
+			<mat-card-title>{{'IDP-SERVICE.USER-CONSENTS.TITLE' | translate}}</mat-card-title>
+			<mat-card-content>
+				<div class="row">
+					<app-user-consents-editor class="col-12" (consentsValidity)="consentsValidityChanged($event)"></app-user-consents-editor>
+					<div class="col-12 editor-actions">
+						<div class="row">
+							<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button" >{{'IDP-SERVICE.USER-CONSENTS.ACTIONS.CANCEL' | translate}}</button></div>
+							<div class="col"></div>
+							<div class="col-auto"><button mat-raised-button color="primary" (click)="save()" type="submit" >{{'IDP-SERVICE.USER-CONSENTS.ACTIONS.SAVE' | translate}}</button></div>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

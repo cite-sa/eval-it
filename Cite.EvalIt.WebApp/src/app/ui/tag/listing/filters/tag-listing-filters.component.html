@@ -1,0 +1,82 @@
+<div class="row tag-listing-filters">
+	<div class="col-12 p-0">		
+		<div class="row mb-3">
+			<div class="col-3 align-self-center">
+				<button class="tag-filters-btn" mat-stroked-button [matMenuTriggerFor]="filtersMenu">
+					<i class="fa fa-2x fa-filter filter-icon"></i>
+					<span>{{'APP.TAG-LISTING.FILTER.SEARCH-FILTER' | translate}}</span>
+					<span class="opened-filters">{{countOpenFilters()}}</span>
+					<i class="material-icons">keyboard_arrow_down</i>
+				</button>
+			</div>
+			<app-text-filter *ngIf="filterSelections['likeOption']" class="col-6 text-filter" [(value)]="filter.like" [disableTransform]="false" (valueChange)="onFilterChange()"></app-text-filter>
+			<div class="col-3 d-flex align-items-center toggle-col" >
+				<mat-slide-toggle *ngIf="filterSelections['isActiveOption']" [(ngModel)]="isActive" class="toggle col-auto w-100">
+					{{'APP.TAG-LISTING.FILTER.SHOW-INACTIVE' | translate}}
+				</mat-slide-toggle>
+			</div>
+		</div>
+		<div class="row">
+			<mat-form-field class="col-6" *ngIf="filterSelections['userIdsOption']">
+				<mat-label>{{'APP.TAG-LISTING.FILTER.INCLUDED-USERS' | translate}}</mat-label>
+				<app-multiple-auto-complete [(ngModel)]="includedUsers" [configuration]="userMultipleAutocompleteConfiguration">
+				</app-multiple-auto-complete>
+			</mat-form-field>
+				
+			<mat-form-field class="col-6" *ngIf="filterSelections['userIdsOption']">
+				<mat-label>{{'APP.TAG-LISTING.FILTER.EXCLUDED-USERS' | translate}}</mat-label>
+				<app-multiple-auto-complete [(ngModel)]="excludedUsers" [configuration]="userMultipleAutocompleteConfiguration">
+				</app-multiple-auto-complete>
+			</mat-form-field>
+
+
+			<mat-form-field class="col-6" *ngIf="filterSelections['dataObjectIdsOption']">
+				<mat-label>{{'APP.TAG-LISTING.FILTER.INCLUDED-DATA-OBJECTS' | translate}}</mat-label>
+				<app-multiple-auto-complete [(ngModel)]="includedDataObjects" [configuration]="dataObjectMultipleAutocompleteConfiguration">
+				</app-multiple-auto-complete>
+			</mat-form-field>
+				
+			<mat-form-field class="col-6" *ngIf="filterSelections['dataObjectIdsOption']">
+				<mat-label>{{'APP.TAG-LISTING.FILTER.EXCLUDED-DATA-OBJECTS' | translate}}</mat-label>
+				<app-multiple-auto-complete [(ngModel)]="excludedDataObjects" [configuration]="dataObjectMultipleAutocompleteConfiguration">
+				</app-multiple-auto-complete>
+			</mat-form-field>
+
+			<mat-form-field *ngIf="filterSelections['typeOption']" class="col-6">
+				<mat-label>{{'APP.TAG-LISTING.FILTER.TYPE' | translate}}</mat-label>
+				<mat-select [(ngModel)]="tagTypes" multiple>
+					<mat-option *ngFor="let val of tagTypeKeys" [value]="val">
+						{{this.tagType[val]}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-form-field *ngIf="filterSelections['appliesToOption']" class="col-6">
+				<mat-label>{{'APP.TAG-LISTING.FILTER.APPLIES-TO' | translate}}</mat-label>
+				<mat-select [(ngModel)]="tagApplies" multiple>
+					<mat-option *ngFor="let val of tagAppliesToKeys" [value]="val">
+						{{this.tagAppliesTo[val]}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+</div>
+<mat-menu #filtersMenu="matMenu">
+	<div class="filters-menu-container">
+		<div class="filters-menu-header col-md-12">
+			<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); selectAll()">{{'APP.TAG-LISTING.FILTER.ALL-FILTERS' | translate}}</button>
+			<button mat-flat-button class="col-auto mr-2 d-flex justify-content-start" (click)="$event.stopPropagation(); deselectAll() ">{{'APP.TAG-LISTING.FILTER.NO-FILTERS' | translate}}</button>
+		</div>
+		<div class="col-md-12 d-flex flex-row pt-3">
+			<div class="col d-flex flex-column">
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['likeOption']" (ngModelChange)="checkBoxChanged($event, 'like')" (click)="$event.stopPropagation()">{{'APP.TAG-LISTING.FILTER.LIKE' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['typeOption']" (ngModelChange)="checkBoxChanged($event, 'type')" (click)="$event.stopPropagation()">{{'APP.TAG-LISTING.FILTER.TYPE' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['appliesToOption']" (ngModelChange)="checkBoxChanged($event, 'appliesTo')" (click)="$event.stopPropagation()">{{'APP.TAG-LISTING.FILTER.APPLIES-TO' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['userIdsOption']" (ngModelChange)="checkBoxChanged($event, 'userIds')" (click)="$event.stopPropagation()">{{'APP.TAG-LISTING.FILTER.USER' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['dataObjectIdsOption']" (ngModelChange)="checkBoxChanged($event, 'dataObjectIds')" (click)="$event.stopPropagation()">{{'APP.TAG-LISTING.FILTER.DATA-OBJECT' | translate}}</mat-checkbox>
+				<mat-checkbox class="filter-option" [(ngModel)]="filterSelections['isActiveOption']" (ngModelChange)="checkBoxChanged($event, 'isActive')" (click)="$event.stopPropagation()">{{'APP.TAG-LISTING.FILTER.SHOW-INACTIVE' | translate}}</mat-checkbox>
+			</div>
+		</div>
+	</div>
+</mat-menu>

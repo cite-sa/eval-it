@@ -1,0 +1,9 @@
+<mat-expansion-panel  [formGroup]="formGroup">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{evaluationOption?.label}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.valueDisplay()}}
+        </mat-panel-description>
+    </mat-expansion-panel-header>

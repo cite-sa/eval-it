@@ -1,0 +1,56 @@
+<div class="row user-profile-component">
+	<div class="col-md-8 offset-md-2">
+		<mat-card>
+			<mat-card-title>{{authService.getPrincipalName()}}</mat-card-title>
+			<mat-card-content>
+				<mat-tab-group mat-stretch-tabs dynamicHeight [(selectedIndex)]="selectedTabIndex" class="user-profile-component-tabs">
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.PROFILE' | translate}}">
+						<ng-template matTabContent>
+							<app-user-profile-editor></app-user-profile-editor>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.PERSONAL' | translate}}">
+						<ng-template matTabContent>
+							<app-personal-info-editor></app-personal-info-editor>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.CONTACT-INFO' | translate}}">
+						<ng-template matTabContent>
+							<app-contact-info-editor></app-contact-info-editor>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.USER-NOTIFIER-LIST' | translate}}">
+						<ng-template matTabContent>
+							<app-tenant-configuration-user-profile-notifier-list-editor></app-tenant-configuration-user-profile-notifier-list-editor>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.CONSENTS' | translate}}">
+						<ng-template matTabContent>
+							<app-profile-user-consents class="col-md-12"></app-profile-user-consents>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.CREDENTIALS' | translate}}">
+						<ng-template matTabContent>
+							<app-user-credentials></app-user-credentials>
+						</ng-template>
+					</mat-tab>
+					<mat-tab *ngIf="totpEnabled" label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.TOTP' | translate}}">
+						<ng-template matTabContent>
+							<app-totp-setup></app-totp-setup>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.FORGET-ME' | translate}}">
+						<ng-template matTabContent>
+							<app-user-profile-forget-me></app-user-profile-forget-me>
+						</ng-template>
+					</mat-tab>
+					<mat-tab label="{{'USER-SERVICE.USER-PROFILE-COMPONENT.TABS.WHAT-YOU-KNOW-ABOUT-ME' | translate}}">
+						<ng-template matTabContent>
+							<app-user-profile-what-you-know-about-me></app-user-profile-what-you-know-about-me>
+						</ng-template>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

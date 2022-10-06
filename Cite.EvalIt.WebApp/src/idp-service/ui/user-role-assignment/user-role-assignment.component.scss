@@ -1,0 +1,12 @@
+.user-role-assignment {
+	padding-top: 1em;
+
+	.unsaved-changes-container {
+		padding: 10px 20px;
+		margin-bottom: 10px;
+
+		>.mat-raised-button {
+			margin-left: 10px;
+		}
+	}
+}

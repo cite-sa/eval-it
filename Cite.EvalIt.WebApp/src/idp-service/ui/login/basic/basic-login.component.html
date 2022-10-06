@@ -1,0 +1,22 @@
+<form class="row" class="basic-login" *ngIf="formGroup" (ngSubmit)="login()" [formGroup]="formGroup">
+	<div class="row">
+		<mat-form-field class="col-md-12">
+			<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.USERNAME' | translate}}</mat-label>
+			<input matInput type="text" name="username" formControlName="username" required>
+			<mat-error *ngIf="formGroup.get('username').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<mat-form-field class="col-md-12">
+			<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.PASSWORD' | translate}}</mat-label>
+			<input matInput type="password" name="password" formControlName="password" required>
+			<mat-error *ngIf="formGroup.get('password').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<mat-form-field *ngIf="totpEnabled" class="col-md-12">
+			<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.TOTP' | translate}}</mat-label>
+			<input matInput type="text" name="totp" formControlName="totp">
+			<mat-error *ngIf="formGroup.get('totp').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+		<div class="col-auto"><button mat-raised-button color="primary" type="submit">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.LOGIN' | translate}}</button></div>
+		<div class="col"></div>
+		<div class="col-auto"><button mat-button color="accent" (click)="passwordReset()" type="button">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.PASSWORD-RESET' | translate}}</button></div>
+	</div>
+</form>

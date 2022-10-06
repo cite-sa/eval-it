@@ -1,0 +1,15 @@
+<div class="totp-dialog">
+	<h2 mat-dialog-title>{{'IDP-SERVICE.TOTP-DIALOG-COMPONENT.TITLE' | translate}}</h2>
+	<mat-dialog-content>
+		<div class="row">
+			<div cdkFocusRegionstart class="col-auto totp-input-container">
+				<app-totp-input [formControl]="formGroup.get('totp')" [required]="true"></app-totp-input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="dialogRef.close()">{{'IDP-SERVICE.TOTP-DIALOG-COMPONENT.ACTIONS.CANCEL' | translate}}</button></div>
+			<div class="col"></div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="confirm()">{{'IDP-SERVICE.TOTP-DIALOG-COMPONENT.ACTIONS.DONE' | translate}}</button></div>
+		</div>
+	</mat-dialog-content>
+</div>

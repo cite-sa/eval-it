@@ -1,0 +1,112 @@
+ <mat-expansion-panel [formGroup]="formGroup">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{evaluationOption?.label}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.valueDisplay()}}
+            <mat-icon style="color:orange" *ngIf="this.formGroup?.touched && this.formGroup?.status == 'INVALID'">error_outline</mat-icon>
+            <mat-icon style="color:green" *ngIf="this.added">add</mat-icon>
+            <mat-icon style="color:red" *ngIf="this.removed">remove</mat-icon>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div formArrayName="values">
+        <ng-template [ngIf]="formGroup.get('evaluationType').value == evalType['AbsoluteDecimalEvaluation']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col" >
+                        <mat-label>{{this.enumUtils.toEvaluationConfigurationTypeString(this.evaluationOption.optionType)}}</mat-label>
+                        <input matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required>
+                        <span matSuffix>{{this.evaluationOption.measurementUnit}}</span>
+                        <mat-error *ngIf="value.hasError('notANumber')">{{'COMMONS.VALIDATION.NOT-NUMBER' | translate}}</mat-error>
+                        <mat-error *ngIf="value.hasError('outOfBounds')">{{'COMMONS.VALIDATION.OUT-OF-RANGE' | translate}} {{ boundsDisplay(this.evaluationOption.lowerBound, this.evaluationOption.upperBound)}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('evaluationType').value == evalType['AbsoluteIntegerEvaluation']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col">
+                        <mat-label>{{this.enumUtils.toEvaluationConfigurationTypeString(this.evaluationOption.optionType)}}</mat-label>
+                        <input matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required>
+                        <span matSuffix>{{this.evaluationOption.measurementUnit}}</span>
+                        <mat-error *ngIf="value.hasError('notAnInt')">{{'COMMONS.VALIDATION.NOT-INT' | translate}}</mat-error>
+                        <mat-error *ngIf="value.hasError('outOfBounds')">{{'COMMONS.VALIDATION.OUT-OF-RANGE' | translate}} {{ boundsDisplay(this.evaluationOption.lowerBound, this.evaluationOption.upperBound)}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('evaluationType').value == evalType['PercentageEvaluation']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col">
+                        <mat-label>{{this.enumUtils.toEvaluationConfigurationTypeString(this.evaluationOption.optionType)}}</mat-label>
+                        <input matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required>
+                        <span matSuffix>%</span>
+                        <mat-error *ngIf="value.hasError('notANumber')">{{'COMMONS.VALIDATION.NOT-NUMBER' | translate}}</mat-error>
+                        <mat-error *ngIf="value.hasError('outOfBounds')">{{'COMMONS.VALIDATION.OUT-OF-RANGE' | translate}} {{ boundsDisplay(this.evaluationOption.lowerBound, this.evaluationOption.upperBound)}}</mat-error>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+
+        <ng-template [ngIf]="formGroup.get('evaluationType').value == evalType['TextEvaluation']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index" class="row">
+                    <mat-form-field class="col">
+                        <mat-label>{{this.enumUtils.toEvaluationConfigurationTypeString(this.evaluationOption.optionType)}}</mat-label>
+                        <textarea matInput name="data-object-type-selection-name" [formControlName]="i" [value]="value.value" required> </textarea>
+                    </mat-form-field>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('evaluationType').value == evalType['ScaleEvaluation']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index">
+                    <mat-button-toggle-group [formControlName]="i">
+                        <mat-button-toggle *ngFor="let x of this.evaluationOption.evaluationScale" [value]="x.value">
+                            <mat-icon *ngIf="this.evaluationOption.scaleDisplayOption != scaleDisplayType.Label">{{x.iconIdentifier}} </mat-icon>
+                            <span *ngIf="this.evaluationOption.scaleDisplayOption != scaleDisplayType.Icon" > {{x.label}}</span>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                    <button *ngIf="canRemoveValue()" class="col-auto" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+        </ng-template>
+
+        <ng-template [ngIf]="formGroup.get('evaluationType').value == evalType['SelectionEvaluation']">
+                <div *ngFor="let value of formGroup.get('values').controls; let i=index">
+                    <mat-label>{{this.enumUtils.toEvaluationConfigurationTypeString(this.evaluationOption.optionType)}}</mat-label>
+                    <div class="row">
+                        <mat-form-field class="col">
+                            <mat-select name="data-object-type-selection-name" [formControlName]="i" required >
+                                <mat-option *ngFor="let val of getEvaluationSelectionOptions()" [value]="val.key">
+                                    {{val.value}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <button *ngIf="canRemoveValue()" class="col-auto del-button" mat-icon-button color="primary" type='button' (click)="removeValue(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+        </ng-template>
+
+        <button *ngIf="canAddValue()" mat-icon-button type="button" color="primary" (click)="addValue()"><mat-icon>add_circle</mat-icon></button>
+
+        <div *ngIf="this.added || this.removed" class="row justify-content-around">
+            <button class="col-2" mat-button mat-raised-button type="button" color="primary" (click)="emitAddEvent()">{{'APP.DATA-OBJECT-REVIEW-EDITOR.KEEP-EVALUATION' | translate}}</button>
+            <button class="col-2" mat-button mat-raised-button type="button" color="warn" (click)="emitRemoveEvent()">{{'APP.DATA-OBJECT-REVIEW-EDITOR.REMOVE-EVALUATION' | translate}}</button>
+        </div>
+    </div>
+</mat-expansion-panel>

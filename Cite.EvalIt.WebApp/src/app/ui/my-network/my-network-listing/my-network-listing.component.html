@@ -1,0 +1,16 @@
+<div class="row app-user-my-network-listing">
+	<div class="col-md-8 offset-md-2">
+
+		<h4>{{'APP.APP-USER-MY-NETWORK-LISTING.TITLE' | translate}}</h4>
+		<div class="col-12 p-0 filter-row">
+			<app-my-network-listing-filters [(filter)]="clientLookup" (filterChange)="clientFilterChange($event)"></app-my-network-listing-filters>
+		</div>
+
+		<app-listing [rows]="gridRows" [columns]="gridColumns" [visibleColumns]="visibleColumns" [count]="totalElements" [offset]="currentPageNumber" [limit]="clientLookup.pageSize" [defaultSort]="lookup.order?.items" [externalPaging]="false" (rowActivated)="authService.hasPermission(authService.permissionEnum.BrowseUser) ? onRowActivated($event) : null" (pageLoad)="onPageLoad($event)" (columnSort)="onColumnSort($event)" (columnsChanged)="onColumnsChanged($event)">
+		</app-listing>
+
+		<button *ngIf="authService.hasPermission(authService.permissionEnum.BrowseUser)" mat-fab class="mat-fab-bottom-right" (click)="onNewItem()">
+			<mat-icon class="mat-24">add</mat-icon>
+		</button>
+	</div>
+</div>

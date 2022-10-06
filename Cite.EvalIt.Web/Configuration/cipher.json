@@ -1,0 +1,42 @@
+{
+	"CipherProfiles": {
+		"ConfigurationProfileName": "Configuration"
+	},
+	"Cipher": {
+		"SaltedHash": {
+			"Default": null,
+			"Options": null
+		},
+		"SymetricEncryption": {
+			"Default": null,
+			"Options": {
+				"Configuration": {
+					"AES": {
+						"Key": "%{CipherSymetricEncryptionConfigurationAESKey}%",
+						"IV": "%{CipherSymetricEncryptionConfigurationAESIV}%"
+					}
+				}
+			}
+		},
+		"Masking": {
+			"Default": null,
+			"Options": {
+				"Configuration": {
+					"Character": "*",
+					"ClearBegining": 2,
+					"ClearEnding": 4,
+					"AtLeastPercentage": 70
+				}
+			}
+		},
+		"DigitalSignature": {
+			"Default": null,
+			"Options": {
+				"Configuration": {
+					"CertificatePath": null,
+					"CertificatePassword": null
+				}
+			}
+		}
+	}
+}

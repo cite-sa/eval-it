@@ -1,0 +1,36 @@
+<div class="user-profile-picture-editor">
+	<div class="row">
+		<h4 class="col-12">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.TITLE' | translate}}</h4>
+
+		<input #file type="file" [hidden]="true" accept="image/*" (change)="imageUploaded(file.files)">
+		<div class="col-12" *ngIf="!uploadedImage">
+			<div class="row m-0">
+				<div class="col-12 upload-dropzone" (click)="file.click()">
+					{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.SELECT-IMAGE' | translate}}
+				</div>
+			</div>
+			<div class="row mt-1">
+				<div class="col-auto"><button mat-raised-button color="primary" (click)="close()">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.CLOSE' | translate}}</button></div>
+			</div>
+		</div>
+		<div class="col-12 upload-container" *ngIf="uploadedImage && !croppedImage">
+			<div class="row">
+				<angular-cropper class="col-md-12" #angularCropper [cropperOptions]="cropperConfig" [imageUrl]="uploadedImage"></angular-cropper>
+			</div>
+			<div class="row mt-1">
+				<div class="col-auto"><button mat-raised-button color="primary" (click)="close()">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.CLOSE' | translate}}</button></div>
+				<div class="col-auto ml-auto"><button mat-raised-button color="primary" #upload (click)="crop()">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.CROP' | translate}}</button></div>
+			</div>
+		</div>
+		<div class="col-12" *ngIf="croppedImage">
+			<div class="row">
+				<img *ngIf="croppedImage" class="ml-auto mr-auto" [src]="croppedImage">
+			</div>
+			<div class="row mt-1">
+				<div class="col-auto"><button mat-raised-button color="primary" (click)="close()">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.CLOSE' | translate}}</button></div>
+				<div class="col-auto ml-auto"><button mat-raised-button color="primary" (click)="croppedImage = null;">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.BACK-TO-EDITING' | translate}}</button></div>
+				<div class="col-auto"><button mat-raised-button color="primary" (click)="uploadImage()">{{'USER-SERVICE.USER-PROFILE.PROFILE-PICTURE-EDITOR.ACTIONS.DONE' | translate}}</button></div>
+			</div>
+		</div>
+	</div>
+</div>

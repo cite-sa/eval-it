@@ -1,0 +1,22 @@
+<div class="data-object-review-listing">
+	<button class="float-right" *ngIf="this.object.canWriteReview" mat-button mat-raised-button type="button" color="primary" (click)="onNewItem()">
+		{{'APP.DATA-OBJECT-REVIEW-LISTING.NEW-REVIEW' | translate}}
+	</button>
+	<div class="col-6 p-0 filter-row">
+		<app-data-object-review-listing-filters [(filter)]="lookup" (filterChange)="filterChanged($event)"></app-data-object-review-listing-filters>
+	</div>
+
+	<app-data-object-review-listing-display 	
+		[rows]="gridRows"
+		[count]="totalElements"
+		[offset]="lookup.page.offset"
+		[limit]="lookup.page.size"
+		[feedback]="feedback"
+		(editClicked)="onEditClicked($event)"
+		(viewClicked)="onViewClicked($event)"
+		(nameClicked)="onNameClicked($event)"
+		(refreshReview)="onRefreshReview($event)"
+		(pageLoad)="alterPage($event)"
+		(columnSort)="onColumnSort($event)">
+	</app-data-object-review-listing-display>
+</div>

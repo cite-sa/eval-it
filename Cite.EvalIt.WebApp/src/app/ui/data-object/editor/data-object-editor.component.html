@@ -1,0 +1,88 @@
+<div class="row data-object-editor">
+	<div class="col-md-8 offset-md-2"  *ngIf="formGroup">
+		<form (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+		<mat-card>
+			<mat-card-title *ngIf="isNew">{{'APP.DATA-OBJECT-EDITOR.NAME.NEW' | translate}}</mat-card-title>
+			<mat-card-title *ngIf="!isNew">{{formGroup.get('title').value}}</mat-card-title>
+			<mat-card-content>
+				<mat-tab-group mat-stretch-tabs dynamicHeight>
+					<mat-tab label="Object">
+						<div class="row">
+							<mat-form-field class="col-md-12">
+								<mat-label>{{'APP.DATA-OBJECT-EDITOR.FIELDS.TITLE' | translate}}</mat-label>
+								<input matInput type="text" name="data-object-title" formControlName="title" required>
+								<mat-error *ngIf="formGroup.get('title').hasError('backendError')">{{formGroup.get('title').getError('backendError')?.message}}</mat-error>
+								<mat-error *ngIf="formGroup.get('title').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+							</mat-form-field>
+
+							<mat-form-field class="col-md-12">
+								<mat-label>{{'APP.DATA-OBJECT-EDITOR.FIELDS.DESCRIPTION' | translate}}</mat-label>
+								<textarea matInput type="text" name="data-object-description" formControlName="description" required></textarea>
+								<mat-error *ngIf="formGroup.get('description').hasError('backendError')">{{formGroup.get('description').getError('backendError')?.message}}</mat-error>
+								<mat-error *ngIf="formGroup.get('description').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+							</mat-form-field>
+						</div>
+						<div>
+							<div *ngFor="let userDefinedId of formGroup.get('userDefinedIds')['controls']; let i=index" formArrayName="userDefinedIds">
+								<div class="row" [formGroupName]="i">
+									<mat-form-field class="col-3">
+										<mat-select name="data-object-user-defined-type" formControlName="type" required>
+											<mat-option *ngFor="let val of this.pidTypeKeys.slice().reverse()" [value]="val">
+												{{this.pidType[val]}}
+											</mat-option>
+										</mat-select>
+									</mat-form-field>
+									<mat-form-field class="col-3" *ngIf="userDefinedId.value?.type === this.pidType.Other">
+											<mat-label>{{'APP.DATA-OBJECT-EDITOR.FIELDS.USER-DEFINED-ID.KEY' | translate}}</mat-label>
+											<input matInput type="text" name="data-object-user-defined-key" [value]="userDefinedId.key" formControlName="key" required>
+											<mat-error *ngIf="userDefinedId.get('key').hasError('backendError')">{{formGroup.get('key').getError('backendError')?.message}}</mat-error>
+											<mat-error *ngIf="userDefinedId.get('key').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+									</mat-form-field>
+									<mat-form-field class="col-3" *ngIf="userDefinedId.value?.type != undefined">
+										<mat-label>{{'APP.DATA-OBJECT-EDITOR.FIELDS.USER-DEFINED-ID.VALUE' | translate}}</mat-label>
+										<input matInput type="text" name="data-object-user-defined-value" [value]="userDefinedId.value.value" formControlName="value" required>
+										<mat-error *ngIf="userDefinedId.get('value').hasError('backendError')">{{formGroup.get('value').getError('backendError')?.message}}</mat-error>
+										<mat-error *ngIf="userDefinedId.get('value').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+									</mat-form-field>
+									<mat-error class="col-5 italics" *ngIf="this.isInvalidDOIWarning(userDefinedId.value)">{{'APP.DATA-OBJECT-EDITOR.DOI-WARNING' | translate}}</mat-error>
+									<button class="col-auto ml-auto del-button" mat-icon-button color="primary" type='button' (click)="removeUserDefinedId(i)">
+										<mat-icon>delete</mat-icon>
+									</button>
+								</div>
+							</div>
+							<div class="add-user-defined-id" >
+								<button type='button' mat-raised-button color="primary" (click)="addUserDefinedId()">{{'APP.DATA-OBJECT-EDITOR.NEW-USER-DEFINED-ID' | translate}}</button>
+							</div>
+							<div class="row">
+								<mat-form-field class="col">
+									<mat-label>{{'APP.DATA-OBJECT-EDITOR.OBJECT-TYPE-LABEL' | translate}}</mat-label>
+									<app-single-auto-complete [disabled]="!this.isNew" [value]="this.type" (optionSelected)="setValue($event)" [configuration]="userSingleAutocompleteConfiguration">
+									</app-single-auto-complete>		
+								</mat-form-field>
+							</div>
+						</div>
+					</mat-tab>
+					<mat-tab label="Attributes" [disabled]="isTabDisabled()">
+						<ng-template [ngIf]="!isTabDisabled()">
+							<mat-accordion>
+								<div *ngFor="let attr of this.formGroup.get('attributeData').get('attributes')['controls']; let i=index">
+									<app-data-object-attribute-field *ngIf="getOptionById(attr.value.optionId)?.isActive" [formGroup]="attr" [inputOption]="getOptionById(attr.value.optionId)" [removed]="isRemoved(attr.value.optionId)" [added]="isAdded(attr.value.optionId)" (removeEvent)="removeUnresolvedAttribute($event)" (addEvent)="addUnresolvedAttribute($event)"></app-data-object-attribute-field>
+									<!-- <app-data-object-attribute-inactive-field *ngIf="!getOptionById(attr.value.optionId).isActive" [inputOption]="getOptionById(attr.value.optionId)"></app-data-object-attribute-inactive-field> -->
+								</div>
+							</mat-accordion>
+						</ng-template>
+					</mat-tab>
+				</mat-tab-group>
+				<div class="row justify-content-end">
+					<div class="col-6 italics" *ngIf="isUnresolved()">
+						<mat-icon>warning</mat-icon>{{ "APP.DATA-OBJECT-EDITOR.MESSAGE-EDITED" | translate}}
+					</div>
+					<div class="col-6">
+						<app-editor-actions-component [canDelete]="authService.hasPermission(authService.permissionEnum.DeleteDataObject) && !isDeleted && !isNew && !isUsed" [canSave]="authService.hasPermission(authService.permissionEnum.EditDataObject) && !isDeleted" (onDelete)="delete()" (onCancel)="cancel()" (onSave)="save()"></app-editor-actions-component>
+					</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</form>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+﻿<form class="user-role-editor" [formGroup]="formGroup" (ngSubmit)="formSubmit()">
+	<div class="row">
+		<mat-form-field class="col">
+			<mat-select formControlName="roles" (selectionChange)="onSelectionChange($event)" multiple required>
+				<mat-option *ngFor="let role of userRoleValues" [value]="role">{{appEnumUtils.toRoleTypeString(role)}}</mat-option>
+			</mat-select>
+			<mat-error *ngIf="formGroup.get('roles').hasError('backendError')">{{userEditorModel.validationErrorModel.roles}}</mat-error>
+			<mat-error *ngIf="formGroup.get('roles').hasError('required')">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		</mat-form-field>
+
+		<div *ngIf="authService.hasUserServicePermission(authService.userServicePermissionEnum.EditUserPerson)">
+			<button *ngIf="!this.nowEditing" mat-icon-button color="primary" type="button" (click)="editItem()">
+				<mat-icon>edit</mat-icon>
+			</button>
+			<button *ngIf="this.nowEditing" mat-icon-button color="primary" type="submit" (click)="save()">
+				<mat-icon>save</mat-icon>
+			</button>
+			<button *ngIf="this.nowEditing" mat-icon-button color="primary" type="button" (click)="cancel()">
+				<mat-icon>cancel</mat-icon>
+			</button>
+		</div>
+	</div>
+</form>

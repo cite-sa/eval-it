@@ -1,0 +1,11 @@
+<h2>{{'IDP-SERVICE.AUTHENTICATION.TITLES.TENANT-SELECTION' | translate}}</h2>
+<div class="row">
+	<mat-form-field class="col-md-12">
+		<mat-label>{{'IDP-SERVICE.AUTHENTICATION.FIELDS.TENANT' | translate}}</mat-label>
+		<input matInput type="text" name="tenant" [(ngModel)]="tenant" (keyup.enter)="tenantLookup()" [errorStateMatcher]="customErrorStateMatcher" required>
+		<mat-error *ngIf="!tenant || tenant.length === 0">{{'COMMONS.VALIDATION.REQUIRED' | translate}}</mat-error>
+		<mat-error>{{errorMessage}}</mat-error>
+	</mat-form-field>
+	<div class="col"></div>
+	<div class="col-auto"><button mat-raised-button color="primary" (click)="tenantLookup()">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.NEXT' | translate}}</button></div>
+</div>

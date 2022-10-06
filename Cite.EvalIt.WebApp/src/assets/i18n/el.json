@@ -1,0 +1,1345 @@
+{
+	"APP": {
+		"NAVIGATION": {
+			"TITLE": "CITE Template",
+			"USERS": "Χρήστες",
+			"APP-USERS": "Χρήστες",
+			"TAGS": "Ετικέτες",
+			"DATA-OBJECT-TYPE": "Τύπος Αντικειμένου",
+			"RANK-RECALCULATION-TASK": "Εργασία Επανυπολογισμού Βαθμολογιών",
+			"DATA-OBJECT": "Αντικείμενο",
+			"API-CLIENTS": "API Clients",
+			"USER-ROLE-ASSIGNMENT": "Ανάθεση ρόλων",
+			"ACCESS-TOKENS": "Access Tokens",
+			"USER-INVITATION": "Πρόσκληση Χρηστών",
+			"FORGET-ME-REQUESTS": "Αιτήματα \"Forget Me\"",
+			"WHAT-YOU-KNOW-ABOUT-ME-REQUESTS": "Αιτήματα «Τι ξέρεις για μένα;»",
+			"BLUE-THEME": "Μπλε Θέμα",
+			"PINK-THEME": "Ροζ Θέμα",
+			"ENGLISH-LANGUAGE": "Αγγλικά",
+			"GREEK-LANGUAGE": "Ελληνικά",
+			"ADMIN-TITLE": "Διαχείριση",
+			"MASTER-DATA-ADMIN-TITLE": "Διαχείριση Δεδομένων",
+			"DATA-TITLE": "Δεδομένα",
+			"MY-NETWORK-TITLE": "Το Δίκτυό μου",
+			"CONSENT-ATTENTION": "θα πρέπει να δείτε ξανά τις συναινέσεις σας.",
+			"TRANSIENT-PROMPT": "Έχετε συνδεθεί ως ανώνυμος χρήστης. Μπορείτε να δημιουργήσετε έναν μόνιμο λογαριασμό, ρυθμίζοντας τh διεύθυνση email σας μέσω των ρυθμίσεων του προφίλ σας, και στη συνέχεια να στείλετε έναν σύνδεσμο για σύνδεση χρησιμοποιώντας έναν διαθέσιμο πάροχο σύνδεσης.",
+			"TENANT-CONFIGURATION": "Ρυθμίσεις",
+			"NOTIFICATIONS": "Ειδοποιήσεις",
+			"NOTIFICATION-EVENT-RULES": "Κανόνες Ειδοποιήσεων",
+			"ALL-INAPP-NOTIFICATIONS": "Όλες οι ειδοποιήσεις >",
+			"NOTIFICATION-TEMPLATES": "Template Ειδοποιήσεων",
+			"PRIVACY-STATEMENT": "Δήλωση προστασίας προσωπικών δεδομένων",
+			"TERMS-OF-USE": "Οροι χρήσης",
+			"INAPP-NOTIFICATIONS": "Ειδοποιήσεις"
+		},
+		"HOME-COMPONENT": {
+			"TITLE": "Καλωσορίσατε στο CITE Template"
+		},
+		"TENANT-COMPONENT": {
+			"MESSAGE": {
+				"NOT-FOUND": "Η εταιρία δεν βρέθηκε"
+			}
+		},
+		"TENANT-CONFIGURATION": {
+			"TITLE": "Tenant Configuration",
+			"ITEMS": {
+				"USER-SERVICE-USER-LOCALE": {
+					"TITLE": "Default User Locale",
+					"HINT": "Default locale assigned to new users"
+				},
+				"IDP-SERVICE-CREDENTIAL-PROVIDERS": {
+					"TITLE": "Credential Providers",
+					"HINT": "Select witch providers can be used to authenticate"
+				},
+				"NOTIFICATION-SERVICE-EMAIL-CLIENT": {
+					"TITLE": "Mailserver settings",
+					"HINT": "Connect to a mailsever to send emails"
+				},
+				"NOTIFICATION-SERVICE-SMS-CLIENT": {
+					"TITLE": "SMS settings",
+					"HINT": "Connect an SMS gateway to send SMS"
+				},
+				"NOTIFICATION-SERVICE-SLACK-BROADCAST": {
+					"TITLE": "Slack Broadcasts",
+					"HINT": "Setup Slack Broadcasts as notifiers"
+				},
+				"NOTIFICATION-SERVICE-NOTIFIER-LIST": {
+					"TITLE": "Notifier List",
+					"HINT": "Select available notifiers for Notification Types"
+				}
+			},
+			"CREDENTIAL-PROVIDERS": {
+				"TITLE": "Select the available Credential Providers for your Tenant",
+				"ACTIONS": {
+					"SAVE": "Save"
+				}
+			}
+		},
+		"EDITOR-ACTIONS": {
+			"SAVE": "Αποθήκευση",
+			"BACK": "Πίσω",
+			"DELETE": "Διαγραφή"
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Ενεργό",
+				"INACTIVE": "Ανενεργό"
+			},
+			"APP-ROLE": {
+				"ADMIN": "Διαχειριστής",
+				"CONFIGURATION-ADMIN": "Διαχειριστής Εφαρμογής",
+				"REVIEWER": "Κριτικός",
+				"USER": "Χρήστης"
+			},
+			"LANGUAGE-TYPE": {
+				"ENGLISH": "Αγγλικά",
+				"GREEK": "Ελληνικά"
+			},
+			"TAG-APPLIES-TO": {
+				"ALL": "Όλα",
+				"USER": "Χρήστη",
+				"OBJECT": "Αντικείμενο"
+			},
+			"TAG-TYPE": {
+				"DISCIPLINE": "Discipline",
+				"HASHTAG": "Hashtag"
+			},
+			"USER-NETWORK-RELATIONSHIP": {
+				"FOLLOW": "Ακολουθεί",
+				"TRUST": "Εμπιστεύεται"
+			},
+			"REGISTRATION-INFORMATION": {
+				"ABSOLUTE-DECIMAL": "Δεκαδικός Αριθμός",
+				"ABSOLUTE-INTEGER": "Ακέραιος Αριθμός",
+				"PERCENTAGE": "Ποσοστό",
+				"TEXT": "Κείμενο",
+				"SCALE": "Κλίμακα",
+				"SELECTION": "Επιλογή"
+			},
+			"EVALUATION-CONFIGURATION": {
+				"ABSOLUTE-DECIMAL": "Δεκαδικός Αριθμός",
+				"ABSOLUTE-INTEGER": "Δεκαδικός Αριθμός",
+				"PERCENTAGE": "Ποσοστό",
+				"TEXT": "Κείμενο",
+				"SCALE": "Κλίμακα",
+				"SELECTION": "Επιλογή"
+			},
+			"RANK-RECALCULATION-TASK-STATUS": {
+				"PENDING": "Σε αναμονή",
+				"PROCESSING": "Σε επεξεργασία",
+				"SUCCESSFUL": "Επιτυχής",
+				"ERROR": "Σφάλμα",
+				"CANCELLED": "Προς ακύρωση",
+				"ABORTED": "Ακυρωμένη"
+			}
+		},
+		"APP-USER-LISTING": {
+			"TITLE": "Χρήστες",
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"CREATED-AT": "Δημιουργία",
+				"ASSIGNED-TAGS": "Ετικέτες"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"LIKE": "αναζήτηση...",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων",
+				"TAGS": "Ετικέτες",
+				"TAG-WEIGHT": "Ετικέτα με Βάρος",
+				"WEIGHT-TAG-LABEL": "Όνομα Ετικέτας",
+				"WEIGHT-TAG-UPPER-BOUND": "Άνω Όριο Βάρους",
+				"WEIGHT-TAG-LOWER-BOUND": "Κάτω Όριο Βάρους"
+			}
+		},
+		"APP-USER-TAG-EDITOR": {
+			"TITLE": {
+				"NEW": "Νέα Ανάθεση Ετικέτας"
+			},
+			"FIELDS": {
+				"LABEL": "Τίτλος",
+				"WEIGHT": "Βάρος"
+			}
+		},
+		"APP-USER-TAG-LISTING": {
+			"FIELDS": {
+				"LABEL": "Τίτλος",
+				"WEIGHT": "Βάρος"
+			},
+			"TAGS": "Ετικέτες Χρήστη",
+			"NETWORK": "Δίκτυο Χρήστη",
+			"BACK": "Πίσω"
+		},
+		"APP-USER-NETWORK-EDITOR": {
+			"NAME": {
+				"NEW": "Προσθήκη Στο Δίκτυο"
+			},
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"RELATIONSHIP": "Σχέση"
+			},
+			"TITLE": {
+				"NEW": "Προσθήκη στο δίκτυο"
+			}
+		},
+		"APP-USER-NETWORK-LISTING": {
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"RELATIONSHIP": "Σχέση"
+			},
+			"TAGS": "Ετικέτες Χρήστη",
+			"NETWORK": "Δίκτυο Χρήστη",
+			"BACK": "Πίσω"
+		},
+		"APP-USER-MY-NETWORK-EDITOR": {
+			"NAME": {
+				"NEW": "Προσθήκη στο Δίκτυό μου"
+			},
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"RELATIONSHIP": "Σχέση"
+			}
+		},
+		"APP-USER-MY-NETWORK-LISTING": {
+			"TITLE": "Το Δίκτυό μου",
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"RELATIONSHIP": "Σχέση"
+			},
+			"TAGS": "Ετικέτες Χρήστη",
+			"NETWORK": "Δίκτυο Χρήστη",
+			"BACK": "Πίσω"
+		},
+		"APP-USER-INFO": {
+			"TITLE": "Πληροφορίες Χρήστη",
+			"TAGS": "Ετικέτες Χρήστη",
+			"NETWORK": "Δίκτυο Χρήστη"
+		},
+		"TAG-LISTING": {
+			"TITLE": "Ετικέτες",
+			"FIELDS": {
+				"LABEL": "Τίτλος",
+				"TYPE": "Τύπος",
+				"APPLIESTO": "Ανάθεση",
+				"CREATED-AT": "Δημιουργία",
+				"USERCOUNT": "Συσχετισμένοι χρήστες",
+				"DATAOBJECTCOUNT": "Συσχετισμένα αντικείμενα"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"LIKE": "αναζήτηση...",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων",
+				"APPLIES-TO": "Ανάθεση",
+				"TYPE": "Τύπος",
+				"USER": "Χρήστης",
+				"EXCLUDED-USERS": "Εξαιρούμενοι Χρήστες",
+				"INCLUDED-USERS": "Συμπεριλαμβανόμενοι Χρήστες"
+			}
+		},
+		"TAG-EDITOR": {
+			"TITLE": {
+				"NEW": "Νέα Ετικέτα"
+			},
+			"FIELDS": {
+				"LABEL": "Τίτλος",
+				"TYPE": "Τύπος",
+				"APPLIESTO": "Ανάθεση"
+			},
+			"ACTIONS": {
+				"SAVE": "Αποθήκευση",
+				"CANCEL": "Ακύρωση",
+				"DELETE": "Διαγραφή"
+			}
+		},
+		"DATA-OBJECT-EDITOR": {
+			"FIELDS": {
+				"ASSIGNED-TAGS": "Ετικέτες αντικειμένου",
+				"TITLE": "Τίτλος",
+				"DESCRIPTION": "Περιγραφή",
+				"USER-DEFINED-ID": {
+					"VALUE": "Τιμή"
+				},
+				"CREATED-AT": "Δημιουργία"
+			},
+			"NAME": {
+				"NEW": "Νεό Αντικείμενο"
+			},
+			"MESSAGE-EDITED": "Ο τύπος του παρόντος αντικειμένου τροποποιήθηκε πρόσφατα, παρακαλώ ελέγξτε τα χαρακτηριστικά του αντικειμένου για να επιλύσετε τυχόν προβλήματα",
+			"KEEP-ATTRIBUTE": "Διατήρηση χαρακτηριστικού",
+			"NEW-USER-DEFINED-ID": "Νέο αναγνωριστικό",
+			"OBJECT-TYPE-LABEL": "Τύπος αντικειμένου",
+			"REMOVE-ATTRIBUTE": "Αφαίρεση χαρακτηριστικού",
+			"TITLE": "Αντικείμενο",
+			"CREATE-ATTRIBUTE-VALUE": "Προσθήκη τιμής χαρακτηριστικού"
+		},
+		"DATA-OBJECT-INFO": {
+			"EDIT-OBJECT": "Επεξεργασία αντικειμένου",
+			"TAGS": "Ετικέτες",
+			"TITLE": "Πληροφορίες αντικειμένου",
+			"REVIEWS": "Κριτικές"
+		},
+		"DATA-OBJECT-LISTING": {
+			"FIELDS": {
+				"ASSIGNED-TAGS": "Ετικέτες αντικειμένου",
+				"DESCRIPTION": "Περιγραφή",
+				"TYPE-NAME": "Όνομα τύπου",
+				"CREATED-AT": "Δημιουργία",
+				"TITLE": "Τίτλος"
+			},
+			"FILTER": {
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"APPLIES-TO": "Ανάθεση",
+				"LIKE": "αναζήτηση...",
+				"LIKE-DESCRIPTION": "αναζήτηση βάσει περιγραφής...",
+				"MORE-FILTERS": "Περισσότερα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"TAGS": "Ετικέτες",
+				"TYPE-NAME": "Όνομα τύπου",
+				"WEIGHT-TAG-LABEL": "Τίτλος ετικέτας",
+				"WEIGHT-TAG-UPPER-BOUND": "Άνω φράγμα βάρους ετικέτας",
+				"WEIGHT-TAG-LOWER-BOUND": "Κάτω φράγμα βάρους ετικέτας",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων"
+			},
+			"TITLE": "Αντικείμενο"
+		},
+		"DATA-OBJECT-REVIEW-EDITOR": {
+			"KEEP-EVALUATION": "Διατήρηση αξιολόγησης",
+			"NAME": {
+				"EDIT": "Επεξεργασία Κριτικής",
+				"NEW": "Νέα Κριτική"
+			},
+			"REMOVE-EVALUATION": "Αφαίρεση Αξιολόγησης"
+		},
+		"DATA-OBJECT-VIEWER": {
+			"PIDS": "Αναγνωριστικά",
+			"NO-VALUE": "(Καμία τιμή)",
+			"DESCRIPTION": "Περιγραφή",
+			"DATA-OBJECT-TYPE-NAME": "Τύπος αντικειμένου"
+		},
+		"DATA-OBJECT-TYPE-LISTING": {
+			"TITLE": "Τύπος αντικειμένου",
+			"FIELDS": {
+				"CREATED-AT": "Δημιουργία",
+				"NAME": "Όνομα"
+			},
+			"FILTER": {
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"LIKE": "αναζήτηση...",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα φίλτρα",
+				"APPLIES-TO": "Ανάθεση",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων",
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ"
+			}
+		},
+		"DATA-OBJECT-REVIEW-LISTING": {
+			"ANONYMOUS-USER": "Ανώνυμος",
+			"EDIT-REVIEW": "Επεξεργασία Κριτικής",
+			"FILTER": {
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"ANONYMITY": "Ανωνυμία",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα"
+			}
+		}
+	},
+	"USER-SERVICE": {
+		"TENANT-CONFIGURATION": {
+			"USER-LOCALE-EDITOR": {
+				"FIELDS": {
+					"TIMEZONE": "Ζώνη ώρας",
+					"CULTURE": "Culture",
+					"LANGUAGE": "Γλώσσα"
+				},
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση",
+					"DELETE": "Επαναφορά"
+				}
+			}
+		},
+		"USER-PROFILE-COMPONENT": {
+			"TABS": {
+				"PROFILE": "Προφίλ",
+				"CONSENTS": "Συναινέσεις Χρήστη",
+				"PERSONAL": "Προσωπικά",
+				"CONTACT-INFO": "Στοιχεία επικοινωνίας",
+				"USER-NOTIFIER-LIST": "Σειρά ειδοποιήσεψν",
+				"CREDENTIALS": "Πρόσβαση",
+				"TOTP": "Two Step Authentication",
+				"FORGET-ME": "Ξέχασε με",
+				"WHAT-YOU-KNOW-ABOUT-ME": "Τι ξέρεις για μένα"
+			},
+			"CHANGE-EMAIL-DIALOG": {
+				"TITLE": "Αλλαγή e-mail",
+				"REMOVE-CONFIRMATION": "Είστε σίγουρος ότι θέλετε να σβήσετε το email σας;",
+				"FIELDS": {
+					"EMAIL": "E-mail",
+					"EMAIL-REPEAT": "Επανάληψη e-mail"
+				},
+				"SUCCESS": "To E-mail έπιβεβαίωσης έχει σταλεί. Θα παραμείνει ενεργό μέχρι ",
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση",
+					"REMOVE": "Διαγραφή",
+					"CANCEL": "Άκυρο"
+				}
+			},
+			"FORGET-ME": {
+				"TABLE-TITLE": "Αιτήματα να σας ξεχάσουμε",
+				"REQUEST-FORGET": "Αίτηση να σας ξεχάσουμε",
+				"CONFIRMATION-MESSAGE": "Είστε βέβαιος οτι θέλετε να σας ξεχάσουμε;",
+				"CANCEL-REQUEST-CONFIRMATION-MESSAGE": "Είστε βέβαιος οτι θέλετε να ακυρώσετε το αίτημα να σας ξεχάσουμε;",
+				"COLUMNS": {
+					"STATE": "Κατάσταση",
+					"CREATED-AT": "Δημιουργία",
+					"EXPIRES-AT": "Λήγει",
+					"CANCEL": "Ακύρωση"
+				},
+				"STATE": {
+					"PENDING-USER-CONFIRMATION": "Αναμονή επιβεβαίωσης χρήστη",
+					"PENDING-ADMIN-APPROVAL": "Αναμονή επιβεβαίωσης διαχειριστή"
+				}
+			},
+			"WHAT-YOU-KNOW-ABOUT-ME": {
+				"TABLE-TITLE": "Αιτήματα «Τι ξέρετε για μένα»",
+				"REQUEST-DATA": "Αίτηση για λήψη όλων των δεδομένων μου",
+				"CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να προχωρήσετε;",
+				"CANCEL-REQUEST-CONFIRMATION-MESSAGE": "Είστε βέβαιος οτι θέλετε να ακυρώσετε το αίτημα να λάβετε όλα των δεδομένα σας;",
+				"COLUMNS": {
+					"STATE": "Κατάσταση",
+					"CREATED-AT": "Δημιουργία",
+					"EXPIRES-AT": "Λήγει",
+					"ACTIONS": "Ενέργειες"
+				},
+				"ACTIONS": {
+					"CANCEL": "Ακύρωση",
+					"DOWNLOAD": "Λήψη"
+				},
+				"STATE": {
+					"PENDING-USER-CONFIRMATION": "Αναμονή επιβεβαίωσης χρήστη",
+					"PENDING-ADMIN-APPROVAL": "Αναμονή επιβεβαίωσης διαχειριστή"
+				}
+			},
+			"PERSONAL": {
+				"NAME": "Όνομα"
+			},
+			"CONTACT-INFO": {
+				"NAME": "Όνομα",
+				"EMAIL": "Email",
+				"MOBILE-PHONE": "Κινητό Τηλέφωνο",
+				"LANDLINE-PHONE": "Σταθερό Τηλέφωνο",
+				"CHANGE-EMAIL": "Αλλαγή Email"
+			},
+			"PROFILE": {
+				"TITLE": "Προφίλ",
+				"TENTATIVE-PROFILE": "Το προφίλ είναι προσωρινό. Ελέγξτε τα παρακάτω πεδία και αποθηκεύστε το προφίλ σας για να συνεχίσετε.",
+				"FIELDS": {
+					"TIMEZONE": "Ζώνη ώρας",
+					"CULTURE": "Culture",
+					"LANGUAGE": "Γλώσσα"
+				}
+			},
+			"ACTIONS": {
+				"SAVE": "Αποθήκευση",
+				"CANCEL": "Άκυρο"
+			}
+		},
+		"USER-PROFILE": {
+			"PROFILE-PICTURE-EDITOR": {
+				"TITLE": "Εικόνα Χρήστη",
+				"ACTIONS": {
+					"SELECT-IMAGE": "Επιλογή Εικόνας",
+					"CROP": "Επιλογή",
+					"DONE": "Τέλος",
+					"BACK-TO-EDITING": "Πίσω στην Επιλογή",
+					"CLOSE": "Κλείσιμο"
+				}
+			}
+		},
+		"USER-LISTING": {
+			"TITLE": "Χρήστες",
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"EMAIL": "E-mail",
+				"MOBILE-PHONE": "Κινητό Τηλέφωνο",
+				"LANDLINE-PHONE": "Σταθερό Τηλέφωνο",
+				"IS-ACTIVE": "Κατάσταση"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"LIKE": "αναζήτηση...",
+				"ROLES": "Ρόλοι",
+				"IS-ACTIVE": "Κατάσταση",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων"
+			}
+		},
+		"USER-EDITOR": {
+			"TITLE": {
+				"NEW": "Νέος Χρήστης"
+			},
+			"INCOMPATIBLE-USER-TYPE": "Η επεξεργασία του χρήστη δεν επιτρέπεται.",
+			"CREDENTIAL-GENERAL-INFORMATION": "Αυτός ο χρήστης μπορεί να συνδεθεί χρησιμοποιώντας αυτόν τον πάροχο",
+			"CREDENTIALS-TITLE": "Διαπιστευτήρια",
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"EMAIL": "E-mail",
+				"MOBILE-PHONE": "Κινητό Τηλέφωνο",
+				"LANDLINE-PHONE": "Σταθερό Τηλέφωνο",
+				"IS-VALIDATED": "Επικυρωμένος",
+				"TIMEZONE": "Ζώνη ώρας",
+				"CULTURE": "Culture",
+				"LANGUAGE": "Γλώσσα",
+				"ROLES": "Ρόλοι",
+				"CREDENTIAL-PROVIDER": "Πάροχος",
+				"CREDENTIAL-PUBLIC": "Όνομα χρήστη",
+				"CREDENTIAL-PRIVATE": "Κωδικός πρόσβασης",
+				"CREDENTIAL-PRIVATE-REPEAT": "Επανάληψη κωδικού πρόσβασης"
+			},
+			"ROLES-TAB": "Ρόλοι",
+			"USER-TAB": "Χρήστης",
+			"CREDENTIALS-TAB": "Διαπιστευτήρια",
+			"CREDENTIALS": {
+				"COLUMNS": {
+					"PROVIDER": "Πάροχος",
+					"REMOVE": "Ακύρωση"
+				}
+			},
+			"ACTIONS": {
+				"RESET-INTERNAL-CREDENTIAL": "Επαναφορά Ονόματος Χρήστη / Κωδικού",
+				"REMOVE-CREDENTIAL": "Αφαίρεση",
+				"SAVE": "Αποθήκευση",
+				"SEND-INVITATION": "Αποστολή πρόσκλησης",
+				"CANCEL": "Άκυρο",
+				"DELETE": "Διαγραφή"
+			},
+			"MESSAGES": {
+				"INVITATION-SENT": "To E-mail πρόσκλησης έχει σταλεί. Θα παραμείνει ενεργό μέχρι "
+			}
+		},
+		"API-CLIENT-LISTING": {
+			"TITLE": "API Πελάτες",
+			"FIELDS": {
+				"NAME": "Τίτλος",
+				"IS-ACTIVE": "Καταάσταση",
+				"ROLES": "Ρόλοι"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"LIKE": "αναζήτηση...",
+				"ROLES": "Ρόλοι",
+				"IS-ACTIVE": "Κατάσταση",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων"
+			}
+		},
+		"API-CLIENT-EDITOR": {
+			"TITLE": {
+				"NEW": "Νέος API πελάτης"
+			},
+			"INCOMPATIBLE-USER-TYPE": "Η επεξεργασία του χρήστη δεν επιτρέπεται.",
+			"CREDENTIALS-TITLE": "Διαπιστευτήρια",
+			"NEW-CREDENTIAL-TITLE": "Το κλειδί API δημιουργήθηκε!",
+			"NEW-CREDENTIAL-MESSAGE": "Παρακαλούμε αποθηκεύστε με ασφάλεια το ακόλουθο κλειδί API στο σύστημά σας. Αν χάσετε αυτό το κλειδί, θα πρέπει να το δημιουργήσετε ξανά.",
+			"NEW-CREDENTIAL-BUTTON": "Κλείσιμο",
+			"FIELDS": {
+				"NAME": "Όνομα Υπηρεσίας",
+				"ROLES": "Ρόλοι"
+			},
+			"SERVICE-TAB": "Υπηρεσία",
+			"ROLES-TAB": "Ρόλοι",
+			"CREDENTIALS-TAB": "Κλειδιά",
+			"CREDENTIALS": {
+				"COLUMNS": {
+					"PROVIDER": "Πάροχος",
+					"PUBLIC": "Κλειδί",
+					"REMOVE": "Ακύρωση"
+				}
+			},
+			"API-KEY-REPLACE-WARNING": "Η ενέργεια αυτή θα ακυρώσει όλα τα ενεργά κλειδιά.",
+			"ACTIONS": {
+				"CREATE-NEW-CREDENTIAL": "Δημιουργία API κλειδιού",
+				"REMOVE-CREDENTIAL": "Διαγραφή",
+				"SAVE": "Αποθύκευση",
+				"CANCEL": "Άκυρο",
+				"DELETE": "Διαγραφή"
+			}
+		},
+		"FORGET-ME-REQUEST-LISTING": {
+			"TITLE": "Αιτήματα \"Forget Me\"",
+			"FIELDS": {
+				"USER": "Χρήστης",
+				"IS-ACTIVE": "Κατάσταση",
+				"IS-VALIDATED": "Επικύρωση χρήστη",
+				"STATE": "Στάδιο",
+				"CREATED-AT": "Δημιουργία",
+				"EXPIRES-AT": "Λήξη",
+				"RESPONSE": "Ενέργειες"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων",
+				"STATE": "Στάδιο",
+				"LIKE": "αναζήτηση...",
+				"IS-VALIDATED": "Επικύρωση χρήστη"
+			},
+			"APPROVE-CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να εγκρίνετε αυτό το αίτημα;",
+			"DECLINE-CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να απορρίψετε αυτό το αίτημα;",
+			"REVERT-CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να επαναφέρετε αυτό το αίτημα;",
+			"ACTIONS": {
+				"APPROVE": "Έγκριση",
+				"DECLINE": "Απόρριψη",
+				"REVERT": "Επαναφορά"
+			}
+		},
+		"FORGET-ME-VALIDATE": {
+			"COMPLETED": "Το αίτημα σας καταχωρήθηκε. Ένας διαχειρηστής θα το εξετάσει και θα σας απαντήσει.",
+			"PROCESSING": "Επεξεργασία...",
+			"BACK": "Επιστροφή στην κεντρική"
+		},
+		"DECLINE-FORGET-ME": {
+			"TITLE": "Λυπούμαστε πολύ!",
+			"SUBTITLE": "θα ερευνήσουμε την αιτία που αυτό το email έφτασε σε εσάς. Αν έχετε οποιαδήποτε πληροφορία, παρακαλώ ενημερώστε μας. Ευχαριστούμε πολύ.",
+			"FIELDS": {
+				"TEXT": "Σημειώσεις"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Το αίτημα να σας ξεχάσουμε απορρίφθηκε"
+			}
+		},
+		"WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING": {
+			"TITLE": "Αιτήματα «Τι ξέρεις για μένα»",
+			"FIELDS": {
+				"USER": "Χρήστης",
+				"IS-ACTIVE": "Κατάσταση",
+				"IS-VALIDATED": "Επικύρωση χρήστη",
+				"STATE": "Στάδιο",
+				"CREATED-AT": "Δημιουργία",
+				"EXPIRES-AT": "Λήξη",
+				"RESPONSE": "Ενέργειες"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων",
+				"STATE": "Στάδιο",
+				"LIKE": "αναζήτηση...",
+				"IS-VALIDATED": "Επικύρωση χρήστη"
+			},
+			"APPROVE-CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να εγκρίνετε αυτό το αίτημα;",
+			"DECLINE-CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να απορρίψετε αυτό το αίτημα;",
+			"REVERT-CONFIRMATION-MESSAGE": "Είστε βέβαιος ότι θέλετε να επαναφέρετε αυτό το αίτημα;",
+			"ACTIONS": {
+				"APPROVE": "Έγκριση",
+				"DECLINE": "Απόρριψη",
+				"REVERT": "Επαναφορά"
+			}
+		},
+		"WHAT-YOU-KNOW-ABOUT-ME-VALIDATE": {
+			"COMPLETED": "Το αίτημα σας καταχωρήθηκε. Ένας διαχειρηστής θα το εξετάσει και θα σας απαντήσει.",
+			"PROCESSING": "Επεξεργασία...",
+			"BACK": "Επιστροφή στην κεντρική"
+		},
+		"DECLINE-WHAT-YOU-KNOW-ABOUT-ME": {
+			"TITLE": "Λυπούμαστε πολύ!",
+			"SUBTITLE": "θα ερευνήσουμε την αιτία που αυτό το email έφτασε σε εσάς. Αν έχετε οποιαδήποτε πληροφορία, παρακαλώ ενημερώστε μας. Ευχαριστούμε πολύ.",
+			"FIELDS": {
+				"TEXT": "Σημειώσεις"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Το αίτημα να λάβετε τα δεδομένα σας απορρίφθηκε"
+			}
+		},
+		"EMAIL-RESET": {
+			"TITLE": "Αλλαγή Διεύθυνσης E-mail",
+			"LOADING": "Γίνεται επεξεργασία του αιτήματος...",
+			"RESULT": {
+				"FAILURE": "Η αλλαγή της διεύθυνσης e-mail απέτυχε.",
+				"SUCCESS": "Επιτυχής αλλαγή διεύθυνσης e-mail."
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Επιτυχής αλλαγή διεύθυνσης e-mail"
+			}
+		},
+		"DECLINE-EMAIL-RESET": {
+			"TITLE": "Λυπούμαστε πολύ!",
+			"SUBTITLE": "θα ερευνήσουμε την αιτία που αυτό το email έφτασε σε εσάς. Αν έχετε οποιαδήποτε πληροφορία, παρακαλώ ενημερώστε μας. Ευχαριστούμε πολύ.",
+			"FIELDS": {
+				"TEXT": "Σημειώσεις"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Η αλλαγή διεύθυνσης e-mail απορρίφθηκε"
+			}
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Ενεργό",
+				"INACTIVE": "Ανενεργό"
+			},
+			"FORGET-ME-VALIDATION": {
+				"PENDING": "Σε αναμονή",
+				"VALIDATED": "Έχει εγκριθεί"
+			},
+			"FORGET-ME-STATE": {
+				"PENDING": "Σε αναμονή",
+				"APPROVED": "Έχει εγκριθεί",
+				"DENIED": "Έχει απορριφθεί",
+				"COMPLETED": "Ολοκληρώθηκε"
+			},
+			"WHAT-YOU-KNOW-ABOUT-ME-VALIDATION": {
+				"PENDING": "Σε αναμονή",
+				"VALIDATED": "Έχει εγκριθεί"
+			},
+			"WHAT-YOU-KNOW-ABOUT-ME-STATE": {
+				"PENDING": "Σε αναμονή",
+				"APPROVED": "Έχει εγκριθεί",
+				"DENIED": "Έχει απορριφθεί",
+				"PROCESSING": "Σε επεξεργασία",
+				"COMPLETED": "Ολοκληρώθηκε",
+				"ERROR": "Σφάλμα"
+			}
+		}
+	},
+	"IDP-SERVICE": {
+		"TENANT-CONFIGURATION": {
+			"CREDENTIAL-PROVIDERS-EDITOR": {
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση"
+				}
+			}
+		},
+		"USER-CONSENTS": {
+			"TITLE": "Συναινέσεις Χρήστη",
+			"ACTIONS": {
+				"SAVE": "Αποθήκευση",
+				"CANCEL": "Άκυρο"
+			}
+		},
+		"USER-ROLE-ASSIGNMENT": {
+			"TITLE": "Ανάθεση Ρόλων Χρηστών",
+			"UNSAVED-CHANGES": "Υπάρχουν μη αποθηκευμένες αλλαγές",
+			"FIELDS": {
+				"NAME": "Όνομα",
+				"ROLES": "Ρόλοι"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"ROLES": "Ρόλοι",
+				"IS-ACTIVE": "Κατάσταση",
+				"LIKE": "αναζήτηση...",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων"
+			},
+			"ACTIONS": {
+				"SAVE-ALL": "Αποθήκευση όλων των αλλαγών",
+				"DISCARD-ALL": "Απόρριψη όλων των αλλαγών"
+			}
+		},
+		"ACCESS-TOKEN-LISTING": {
+			"TITLE": "Access Tokens",
+			"FIELDS": {
+				"USERNAME": "Όνομα χρήστη",
+				"CLIENT": "Client",
+				"TYPE": "Τύπος",
+				"LATEST-EXPIRES-AT": "Τελευταία λήξη",
+				"LATEST-CREATED-AT": "Τελευταία δημιουργία",
+				"COUNT": "Πλήθος",
+				"ACTION": "Ενέργεια"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"LIKE": "αναζήτηση..."
+			}
+		},
+		"TOTP-DIALOG-COMPONENT": {
+			"TITLE": "Two Step Verification",
+			"ACTIONS": {
+				"DONE": "Συνέχεια",
+				"CANCEL": "Ακύρωση"
+			}
+		},
+		"AUTHENTICATION": {
+			"TITLES": {
+				"LOGIN": "Σύνδεση",
+				"SUCCESSFUL-REQUEST": "Επιτυχία Υποβολής Αίτησης",
+				"SUCCESSFUL-REQUEST-SUBTITLE": "Η αίτηση σας έχει εστάλει με επιτυχία",
+				"SUCCESSFUL-REQUEST-CHECK-MAIL": "Σας έχουμε αποστείλει ένα email με πληροφορίες σύνδεσης για την ολοκλήρωση της εγγραφής σας. Παρακαλώ ελέγξτε το ηλεκτρονικό σας ταχυδρομείο.",
+				"DIRECT-LINK-LOGIN": "Σύνδεση με Link μιας Χρήσης",
+				"REGISTER": "Ή Εγγραφή",
+				"INVITATION-CODE": "Παρακαλώ εισάγετε τον κωδικό πρόσκλησης",
+				"PROVIDER-SELECTION": "Παρακαλώ επιλέξτε πάροχο αναγνώρισης χρήστη",
+				"REGISTRATION-FIELDS": "Στοιχεία χρήστη",
+				"EXTERNAL-PROVIDERS": "Εξωτερικοί πάροχοι αναγνώρισης χρηστών",
+				"INTERNAL-PROVIDER": "Εσωτερικός πάροχος αναγνώρισης χρηστών",
+				"TENANT-SELECTION": "Παρακαλώ εισάγετε το όνομα της εταιρίας σας",
+				"USER-CONSENTS": "Συναινέσεις Χρήστη",
+				"FAILED-LOGIN": "Αποτυχία Σύνδεσης",
+				"FAILED-LOGIN-SUBTITLE": "Το link που χρησιμοποιείται για να συνδεθείτε έχει λήξει.",
+				"FAILED-LOGIN-CLAIM-MAIL-OTP": "Το link που χρησιμοποιείται για να συνδεθείτε έχει λήξει. Παρακαλώ δημιουργείσται νέο link μιας χρήσης."
+			},
+			"FIELDS": {
+				"INVITATION-CODE": "Κωδικός πρόσκλησης",
+				"USERNAME": "Όνομα χρήστη",
+				"PASSWORD": "Κωδικός πρόσβασης",
+				"EMAIL": "E-mail",
+				"CONFIRM-EMAIL": "Επιβεβαίωση E-mail",
+				"TOTP": "Two Step Authentication Code (εφόσον είναι ενεργοποιημένο)",
+				"CONFIRM-PASSWORD": "Επιβεβαίωση κωδικού πρόσβασης",
+				"TENANT": "Εταιρία"
+			},
+			"ACTIONS": {
+				"LOGIN": "Σύνδεση",
+				"PASSWORD-RESET": "Επαναφορά κωδικού πρόσβασης",
+				"REGISTER": "Εγγραφή",
+				"REGISTER-WITH-INVITATION": "Έχω μια πρόσκληση",
+				"SAML-LOGIN": "Saml",
+				"OPENID-CONNECT-CODE-LOGIN": "OpenId",
+				"CAS-LOGIN": "CAS",
+				"NEXT": "Επόμενο",
+				"BACK": "Πίσω",
+				"CONTINUE": "Συνέχεια",
+				"BACK-TO-LOGIN": "Επιστροφή στην Σελίδα Σύνδεσης"
+			},
+			"MESSAGES": {
+				"SIGN-OUT-IN-PROGRESS": "Γίνεται αποσύνδεση...",
+				"TENANT-NOT-FOUND": "Η Εταιρία δεν βρέθηκε"
+			}
+		},
+		"DECLINE-REGISTRATION-INVITATION": {
+			"TITLE": "Λυπούμαστε πολύ!",
+			"SUBTITLE": "Αν υπάρχει συγκεκριμένος λόγος που δεν χρησιμοποιήσατε αυτή την πρόσκληση εγγραφής, παρακαλώ ενημερώστε μας. Ευχαριστούμε πολύ.",
+			"FIELDS": {
+				"TEXT": "Σημειώσεις"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Η πρόσκληση εγγραφής απορρίφθηκε"
+			}
+		},
+		"PASSWORD-RESET": {
+			"TITLE": "Επαναφορά Κωδικού Πρόσβασης",
+			"FIELDS": {
+				"PASSWORD": "Κωδικός πρόσβασης",
+				"PASSWORD-REPEAT": "Επανάληψη κωδικού πρόσβασης"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Επιτυχής επαναφορά κωδικού πρόσβασης"
+			}
+		},
+		"DECLINE-PASSWORD-RESET": {
+			"TITLE": "Λυπούμαστε πολύ!",
+			"SUBTITLE": "θα ερευνήσουμε την αιτία που αυτό το email έφτασε σε εσάς. Αν έχετε οποιαδήποτε πληροφορία, παρακαλώ ενημερώστε μας. Ευχαριστούμε πολύ.",
+			"FIELDS": {
+				"TEXT": "Σημειώσεις"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Η επαναφορά κωδικού απορρίφθηκε"
+			}
+		},
+		"PASSWORD-RESET-POPUP": {
+			"TITLE": "Επαναφορά Κωδικού Πρόσβασης",
+			"INFO": "Ένα μήνυμα ηλεκτρονικού ταχυδρομείου θα σταλεί στην καθορισμένη διεύθυνση με οδηγίες για την επαναφορά του κωδικού πρόσβασης σας.",
+			"FIELDS": {
+				"USERNAME": "Όνομα χρήστη",
+				"EMAIL": "E-mail"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Το μήνυμα ηλεκτρονικού ταχυδρομείου εστάλη. Ο σύνδεσμος επικύρωσης θα παραμείνει έγκυρος μέχρι τις "
+			}
+		},
+		"USER-INVITATION": {
+			"TITLE": "Πρόσκληση Χρηστών",
+			"REQUIRED": "Πρέπει να επιλεγεί τουλάχιστον ένας χρήστης ή e-mail",
+			"FIELDS": {
+				"USERS": "Χρήστες",
+				"EMAILS": "E-mails",
+				"ROLE": "Ρόλος που θα ανατεθεί",
+				"INVITE-EXISTING-USERS": "Πρόσκληση υπαρχόντων χρηστών",
+				"INVITE-NEW-USERS-BY-EMAIL": "Πρόσκληση νέων χρηστών μέσω e-mail"
+			},
+			"ACTIONS": {
+				"ADD-EMAIL": "Προσθήκη e-mail",
+				"SEND-INVITATIONS": "Αποστολή προσκλήσεων"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Τα μηνύματα ηλεκτρονικού ταχυδρομείου εστάλησαν. Ο σύνδεσμος πρόσκλησης θα παραμείνει έγκυρος μέχρι τις "
+			}
+		},
+		"USER-PASS-OVERRIDE-DIALOG": {
+			"TITLE": "Ορισμός Ονόματος Χρήστη / Κωδικού",
+			"FIELDS": {
+				"USERNAME": "Όνομα Χρήστη",
+				"PASSWORD": "Κωδικός",
+				"PASSWORD-REPEAT": "Επανάληψη Κωδικού"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			}
+		},
+		"CONSENTS-GUARD-DIALOG": {
+			"TITLE": "Για να προχωρήσετε πρέπει να αποδεχθείτε τις παρακάτω Συναινέσεις Χρήστη",
+			"ACTIONS": {
+				"SAVE": "Αποθήκευση",
+				"CANCEL": "Άκυρο"
+			}
+		},
+		"USER-CONSENTS-EDITOR": {
+			"CONSENT-AWARENESS": "*Οι Συναινέσεις Χρήστη μπορούν να τροποποιηθούν οποιαδήποτε στιγμή από το Προφίλ του χρήστη."
+		},
+		"SEND-INVITATION-POPUP": {
+			"TITLE": "Πρόσκληση Χρήστη",
+			"FIELDS": {
+				"EMAIL": "E-mail"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Υποβολή"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Το μήνυμα ηλεκτρονικού ταχυδρομείου εστάλη. Ο σύνδεσμος πρόσκλησης θα παραμείνει έγκυρος μέχρι τις "
+			}
+		},
+		"USER-CREDENTIALS": {
+			"COLUMNS": {
+				"PROVIDER": "Πάροχος",
+				"REMOVE": "Ακύρωση"
+			},
+			"ADD-POPUP-TITLE": "Επιτυχία",
+			"ADD-POPUP-MESSAGE": "Μια πρόσκληση έχει σταλεί στο ηλεκτρονικό σας ταχυδρομείο για να συσχετίσετε το χρήστη σας με έναν άλλο πάροχο. Ακολουθήστε τον σύνδεσμο από το email σας.",
+			"ACTIONS": {
+				"ADD-PROVIDER": "Σύνδεση με άλλο πάροχο",
+				"CANCEL": "Άκυρο"
+			}
+		},
+		"TOTP-SETUP": {
+			"ENABLE-TITLE": "Για μεγαλύτερη ασφάλεια μπορείτε να ενεργοποιήσετε το Two Step Authentication",
+			"DISABLE-TITLE": "Το Two Step Authentication είναι ενεργό",
+			"QR-CODE-MESSAGE": "Παρακαλώ σαρώστε το ακόλουθο QR Code χρησιμοποιώντας την εφαρμογή δημιουργίας κώδικών σας",
+			"MANUAL-INPUT": "ή πληκτρολογήστε τον παρακάτω κωδικό",
+			"BACKUP-CODE": "Σημειώστε τον παρακάτω κωδικό, καθώς μπορεί να χρησιμοποιηθεί ως εφεδρικός κωδικός",
+			"VERIFICATION-TITLE": "Εισάγετε έναν κωδικό που δημιουργήθηκε",
+			"CODE": "Κωδικός",
+			"ACTIONS": {
+				"ENABLE": "Ενεργοποίηση",
+				"DISABLE": "Απενεργοποίηση",
+				"NEXT": "Επόμενο",
+				"VERIFY": "Επαλήθευση",
+				"CANCEL": "Άκυρο"
+			}
+		},
+		"TOTP-INPUT": {
+			"PLACEHOLDER": "Two Step Authentication Κωδικός"
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Ενεργό",
+				"INACTIVE": "Ανενεργό"
+			},
+			"CREDENTIAL-PROVIDER": {
+				"SERVICE": "Service",
+				"USER-PASS": "Εσωτερικός λογαριασμός",
+				"GOOGLE": "Google",
+				"TAXISNET": "Taxisnet",
+				"FACEBOOK": "Facebook",
+				"TWITTER": "Twitter",
+				"LINKED-IN": "LinkedIn",
+				"GIT-HUB": "GitHub",
+				"SAML": "Saml",
+				"OPENID-CONNECT-CODE": "OpenId",
+				"CAS": "CAS",
+				"API-KEY": "API Key",
+				"DIRECT-LINK": "Link μιας Χρήσης",
+				"TRANSIENT": "Παροδικός",
+				"TOTP": "Time-based One-Time Password"
+			}
+		}
+	},
+	"NOTIFICATION-SERVICE": {
+		"TENANT-CONFIGURATION": {
+			"SLACK-BROADCAST": {
+				"TITLE": "Slack Webhooks",
+				"HINT": "Εισάγετε το κομμάτι του webhook μετά το \"https://hooks.slack.com/services/\"",
+				"COLUMNS": {
+					"NAME": "Όνομα",
+					"WEBHOOK": "Webhook",
+					"ACTIONS": "Ενέργειες"
+				},
+				"FIELDS": {
+					"NAME": "Όνομα",
+					"WEBHOOK": "Webhook"
+				},
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση",
+					"DELETE": "Διαγραφή"
+				}
+			},
+			"SMS-CLIENT-EDITOR": {
+				"HINT": "Insert the webhook part after \"https://hooks.slack.com/services/\"",
+				"FIELDS": {
+					"APPLICATION-ID": "Application Id",
+					"APPLICATION-SECRET": "Application Secret",
+					"SEND-AS-NAME": "Όνομα Αποστολής"
+				},
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση",
+					"DELETE": "Διαγραφή"
+				}
+			},
+			"EMAIL-CLIENT-EDITOR": {
+				"HINT": "Insert the webhook part after \"https://hooks.slack.com/services/\"",
+				"FIELDS": {
+					"REQUIRES-CREDENTIALS": "Requires Credentials",
+					"ENABLE-SSL": "Enable SSL",
+					"HOST-SERVER": "Server Host",
+					"HOST-PORT-NUMBER": "Server Port",
+					"EMAIL-ADDRESS": "Email Address",
+					"EMAIL-USERNAME": "Email Username",
+					"EMAIL-PASSWORD": "Email Password"
+				},
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση",
+					"DELETE": "Διαγραφή"
+				}
+			},
+			"NOTIFIER-LIST-EDITOR": {
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση",
+					"DELETE": "Διαγραφή"
+				}
+			}
+		},
+		"NOTIFICATION-TEMPLATE-EDITOR": {
+			"TITLE": "Notification Templates",
+			"SUBJECT-SECTION": "Subject Template",
+			"BODY-SECTION": "Body Template",
+			"NO-TEMPLATE-AVAILABLE": "The selected Notification Type is not available through this channel.",
+			"FIELDS": {
+				"NOTIFICATION-TYPE": "Notification Type",
+				"NOTIFICATION-CHANNEL": "Notification Channel",
+				"LANGUAGE": "Language",
+				"DESCRIPTION": "Template Description",
+				"SUBJECT-TEXT": "Subject Template",
+				"FIELD-OPTIONS": {
+					"MANDATORY": {
+						"TITLE": "Mandatory Items",
+						"ITEM": "Item"
+					},
+					"OPTIONAL": {
+						"TITLE": "Optional Items",
+						"KEY": "Key",
+						"VALUE": "Value"
+					}
+				}
+			},
+			"ACTIONS": {
+				"CLONE": "Duplicate this Template",
+				"SAVE": "Save",
+				"DELETE": "Delete",
+				"SET-PRIMARY": "Set Primary",
+				"SET-SECONDARY": "Set Secondary",
+				"SET-DRAFT": "Set Draft"
+			}
+		},
+		"USER-PROFILE": {
+			"NOTIFIER-LIST-EDITOR": {
+				"ACTIONS": {
+					"SAVE": "Αποθήκευση"
+				}
+			}
+		},
+		"NOTIFICATION-LISTING": {
+			"TITLE": "Notifications",
+			"FIELDS": {
+				"USER-NAME": "Title",
+				"IS-ACTIVE": "Is Active",
+				"TYPE": "Type",
+				"CONTACT-TYPE": "Contact Type",
+				"NOTIFY-STATE": "Notify State",
+				"NOTIFIED-AT": "Notified at",
+				"TRACKING-STATE": "Tracking State",
+				"TRACKING-PROCESS": "Tracking Process",
+				"PROVENANCE-TYPE": "Workflow",
+				"CREATED-AT": "Created"
+			},
+			"FILTER": {
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"USERS": "Users",
+				"TYPE": "Type",
+				"LIKE": "search...",
+				"CONTACT-TYPE": "Contact Type",
+				"NOTIFY-STATE": "Notify State",
+				"TRACKING-STATE": "Tracking State",
+				"TRACKING-PROCESS": "Tracking Process",
+				"PROVENANCE-TYPE": "Workflow",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"ALL-FILTERS": "Όλα τα φίλτρα"
+			}
+		},
+		"NOTIFICATION-EVENT-RULE-LISTING": {
+			"TITLE": "Notification Event Rules",
+			"FIELDS": {
+				"USER-NAME": "User",
+				"IN-RESPONSE-TO": "In Response To",
+				"IS-ACTIVE": "Is Active",
+				"ROLE": "Role",
+				"CREATED-AT": "Created"
+			},
+			"FILTER": {
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"LIKE": "search...",
+				"USERS": "Users",
+				"ROLES": "Roles",
+				"IN-RESPONSE-TO": "In Response To",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα"
+			}
+		},
+		"NOTIFICATION-EVENT-RULE-EDITOR": {
+			"TITLE": {
+				"NEW": "New Notification Event Rule"
+			},
+			"FIELDS": {
+				"USERS": "Users",
+				"IN-RESPONSE-TO": "In Response To",
+				"ROLES": "Roles"
+			},
+			"ACTIONS": {
+				"SAVE": "Save",
+				"CANCEL": "Cancel",
+				"DELETE": "Delete"
+			}
+		},
+		"INAPP-NOTIFICATION-LISTING": {
+			"TITLE": "Ειδοποιήσεις",
+			"FIELDS": {
+				"SUBJECT": "θέμα",
+				"TRACKING-STATE": "Κατάσταση",
+				"CREATED-AT": "Δημιουργία"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "ΦΙΛΤΡΑ ΑΝΑΖΗΤΗΣΗΣ",
+				"ALL-FILTERS": "Όλα τα φίλτρα",
+				"NO-FILTERS": "Κανένα φίλτρο",
+				"MORE-FILTERS": "Περισσότερα Φίλτρα",
+				"TRACKING-STATE": "Κατάσταση",
+				"LIKE": "αναζήτηση...",
+				"SHOW-INACTIVE": "Εμφάνιση Διαγραμμένων"
+			}
+		},
+		"INAPP-NOTIFICATION-EDITOR": {
+			"TITLE": "Ειδοποιήση",
+			"ACTIONS": {
+				"READ": "Διαβάστηκε",
+				"CANCEL": "Άκυρο",
+				"DELETE": "Διαγραφή"
+			}
+		},
+		"NOTIFICATION-COMPONENT": {
+			"POPUP": {
+				"CLOSE-BUTTON": "OK"
+			}
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Ενεργό",
+				"INACTIVE": "Ανενεργό"
+			},
+			"NOTIFICATION-NOTIFY-STATE": {
+				"PENDING": "Pending",
+				"PROCESSING": "Processing",
+				"SUCCESSFUL": "Successful",
+				"ERROR": "Error",
+				"OMITTED": "Omitted"
+			},
+			"NOTIFICATION-TYPE": {
+				"REGISTRATION-INVITATION": "Registration invitation",
+				"TOTP-OVERRIDE-USED": "Two step override code used",
+				"CREDENTIAL-RESET": "Credential reset",
+				"DIRECT-LINK": "Login direct link",
+				"FORGET-ME-REQUEST": "Forget me request",
+				"WHAT-YOU-KNOW-ABOUT-ME-REQUEST": "What you know about me request",
+				"WHAT-YOU-KNOW-ABOUT-ME-REQUEST-COMPLETED": "What you know about me request completed",
+				"EMAIL-RESET-REQUEST": "Email reset request",
+				"EMAIL-RESET-AWARENESS": "Email reset awareness",
+				"EMAIL-RESET-REMOVE": "Email reset remove",
+				"GENERATE-FILE-COMPLETED": "Generate file completed"
+			},
+			"NOTIFICATION-TRACKING-STATE": {
+				"UNDEFINED": "Undefined",
+				"NA": "N/A",
+				"QUEUED": "Queued",
+				"SENT": "Sent",
+				"DELIVERED": "Delivered",
+				"UNDELIVERED": "Undelivered",
+				"FAILED": "Failed",
+				"UNSENT": "Unsent"
+			},
+			"NOTIFICATION-TRACKING-PROCESS": {
+				"PENDING": "Pending",
+				"PROCESSING": "Processing",
+				"COMPLETED": "Completed",
+				"ERROR": "Error",
+				"OMITTED": "Omitted"
+			},
+			"NOTIFICATION-EVENT-IN-RESPONSE-TO": {
+				"REGISTRATION-INVITATION": "Registration invitation",
+				"PASSWORD-RESET": "Password reset",
+				"EMAIL-RESET": "Email reset",
+				"FORGET-ME-REQUESTED": "Forget me requested",
+				"FORGET-ME-VALIDATED": "Forget me validated",
+				"FORGET-ME-WITHDRAWN": "Forget me withdrawn",
+				"FORGET-ME-STAMPED": "Forget me stamped",
+				"WHAT-YOU-KNOW-ABOUT-ME-REQUESTED": "What you know about me requested",
+				"WHAT-YOU-KNOW-ABOUT-ME-VALIDATED": "What you know about me validated",
+				"WHAT-YOU-KNOW-ABOUT-ME-WITHDRAWN": "What you know about me withdrawn",
+				"WHAT-YOU-KNOW-ABOUT-ME-STAMPED": "What you know about me stamped",
+				"NEW-USER-REGISTERED": "New user registered",
+				"TOTP-OVERRIDE-USED": "Two step override code used"
+			},
+			"NOTIFICATION-INAPP-TRACKING": {
+				"STORED": "Νέο",
+				"DELIVERED": "Διαβάστηκε"
+			},
+			"NOTIFICATION-TEMPLATE-CHANNEL": {
+				"EMAIL": "E-mail",
+				"SLACK-BROADCAST": "Slack Broadcast",
+				"SMS": "SMS",
+				"IN-APP": "In App Notification"
+			},
+			"NOTIFICATION-TEMPLATE-KIND": {
+				"DEFAULT": "Default",
+				"PRIMARY": "Primary",
+				"SECONDARY": "Secondary",
+				"DRAFT": "Draft"
+			},
+			"CONTACT-TYPE": {
+				"EMAIL": "Email",
+				"SLACK-BROADCAST": "Slack Broadcast",
+				"SMS": "SMS",
+				"IN-APP": "In App"
+			}
+		}
+	},
+	"COMMONS": {
+		"CUSTOM-USER-SETTINGS": {
+			"LABEL": "Προφίλ προβολής",
+			"FILTER-NAME": "Ονομα Φίλτρου",
+			"ACTIONS": {
+				"UPDATE-FILTER": "Ενημέρωση τρέχοντος προφίλ προβολής",
+				"SAVE-FILTER-AS": "Δημιουργία νέου προφίλ προβολής",
+				"SETTINGS-LIST-BUTTON": "Αποθηκευμένα προφίλ προβολής",
+				"DELETE": "Διαγραφή του προφίλ προβολής"
+			}
+		},
+		"FILTER-NAME-DIALOG": {
+			"TITLE": "Δημιουργία νέου προφίλ προβολής",
+			"FIELDS": {
+				"FILTER-NAME": "Όνομα νέου προφίλ προβολής"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Αποθήκευση",
+				"CANCEL": "Ακύρωση"
+			}
+		},
+		"LISTING-COMPONENT": {
+			"SETTINGS": {
+				"TITLE": "Ρυθμίσεις",
+				"APPLY": "Εφαρμογή",
+				"CLOSE": "Κλείσιμο"
+			},
+			"MESSAGE": {
+				"EMPTY": "Δεν υπάρχουν δεδομένα προς εμφάνιση",
+				"TOTAL": "Σύνολο",
+				"SELECTED": "Επιλεγμένα"
+			}
+		},
+		"VALIDATION": {
+			"REQUIRED": "Απαιτούμενο πεδίο",
+			"INVALID-JSON": "Μη έγκυρη επιλογή",
+			"EMAIL": "Μη έγκυρο e-mail",
+			"PHONE": "Λανθασμένη μορφή",
+			"PASSWORD-MISMATCH": "Οι κωδικοί πρόσβασης δεν ταιριάζουν",
+			"EMAIL-MISMATCH": "Οι διευθύνσεις e-mail δεν ταιριάζουν",
+			"NOT-NUMBER": "Η τιμή πρέπει να είναι αριθμός",
+			"NOT-INT": "Η τιμή πρέπει να είναι ακέραιος αριθμός",
+			"NO-REGEXP": "Η τιμή πρέπει να ικανοποιεί το regular expression:",
+			"MAX-LENGTH": "Η τιμή υπερβαίνει το μέγιστο μήκος εισόδου"
+		},
+		"CONFIRMATION-DIALOG": {
+			"SEND-INVITATION": "Αποστολή πρόσκλησης;",
+			"DELETE-ITEM": "Διαγραφή αυτού του στοιχείου;",
+			"DELETE-USER-SETTING-PROFILE": "Διαγραφή αυτού του προφίλ προβολής;",
+			"ACTIONS": {
+				"CONFIRMATION": "Επιβεβαίωση",
+				"CANCELATION": "Ακύρωση",
+				"CONFIRM": "Ναι",
+				"CANCEL": "Όχι"
+			}
+		},
+		"PENDING-FORM-CHANGES-DIALOG": {
+			"MESSAGE": "You haven't saved your changes. Are you sure you want to leave this page?",
+			"ACTIONS": {
+				"YES": "Yes",
+				"NO": "No"
+			}
+		},
+		"ACTIONS": {
+			"NEXT": "Επόμενο",
+			"BACK": "Πίσω",
+			"CONTINUE": "Συνέχεια"
+		},
+		"TEXT-FILTER": {
+			"LIKE": "αναζήτηση..."
+		},
+		"SNACK-BAR": {
+			"SUCCESSFUL-CREATION": "Επιτυχής δημιουργία",
+			"SUCCESSFUL-UPDATE": "Επιτυχής ενημέρωση",
+			"UNSUCCESSFUL-OPERATION": "Ανεπιτυχής ενέργεια",
+			"SUCCESSFUL-LOGIN": "Επιτυχής σύνδεση",
+			"SUCCESSFUL-REGISTRATION": "Επιτυχής εγγραφή"
+		},
+		"ERRORS": {
+			"DEFAULT": "Παρουσιάστηκε απροσδόκητο σφάλμα"
+		}
+	}
+}

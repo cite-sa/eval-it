@@ -1,0 +1,67 @@
+<div class="row user-invitation">
+	<div class="col-md-8 offset-md-2">
+
+		<h4>{{'IDP-SERVICE.USER-INVITATION.TITLE' | translate}}</h4>
+		<form *ngIf="formGroup" (ngSubmit)="formSubmit()" [formGroup]="formGroup">
+			<div class="row">
+				<mat-accordion class="col-md-12" [multi]="true">
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								{{'IDP-SERVICE.USER-INVITATION.FIELDS.INVITE-EXISTING-USERS' | translate}}
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<div class="row">
+							<mat-form-field class="col-12">
+								<mat-label>{{'IDP-SERVICE.USER-INVITATION.FIELDS.USERS' | translate}}</mat-label>
+								<app-multiple-auto-complete [formControl]="formGroup.get('users')" [configuration]="usersConfiguration">
+								</app-multiple-auto-complete>
+							</mat-form-field>
+							<mat-form-field class="col-12">
+								<mat-label>{{'IDP-SERVICE.USER-INVITATION.FIELDS.ROLE' | translate}}</mat-label>
+								<mat-select [formControl]="formGroup.get('usersRole')">
+									<mat-option *ngFor="let role of roleTypes" [value]="role">{{appEnumUtils.toRoleTypeString(role)}}</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</mat-expansion-panel>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								{{'IDP-SERVICE.USER-INVITATION.FIELDS.INVITE-NEW-USERS-BY-EMAIL' | translate}}
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<div class="row">
+							<mat-form-field class="col-12" formArrayName="emails">
+								<mat-chip-list #emailChipList>
+									<mat-chip *ngFor="let element of formGroup.get('emails').controls; let i = index;" formGroupName="{{i}}" [color]="getTooltipColor(element)" [matTooltip]="getTooltipMessage(element, i)" [matTooltipDisabled]="!getTooltipIsEnabled(element)" matTooltipClass="warn-tooltip" selected removable (removed)="removeEmail(i)">
+										{{element.get('email').value}}
+										<mat-icon matChipRemove>cancel</mat-icon>
+									</mat-chip>
+									<mat-label>{{'IDP-SERVICE.USER-INVITATION.FIELDS.EMAILS' | translate}}</mat-label>
+									<input matInput name="email" #emailInput [matChipInputFor]="emailChipList" [matChipInputSeparatorKeyCodes]="chipsSeparatorKeysCodes" (matChipInputTokenEnd)="addEmail($event)" />
+								</mat-chip-list>
+							</mat-form-field>
+							<mat-form-field class="col-12">
+								<mat-label>{{'IDP-SERVICE.USER-INVITATION.FIELDS.ROLE' | translate}}</mat-label>
+								<mat-select [formControl]="formGroup.get('emailsRole')">
+									<mat-option *ngFor="let role of roleTypes" [value]="role">{{appEnumUtils.toRoleTypeString(role)}}</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</mat-expansion-panel>
+
+				</mat-accordion>
+				<mat-error *ngIf="formGroup.hasError('oneValueRequiredError') && isSubmitted">{{'IDP-SERVICE.USER-INVITATION.REQUIRED' | translate}}</mat-error>
+				<div class="col-md-12">
+					<div class="row button-row">
+						<div class="col"></div>
+						<div class="col-auto">
+							<button mat-raised-button color="primary" (click)="sendInvitations()" type="submit">{{'IDP-SERVICE.USER-INVITATION.ACTIONS.SEND-INVITATIONS' | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

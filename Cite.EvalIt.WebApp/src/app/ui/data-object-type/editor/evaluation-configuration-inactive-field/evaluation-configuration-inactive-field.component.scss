@@ -1,0 +1,15 @@
+.config-editor {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+	line-height: 3;
+	flex-basis: 0;
+}
+
+.mat-expansion-panel-header-description {
+	justify-content: space-between;
+	align-items: center;
+}

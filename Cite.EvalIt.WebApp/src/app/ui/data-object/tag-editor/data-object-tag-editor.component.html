@@ -1,0 +1,33 @@
+<div class="row data-object-tag-editor">
+	<div class="col">
+		<mat-card *ngIf="formGroup">
+			<mat-card-title *ngIf="isNew">{{'APP.DATA-OBJECT-TAG-EDITOR.TITLE.NEW' | translate}}</mat-card-title>
+			<mat-card-content>
+				<form *ngIf="formGroup" (ngSubmit)="formSubmit()">
+					<div class="row">
+						<mat-label class="pl-3">{{'APP.DATA-OBJECT-TAG-EDITOR.FIELDS.DISCIPLINE' | translate}}</mat-label>
+						<mat-form-field class="col-md-12">
+							<app-multiple-auto-complete 
+								name="disciplineTags" [(ngModel)]="disciplineTags" 
+								[configuration]="disciplineTagMultipleAutocompleteConfiguration"
+								[disabled]="!authService.hasPermission(authService.permissionEnum.EditUser) || isDeleted">
+							</app-multiple-auto-complete>
+							<mat-error *ngIf="formGroup.get('tagIds').hasError('backendError')">{{formGroup.get('tagIds').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+						
+						<mat-label class="pl-3">{{'APP.DATA-OBJECT-TAG-EDITOR.FIELDS.HASHTAG' | translate}}</mat-label>
+						<mat-form-field class="col-md-12">
+							<app-multiple-auto-complete 
+								name="hashtagTags" [(ngModel)]="hashtagTags" 
+								[configuration]="hashtagTagMultipleAutocompleteConfiguration"
+								[disabled]="!authService.hasPermission(authService.permissionEnum.EditDataObject) || isDeleted">
+							</app-multiple-auto-complete>
+							<mat-error *ngIf="formGroup.get('tagIds').hasError('backendError')">{{formGroup.get('tagIds').getError('backendError')?.message}}</mat-error>
+						</mat-form-field>
+					</div>
+					<app-editor-actions-component [canDelete]="authService.hasPermission(authService.permissionEnum.EditDataObject) && !isDeleted && !isNew" [canSave]="authService.hasPermission(authService.permissionEnum.EditDataObject) && !isDeleted" (onSave)="save()"></app-editor-actions-component>
+				</form>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

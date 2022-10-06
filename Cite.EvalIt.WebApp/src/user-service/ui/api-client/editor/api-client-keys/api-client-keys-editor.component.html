@@ -1,0 +1,31 @@
+<div class="row api-client-keys-editor">
+	<table *ngIf="userCredentialProviders" class="col-12 table tab-container">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">{{'USER-SERVICE.USER-EDITOR.CREDENTIALS.COLUMNS.PROVIDER' | translate}}</th>
+				<th scope="col">{{'USER-SERVICE.USER-EDITOR.CREDENTIALS.COLUMNS.REMOVE' | translate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let credential of userCredentialProviders; let i = index">
+				<th scope="row">{{i + 1}}</th>
+				<td>{{idpEnumUtils.toCredentialProviderString(credential)}}</td>
+				<td>
+					<button mat-icon-button type="button" (click)="removeCredential(i)">
+						<mat-icon>delete</mat-icon>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="col-12 editor-actions">
+		<div class="row">
+			<div class="col-auto" *ngIf="authProviderManager && authProviderManager.supportsApiKey(authProviderManager.userTypesEnum.Service)">
+				<button mat-raised-button *ngIf="userCredentialProviders.length === 0" color="primary" (click)="createNewApiKey()" type="button">{{'USER-SERVICE.API-CLIENT-EDITOR.ACTIONS.CREATE-NEW-CREDENTIAL' | translate}}</button>
+			</div>
+			<div class="col"></div>
+			<div class="col-auto"><button mat-raised-button color="primary" (click)="cancel()" type="button">{{'USER-SERVICE.API-CLIENT-EDITOR.ACTIONS.CANCEL' | translate}}</button></div>
+		</div>
+	</div>
+</div>

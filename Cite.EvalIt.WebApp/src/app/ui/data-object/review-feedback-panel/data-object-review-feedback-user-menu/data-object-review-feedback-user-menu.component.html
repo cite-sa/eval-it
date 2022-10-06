@@ -1,0 +1,4 @@
+<ng-container *ngFor="let user of this.usersToBeDisplayed()" >
+    <button mat-menu-item *ngIf="user.id != null ||  this.anonymousCount > 0" (click)="this.onUserClicked(user)" >{{user.name ?? ( this.anonymousCount + " Anonymous")}}</button>
+</ng-container> 
+<button mat-menu-item *ngIf="this.getUserCount() > 0">{{"+ " + this.getUserCount() + " " + ('APP.DATA-OBJECT-REVIEW-FEEDBACK-PANEL.MORE' | translate)}}</button>

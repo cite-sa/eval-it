@@ -1,0 +1,13 @@
+<mat-expansion-panel disabled >
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{this.evalOption.label}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{this.enumUtils.toEvaluationConfigurationTypeString(this.evalOption.optionType)}}
+            <button mat-icon-button color="primary" type='button' (click)="emitIndexEvent()">
+                <mat-icon>restore</mat-icon>
+            </button>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+<mat-expansion-panel>

@@ -1,0 +1,1662 @@
+{
+	"APP": {
+		"NAVIGATION": {
+			"TITLE": "CITE Template",
+			"USERS": "Users",
+			"APP-USERS": "Users",
+			"TAGS": "Tags",
+			"DATA-OBJECT-TYPE": "Data Object Types",
+			"RANK-RECALCULATION-TASK": "Rank Recalculation Tasks",
+			"DATA-OBJECT": "Data Object",
+			"API-CLIENTS": "API Clients",
+			"USER-ROLE-ASSIGNMENT": "Role Assignment",
+			"ACCESS-TOKENS": "Access Tokens",
+			"USER-INVITATION": "User Invitation",
+			"FORGET-ME-REQUESTS": "Forget Me Requests",
+			"WHAT-YOU-KNOW-ABOUT-ME-REQUESTS": "What You Know About Me Requests",
+			"BLUE-THEME": "Blue Theme",
+			"PINK-THEME": "Pink Theme",
+			"ENGLISH-LANGUAGE": "English",
+			"GREEK-LANGUAGE": "Greek",
+			"ADMIN-TITLE": "Admin",
+			"MASTER-DATA-ADMIN-TITLE": "Master Data Admin",
+			"DATA-TITLE": "Data",
+			"MY-NETWORK-TITLE": "My Network",
+			"CONSENT-ATTENTION": "You need to review your consents.",
+			"TRANSIENT-PROMPT": "You're logged in as an anonymous user. You can create a persistent user, by setting your email through you profile settings and then set you a link to login using an available login provider.",
+			"TENANT-CONFIGURATION": "Configuration",
+			"NOTIFICATIONS": "Notifications",
+			"NOTIFICATION-EVENT-RULES": "Notification Event Rules",
+			"ALL-INAPP-NOTIFICATIONS": "All Notifications >",
+			"NOTIFICATION-TEMPLATES": "Notification Templates",
+			"PRIVACY-STATEMENT": "Privacy Statement",
+			"TERMS-OF-USE": "Terms of Use",
+			"INAPP-NOTIFICATIONS": "Notifications"
+		},
+		"HOME-COMPONENT": {
+			"TITLE": "Welcome to CITE Template"
+		},
+		"TENANT-COMPONENT": {
+			"MESSAGE": {
+				"NOT-FOUND": "Tenant not found"
+			}
+		},
+		"TENANT-CONFIGURATION": {
+			"TITLE": "Tenant Configuration",
+			"ITEMS": {
+				"USER-SERVICE-USER-LOCALE": {
+					"TITLE": "Default User Locale",
+					"HINT": "Default locale assigned to new users"
+				},
+				"IDP-SERVICE-CREDENTIAL-PROVIDERS": {
+					"TITLE": "Credential Providers",
+					"HINT": "Select witch providers can be used to authenticate"
+				},
+				"NOTIFICATION-SERVICE-EMAIL-CLIENT": {
+					"TITLE": "Mailserver settings",
+					"HINT": "Connect to a mailsever to send emails"
+				},
+				"NOTIFICATION-SERVICE-SMS-CLIENT": {
+					"TITLE": "SMS settings",
+					"HINT": "Connect an SMS gateway to send SMS"
+				},
+				"NOTIFICATION-SERVICE-SLACK-BROADCAST": {
+					"TITLE": "Slack Broadcasts",
+					"HINT": "Setup Slack Broadcasts as notifiers"
+				},
+				"NOTIFICATION-SERVICE-NOTIFIER-LIST": {
+					"TITLE": "Notifier List",
+					"HINT": "Select available notifiers for Notification Types"
+				}
+			},
+			"CREDENTIAL-PROVIDERS": {
+				"TITLE": "Select the available Credential Providers for your Tenant",
+				"ACTIONS": {
+					"SAVE": "Save"
+				}
+			}
+		},
+		"EDITOR-ACTIONS": {
+			"SAVE": "Save",
+			"BACK": "Back",
+			"DELETE": "Delete"
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Active",
+				"INACTIVE": "Inactive"
+			},
+			"APP-ROLE": {
+				"ADMIN": "Admin",
+				"CONFIGURATION-ADMIN": "Configuration Admin",
+				"USER-VALIDATOR": "User Validator",
+				"OBJECT-UPLOADER": "Object Uploader",
+				"REVIEWER": "Reviewer",
+				"USER": "User"
+			},
+			"LANGUAGE-TYPE": {
+				"ENGLISH": "English",
+				"GREEK": "Greek"
+			},
+			"TAG-APPLIES-TO": {
+				"ALL": "All",
+				"USER": "User",
+				"OBJECT": "Object"
+			},
+			"TAG-TYPE": {
+				"DISCIPLINE": "Discipline",
+				"HASHTAG": "Hashtag"
+			},
+			"USER-NETWORK-RELATIONSHIP": {
+				"FOLLOW": "Follow",
+				"TRUST": "Trust"
+			},
+			"REGISTRATION-INFORMATION": {
+				"ABSOLUTE-DECIMAL": "Absolute Decimal Option",
+				"ABSOLUTE-INTEGER": "Absolute Integer Option",
+				"PERCENTAGE": "Percentage Option",
+				"TEXT": "Text Option",
+				"SCALE": "Scale Option",
+				"SELECTION": "Selection Option"
+			},
+			"EVALUATION-CONFIGURATION": {
+				"ABSOLUTE-DECIMAL": "Absolute Decimal Option",
+				"ABSOLUTE-INTEGER": "Absolute Integer Option",
+				"PERCENTAGE": "Percentage Option",
+				"TEXT": "Text Option",
+				"SCALE": "Scale Option",
+				"SELECTION": "Selection Option"
+			},
+			"RANK-RECALCULATION-TASK-STATUS": {
+				"PENDING": "Pending",
+				"PROCESSING": "Processing",
+				"SUCCESSFUL": "Successful",
+				"ERROR": "Error",
+				"CANCELLED": "Cancelled",
+				"ABORTED": "Aborted"
+			},
+			"OBJECT-RANK-RECALCULATION-STRATEGY": {
+				"ALL-EQUAL": "All Equal",
+				"LIKED": "Liked",
+				"NETWORK-POPULARITY": "Network Popularity",
+				"NETWORK-TRUST": "Network Trust",
+				"REVIEW-DISCIPLINE-VISIBILITY": "Review Discipline Visibility",
+				"AUTHOR-DISCIPLINE-VISIBILITY": "Author Discipline Visibility",
+				"AUTHOR-ACTIVITY": "Author Activity"
+			}
+		},
+		"USER-PUBLIC-PROFILE": {
+			"REVIEW-COUNT": "Review Count",
+			"OBJECT-COUNT": "Object Count",
+			"RECENT-REVIEWS": "Recent Reviews",
+			"RECENT-OBJECTS": "Recent Objects",
+			"USER-TAGS": "User Tags"
+		},
+		"APP-USER-LISTING": {
+			"TITLE": "Users",
+			"FIELDS": {
+				"NAME": "Name",
+				"CREATED-AT": "Created",
+				"ASSIGNED-TAGS": "Assigned Tags"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"SHOW-INACTIVE": "Show Deleted",
+				"TAGS": "Tags",
+				"TAG-WEIGHT": "Tag With Weight",
+				"WEIGHT-TAG-LABEL": "Tag Label",
+				"WEIGHT-TAG-UPPER-BOUND": "Tag Weight Upper Bound",
+				"WEIGHT-TAG-LOWER-BOUND": "Tag Weight Lower Bound"
+			}
+		},
+		"APP-USER-TAG-EDITOR": {
+			"TITLE": {
+				"NEW": "Tag Assignment"
+			},
+			"FIELDS": {
+				"LABEL": "Label",
+				"WEIGHT": "Weight",
+				"HASHTAG": "Hashtag",
+				"DISCIPLINE": "Discipline"
+			}
+		},
+		"APP-USER-TAG-LISTING": {
+			"FIELDS": {
+				"LABEL": "Label",
+				"WEIGHT": "Weight",
+				"TYPE": "Type"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"WEIGHT": "Weight",
+				"TAG-TYPE": "Tag Type",
+				"WEIGHT-TAG-UPPER-BOUND": "Tag Weight Upper Bound",
+				"WEIGHT-TAG-LOWER-BOUND": "Tag Weight Lower Bound"
+
+			},
+			"TAGS": "User Tags",
+			"NETWORK": "User Network",
+			"BACK": "Back"
+		},
+		"APP-USER-NETWORK-EDITOR": {
+			"TITLE": {
+				"NEW": "Add to User Network"
+			},
+			"FIELDS": {
+				"NAME": "Name",
+				"RELATIONSHIP": "Relationship"
+			},
+			"NAME": {
+				"NEW": "Add to User Network"
+			}
+		},
+		"APP-USER-NETWORK-LISTING": {
+			"FIELDS": {
+				"NAME": "Name",
+				"RELATIONSHIP": "Relationship"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"RELATIONSHIP": "Relationship"
+			},
+			"TAGS": "User Tags",
+			"NETWORK": "User Network",
+			"BACK": "Back"
+		},
+		"APP-USER-MY-NETWORK-EDITOR": {
+			"NAME": {
+				"NEW": "Add to My Network"
+			},
+			"FIELDS": {
+				"NAME": "Name",
+				"RELATIONSHIP": "Relationship"
+			}
+		},
+		"APP-USER-MY-NETWORK-LISTING": {
+			"TITLE": "My Network",
+			"FIELDS": {
+				"NAME": "Name",
+				"RELATIONSHIP": "Relationship"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"RELATIONSHIP": "Relationship"
+			},
+			"TAGS": "User Tags",
+			"NETWORK": "User Network",
+			"BACK": "Back"
+		},
+		"APP-USER-INFO": {
+			"TITLE": "User Info",
+			"TAGS": "User Tags",
+			"NETWORK": "User Network"
+		},
+		"DATA-OBJECT-TYPE-LISTING": {
+			"TITLE": "Data Object Type",
+			"FIELDS": {
+				"NAME": "Name",
+				"CREATED-AT": "Created",
+				"DATAOBJECTCOUNT": "Associated Objects"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"SHOW-INACTIVE": "Show Deleted",
+				"APPLIES-TO": "Applies To"
+			}
+		},
+		"DATA-OBJECT-TYPE-EDITOR": {
+			"NAME": {
+				"NEW": "New Data Object Type"
+			},
+			"FIELDS": {
+				"NAME": "Name",
+				"SELECTED-METHODOLOGY": "Selected Methodology",
+				"MULTIPLE-REVIEWS": "Allow multiple reviews by a single user"
+			},
+			"CREATE-REGISTRATION-INFORMATION": "Create Registration Information Option",
+			"REGISTRATION-INFORMATION": {
+				"FIELDS": {
+					"LABEL": "Option Label",
+					"VALIDATION-REGEXP": "Validation Regular Expression",
+					"MEASUREMENT-UNIT": "Measurement Unit",
+					"IS-MANDATORY": "Is Mandatory",
+					"MULTI-VALUE": "Multi-Value",
+					"SCALE": {
+						"LABEL": "Scale Label",
+						"ICON-IDENTIFIER": "Scale Icon Identifier",
+						"VALUE": "Value",
+						"DISPLAY-TYPE": "Scale Display Type"
+					},
+					"SELECTION": {
+						"KEY": "Selection Key",
+						"VALUE": "Selection Value"
+					}
+				},
+				"OPTION-TYPE": {
+					"ABSOLUTE-DECIMAL": "Absolute Decimal Option",
+					"ABSOLUTE-INTEGER": "Absolute Integer Option",
+					"PERCENTAGE": "Percentage Option",
+					"TEXT": "Text Option",
+					"SCALE": "Scale Option",
+					"SELECTION": "Selection Option"
+				},
+				"NEW-VALUE": "New Value",
+				"NEW-SELECTION-VALUE": "New Selection Value",
+				"NEW-SCALE-VALUE": "New Scale Value",
+				"DELETE-OPTION": "Delete Option"
+			},
+			"CREATE-EVALUATION-CONFIGURATION": "Create Evaluation Configuration Option",
+			"EVALUATION-CONFIGURATION": {
+				"FIELDS": {
+					"LABEL": "Option Label",
+					"MEASUREMENT-UNIT": "Measurement Unit",
+					"IS-MANDATORY": "Is Mandatory",
+					"SCALE": {
+						"LABEL": "Scale Label",
+						"ICON-IDENTIFIER": "Scale Icon Identifier",
+						"VALUE": "Value"
+					},
+					"SELECTION": {
+						"KEY": "Selection Key",
+						"VALUE": "Selection Value"
+					}
+				},
+				"OPTION-TYPE": {
+					"ABSOLUTE-DECIMAL": "Absolute Decimal Option",
+					"ABSOLUTE-INTEGER": "Absolute Integer Option",
+					"PERCENTAGE": "Percentage Option",
+					"TEXT": "Text Option",
+					"SCALE": "Scale Option",
+					"SELECTION": "Selection Option"
+				},
+				"NEW-VALUE": "New Value",
+				"NEW-SELECTION-VALUE": "New Selection Value",
+				"NEW-SCALE-VALUE": "New Scale Value",
+				"DELETE-OPTION": "Delete Option"
+			},
+			"CREATE-OBJECT-RANK-RECALCULATION-STRATEGY": "Create Rank Recalculation Strategy",
+			"OBJECT-RANK-RECALCULATION-STRATEGY" : {
+				"STRATEGY-WEIGHT": "Strategy Weight",
+				"NO-WEIGHT": "No Weight",
+				"LIKE-COUNT-THRESHOLD" : "Like Count Threshold",
+				"LIKED": {
+					"COUNT-UPPER-BOUND":  "Like Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Like Percentage Upper Bound",
+					"RANGE": "Like Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"NETWORK-POPULARITY": {
+					"COUNT-UPPER-BOUND":  "Network Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Network Percentage Upper Bound",
+					"RANGE": "Network Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"NETWORK-TRUST": {
+					"COUNT-UPPER-BOUND":  "Network Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Network Percentage Upper Bound",
+					"RANGE": "Network Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"REVIEW-DISCIPLINE": {
+					"COUNT-UPPER-BOUND":  "Review Discipline Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Review Discipline Percentage Upper Bound",
+					"RANGE": "Review Discipline Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"FOLLOW-REVIEW-LIKE": {
+					"COUNT-UPPER-BOUND":  "Same Discipline Follower Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Same Discipline Follower Percentage Upper Bound",
+					"RANGE": "Same Discipline Follower Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"TRUST-REVIEW-LIKE": {
+					"COUNT-UPPER-BOUND":  "Same Discipline Trusting Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Same Discipline Trusting Percentage Upper Bound",
+					"RANGE": "Same Discipline Trusting Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"OBJECT-UPLOADED": {
+					"COUNT-UPPER-BOUND":  "Uploaded Object Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Uploaded Object Percentage Upper Bound",
+					"RANGE": "Uploaded Object Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"REVIEW-UPLOADED": {
+					"COUNT-UPPER-BOUND":  "Uploaded Review Count Upper Bound",
+					"PERCENTAGE-UPPER-BOUND": "Uploaded Review Percentage Upper Bound",
+					"RANGE": "Uploaded Review Range",
+					"RANGE-VALUE": "Range Weight",
+					"RANGE-REST-VALUE": "Range Weight"
+				},
+				"AUTHOR-ACTIVITY-ROLLING-TIME-PERIOD": "Rolling Time Period",
+				"AUTHOR-ACTIVITY-TIME-UNIT": "Time Unit",
+				"DELETE-OPTION": "Delete Option",
+				"RANGE-INTERPRETATION": "Range Interpretation"
+			}
+
+		},
+		"DATA-OBJECT-TYPE-RANKING-METHODOLOGY-LISTING": {
+			"TITLE": "Ranking Methodology",
+			"FIELDS": {
+				"NAME": "Name"
+			}
+		},
+		"DATA-OBJECT-TYPE-RANKING-METHODOLOGY-EDITOR": {
+			"NAME": {
+				"NEW": "New Ranking Methodology"
+			},
+			"FIELDS": {
+				"NAME": "Name"
+			},
+			"RANKING-PROFILE": {
+				"OPTION-LABEL": "Option Label",
+				"OPTION-IS-MANDATORY": "Mandatory",
+				"OPTION-WEIGHT": "Option Weight",
+				"UPPER-BOUND": "Range Upper Bound",
+				"LOWER-BOUND": "Range Lower Bound",
+				"UPPER-BOUND-LABEL": "Upper Bound (Optional)",
+				"LOWER-BOUND-LABEL": "Lower Bound (Optional)",
+				"VALUE-RANGE": "Range Value",
+				"VALUE-RANGE-REST": "Range Value",
+				"VALUE-SCALE": "Value",
+				"VALUE-SELECTION": "Value"
+			}
+		},
+		"DATA-OBJECT-LISTING": {
+			"TITLE": "Data Object",
+			"FIELDS": {
+				"TITLE": "Title",
+				"DESCRIPTION": "Description",
+				"ASSIGNED-TAGS": "Assigned Tags",
+				"CREATED-AT": "Created",
+				"TYPE-NAME": "Type Name",
+				"RANK-SCORE": "Rank Score",
+				"REVIEWCOUNT": "User Reviews",
+				"AUTHOR": "Author"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"LIKE-DESCRIPTION": "search by description...",
+				"SHOW-INACTIVE": "Show Deleted",
+				"TAGS": "Tags",
+				"TAG-WEIGHT": "Tag With Weight",
+				"APPLIES-TO": "Applies To",
+				"DATA-OBJECT-TYPES": "Data Object Types",
+				"WEIGHT-TAG-LABEL": "Tag Label",
+				"WEIGHT-TAG-UPPER-BOUND": "Tag Weight Upper Bound",
+				"WEIGHT-TAG-LOWER-BOUND": "Tag Weight Lower Bound",
+				"TYPE-NAME": "Type Name"
+			}
+		},
+		"DATA-OBJECT-EDITOR": {
+			"TITLE": "Data Object",
+			"NAME": {
+				"NEW": "New Data Object"
+			},
+			"FIELDS": {
+				"TITLE": "Title",
+				"DESCRIPTION": "Description",
+				"ASSIGNED-TAGS": "Assigned Tags",
+				"CREATED-AT": "Created",
+				"USER-DEFINED-ID": {
+					"KEY": "Key",
+					"VALUE": "Value"
+				}
+			},
+			"MESSAGE-EDITED": "This object's type has recently been edited, please check the object's attributes to resolve possible issues",
+			"OBJECT-TYPE-LABEL": "Object Type",
+			"CREATE-ATTRIBUTE-VALUE": "Add Attribute Value",
+			"NEW-USER-DEFINED-ID": "New User Defined ID",
+			"KEEP-ATTRIBUTE": "Keep Attribute",
+			"REMOVE-ATTRIBUTE": "Remove Attribute",
+			"DOI-WARNING": "Warning, invalid DOI, are you sure you would like to proceed?"
+		},
+		"DATA-OBJECT-VIEWER": {
+			"AUTHOR": "Author",
+			"DESCRIPTION": "Description",
+			"PIDS": "Persistent IDs",
+			"DATA-OBJECT-TYPE-NAME": "Object Type",
+			"NO-VALUE": "(No Values)",
+			"RANK-SCORE": "Rank Score"
+		},
+		"DATA-OBJECT-TAG-EDITOR": {
+			"TITLE": {
+				"NEW": "Tag Assignment"
+			},
+			"FIELDS": {
+				"LABEL": "Label",
+				"WEIGHT": "Weight",
+				"HASHTAG": "Hashtag",
+				"DISCIPLINE": "Discipline"
+			}
+		},
+		"DATA-OBJECT-TAG-LISTING": {
+			"FIELDS": {
+				"LABEL": "Label",
+				"WEIGHT": "Weight",
+				"TYPE": "Type"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"SHOW-INACTIVE": "Show Deleted",
+				"WEIGHT": "Weight",
+				"WEIGHT-TAG-UPPER-BOUND": "Tag Weight Upper Bound",
+				"WEIGHT-TAG-LOWER-BOUND": "Tag Weight Lower Bound"
+			}
+		},
+		"DATA-OBJECT-REVIEW-EDITOR": {
+			"NAME": {
+				"NEW": "New Review",
+				"EDIT": "Edit Review"
+			},
+			"MESSAGE-EDITED": "This review's evaluation configuration has recently been edited, please check the review evaluations to resolve possible issues",
+			"KEEP-EVALUATION": "Keep Evaluation",
+			"REMOVE-EVALUATION": "Remove Evaluation"
+		},
+		"DATA-OBJECT-REVIEW-LISTING": {
+			"NEW-REVIEW": "New Review",
+			"EDIT-REVIEW": "Edit Review",
+			"ANONYMOUS-USER": "Anonymous",
+			"IS-MINE": "Mine",
+			"FIELDS": {
+				"CREATED-AT": "Created",
+				"UPDATED-AT": "Updated",
+				"REVIEW-RANK-SCORE": "Review Rank",
+				"NETWORK": "Network"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"USERIDS": "Users",
+				"USER": "User",
+				"ANONYMITY": "Anonymity",
+				"SHOW-INACTIVE": "Show Deleted"
+			}
+		},
+		"DATA-OBJECT-INFO": {
+			"TITLE": "Object Info",
+			"EDIT-OBJECT": "Edit Object",
+			"REVIEWS": "Reviews",
+			"TAGS": "Tags"
+		},
+		"DATA-OBJECT-REVIEW-FEEDBACK-PANEL": {
+			"LIKE-TOOLTIP": "View Users that have liked this",
+			"MORE": "more"
+		},
+		"TAG-LISTING": {
+			"TITLE": "Tags",
+			"FIELDS": {
+				"LABEL": "Label",
+				"TYPE": "Type",
+				"APPLIESTO": "Applies To",
+				"CREATED-AT": "Created",
+				"USERCOUNT": "Associated Users",
+				"DATAOBJECTCOUNT": "Associated Objects"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"SHOW-INACTIVE": "Show Deleted",
+				"APPLIES-TO": "Applies To",
+				"TYPE": "Type",
+				"USER": "User",
+				"DATA-OBJECT": "Object",
+				"EXCLUDED-USERS": "Excluded Users",
+				"INCLUDED-USERS": "Included Users",
+				"EXCLUDED-DATA-OBJECTS": "Excluded Objects",
+				"INCLUDED-DATA-OBJECTS": "Included Objects"
+			}
+		},
+		"TAG-EDITOR": {
+			"TITLE": {
+				"NEW": "New Tag"
+			},
+			"FIELDS": {
+				"LABEL": "Label",
+				"TYPE": "Type",
+				"APPLIESTO": "Applies To",
+				"ASSOCIATED-USERS": "Associated Users",
+				"ASSOCIATED-OBJECTS": "Associated Objects"
+			},
+			"ACTIONS": {
+				"SAVE": "Save",
+				"CANCEL": "Cancel",
+				"DELETE": "Delete"
+			}
+		},
+		"RANK-RECALCULATION-TASK-LISTING": {
+			"TITLE": "Rank Recalculation Tasks",
+			"FIELDS": {
+				"SUCCESSFUL-REVIEW-RANKINGS": "Successful Review Rankings",
+				"FAILED-REVIEW-RANKINGS": "Failed Rankings",
+				"REVIEW-ITEMS-TO-CALCULATE": "Reviews to Calculate",
+				"SUCCESSFUL-OBJECT-RANKINGS": "Successful Object Rankings",
+				"FAILED-OBJECT-RANKINGS": "Failed Object Rankings",
+				"OBJECT-ITEMS-TO-CALCULATE": "Objects to Calculate",
+				"TASK-STATUS": "Status",
+				"CREATED-AT": "Created",
+				"FINISHED-AT": "Finished",
+				"CONTROL": "Control",
+				"REQUESTING-USER": "Requesting User"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"TASK-STATUS": "Task Status",
+				"REQUESTING-USERS": "Requesting Users"
+			}
+		}
+	},
+	"USER-SERVICE": {
+		"TENANT-CONFIGURATION": {
+			"USER-LOCALE-EDITOR": {
+				"FIELDS": {
+					"TIMEZONE": "Timezone",
+					"CULTURE": "Culture",
+					"LANGUAGE": "Language"
+				},
+				"ACTIONS": {
+					"SAVE": "Save",
+					"DELETE": "Restore to Default"
+				}
+			}
+		},
+		"USER-PROFILE-COMPONENT": {
+			"TABS": {
+				"PROFILE": "Profile",
+				"CONSENTS": "User Consents",
+				"PERSONAL": "Personal",
+				"CONTACT-INFO": "Contact Info",
+				"USER-NOTIFIER-LIST": "Notifier Priority",
+				"CREDENTIALS": "Credentials",
+				"TOTP": "Two Step Authentication",
+				"FORGET-ME": "Forget Me",
+				"WHAT-YOU-KNOW-ABOUT-ME": "What You Know About Me"
+			},
+			"CHANGE-EMAIL-DIALOG": {
+				"TITLE": "Change e-mail",
+				"REMOVE-CONFIRMATION": "Are you sure you want to remove your email?",
+				"FIELDS": {
+					"EMAIL": "E-mail",
+					"EMAIL-REPEAT": "Repeat e-mail"
+				},
+				"SUCCESS": "E-mail sent. Validation link will remain valid until ",
+				"ACTIONS": {
+					"SUBMIT": "Save",
+					"REMOVE": "Remove",
+					"CANCEL": "Cancel",
+					"SAVE": "Save"
+				}
+			},
+			"FORGET-ME": {
+				"TABLE-TITLE": "Forget Me Requests",
+				"REQUEST-FORGET": "Request to be Forgotten",
+				"CONFIRMATION-MESSAGE": "Are you sure you want to forget about you?",
+				"CANCEL-REQUEST-CONFIRMATION-MESSAGE": "Are you sure you want to cancel this request to be forgotten?",
+				"COLUMNS": {
+					"STATE": "State",
+					"CREATED-AT": "Created",
+					"EXPIRES-AT": "Expires",
+					"CANCEL": "Cancel"
+				},
+				"STATE": {
+					"PENDING-USER-CONFIRMATION": "Pending User Confirmation",
+					"PENDING-ADMIN-APPROVAL": "Pending Admin Approval"
+				}
+			},
+			"WHAT-YOU-KNOW-ABOUT-ME": {
+				"TABLE-TITLE": "What You Know About Me Requests",
+				"REQUEST-DATA": "Request to receive all your data",
+				"CONFIRMATION-MESSAGE": "Are you sure you want to proceed?",
+				"CANCEL-REQUEST-CONFIRMATION-MESSAGE": "Are you sure you want to cancel this request to receive all your data?",
+				"COLUMNS": {
+					"STATE": "State",
+					"CREATED-AT": "Created",
+					"EXPIRES-AT": "Expires",
+					"ACTIONS": "Actions"
+				},
+				"ACTIONS": {
+					"CANCEL": "Cancel",
+					"DOWNLOAD": "Download"
+				},
+				"STATE": {
+					"PENDING-USER-CONFIRMATION": "Pending User Confirmation",
+					"PENDING-ADMIN-APPROVAL": "Pending Admin Approval"
+				}
+			},
+			"PERSONAL": {
+				"NAME": "Name"
+			},
+			"CONTACT-INFO": {
+				"NAME": "Name",
+				"EMAIL": "Email",
+				"MOBILE-PHONE": "Mobile Phone",
+				"LANDLINE-PHONE": "Landline Phone",
+				"CHANGE-EMAIL": "Change Email"
+			},
+			"PROFILE": {
+				"TITLE": "Profile",
+				"TENTATIVE-PROFILE": "Profile is tentative. Please review the following fields and save your profile to continue.",
+				"FIELDS": {
+					"TIMEZONE": "Timezone",
+					"CULTURE": "Culture",
+					"LANGUAGE": "Language"
+				}
+			},
+			"ACTIONS": {
+				"SAVE": "Save",
+				"CANCEL": "Cancel"
+			}
+		},
+		"USER-PROFILE": {
+			"PROFILE-PICTURE-EDITOR": {
+				"TITLE": "Profile Picture",
+				"ACTIONS": {
+					"SELECT-IMAGE": "Select Image",
+					"CROP": "Crop",
+					"DONE": "Done",
+					"BACK-TO-EDITING": "Back to Editing",
+					"CLOSE": "Close"
+				}
+			}
+		},
+		"USER-LISTING": {
+			"TITLE": "Users",
+			"FIELDS": {
+				"NAME": "Name",
+				"EMAIL": "E-mail",
+				"MOBILE-PHONE": "Mobile Phone",
+				"LANDLINE-PHONE": "Landline Phone",
+				"IS-ACTIVE": "Status"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"ROLES": "Roles",
+				"IS-ACTIVE": "Status",
+				"SHOW-INACTIVE": "Show Deleted"
+			}
+		},
+		"USER-EDITOR": {
+			"TITLE": {
+				"NEW": "New User"
+			},
+			"INCOMPATIBLE-USER-TYPE": "Cannot edit this user.",
+			"CREDENTIAL-GENERAL-INFORMATION": "This user can login using this provider",
+			"CREDENTIALS-TITLE": "Credentials",
+			"FIELDS": {
+				"NAME": "Name",
+				"EMAIL": "E-mail",
+				"MOBILE-PHONE": "Mobile Phone",
+				"LANDLINE-PHONE": "Landline Phone",
+				"IS-VALIDATED": "Is Validated",
+				"TIMEZONE": "Timezone",
+				"CULTURE": "Culture",
+				"LANGUAGE": "Language",
+				"ROLES": "Roles",
+				"X-ROLES":"Neanias Roles",
+				"CREDENTIAL-PROVIDER": "Provider",
+				"CREDENTIAL-PUBLIC": "Username",
+				"CREDENTIAL-PRIVATE": "Password",
+				"CREDENTIAL-PRIVATE-REPEAT": "Repeat password"
+			},
+			"ROLES-TAB": "Roles",
+			"USER-TAB": "User",
+			"CREDENTIALS-TAB": "Credentials",
+			"CREDENTIALS": {
+				"COLUMNS": {
+					"PROVIDER": "Provider",
+					"REMOVE": "Revoke"
+				}
+			},
+			"ACTIONS": {
+				"RESET-INTERNAL-CREDENTIAL": "Reset Username / Password",
+				"REMOVE-CREDENTIAL": "Remove",
+				"SAVE": "Save",
+				"SEND-INVITATION": "Send invitation",
+				"CANCEL": "Cancel",
+				"DELETE": "Delete"
+			},
+			"MESSAGES": {
+				"INVITATION-SENT": "E-mail sent. Invitation link will remain valid until "
+			}
+		},
+		"API-CLIENT-LISTING": {
+			"TITLE": "API Clients",
+			"FIELDS": {
+				"NAME": "Name",
+				"IS-ACTIVE": "Status",
+				"ROLES": "Roles"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"ROLES": "Roles",
+				"IS-ACTIVE": "Status",
+				"SHOW-INACTIVE": "Show Deleted"
+			}
+		},
+		"API-CLIENT-EDITOR": {
+			"TITLE": {
+				"NEW": "New API Client"
+			},
+			"INCOMPATIBLE-USER-TYPE": "Cannot edit this user.",
+			"CREDENTIALS-TITLE": "Credentials",
+			"NEW-CREDENTIAL-TITLE": "API Key created!",
+			"NEW-CREDENTIAL-MESSAGE": "Please securely store the following API Key in your system. If you lose this API Key you 'll need to regenerate it.",
+			"NEW-CREDENTIAL-BUTTON": "Close",
+			"FIELDS": {
+				"NAME": "Service name",
+				"ROLES": "Roles"
+			},
+			"SERVICE-TAB": "Service",
+			"ROLES-TAB": "Roles",
+			"CREDENTIALS-TAB": "Keys",
+			"CREDENTIALS": {
+				"COLUMNS": {
+					"PROVIDER": "Provider",
+					"PUBLIC": "Key",
+					"REMOVE": "Revoke"
+				}
+			},
+			"API-KEY-REPLACE-WARNING": "This action will revoke any existing API keys.",
+			"ACTIONS": {
+				"CREATE-NEW-CREDENTIAL": "Create new API key",
+				"REMOVE-CREDENTIAL": "Remove",
+				"SAVE": "Save",
+				"CANCEL": "Cancel",
+				"DELETE": "Delete"
+			}
+		},
+		"FORGET-ME-REQUEST-LISTING": {
+			"TITLE": "\"Forget Me\" Requests",
+			"FIELDS": {
+				"USER": "User",
+				"IS-ACTIVE": "Status",
+				"IS-VALIDATED": "User Validation",
+				"STATE": "State",
+				"CREATED-AT": "Created",
+				"EXPIRES-AT": "Expires",
+				"RESPONSE": "Actions"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"LIKE": "search...",
+				"STATE": "State",
+				"IS-VALIDATED": "User Validation"
+			},
+			"APPROVE-CONFIRMATION-MESSAGE": "Are you sure you want to approve this request?",
+			"DECLINE-CONFIRMATION-MESSAGE": "Are you sure you want to decline this request?",
+			"REVERT-CONFIRMATION-MESSAGE": "Are you sure you want to revert this action?",
+			"ACTIONS": {
+				"APPROVE": "Approve",
+				"DECLINE": "Decline",
+				"REVERT": "Revert"
+			}
+		},
+		"FORGET-ME-VALIDATE": {
+			"COMPLETED": "Your request is accepted. An admin will review it, and respond back.",
+			"PROCESSING": "Processing...",
+			"BACK": "Back to home"
+		},
+		"DECLINE-FORGET-ME": {
+			"TITLE": "We 're sorry!",
+			"SUBTITLE": "We 'll investigate further how this email reached you. If you have any information, let us know. Thank you.",
+			"FIELDS": {
+				"TEXT": "Notes"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Forget me request declined"
+			}
+		},
+		"WHAT-YOU-KNOW-ABOUT-ME-REQUEST-LISTING": {
+			"TITLE": "\"What You Know About Me\" Requests",
+			"FIELDS": {
+				"USER": "User",
+				"IS-ACTIVE": "Status",
+				"IS-VALIDATED": "User Validation",
+				"STATE": "State",
+				"CREATED-AT": "Created",
+				"EXPIRES-AT": "Expires",
+				"RESPONSE": "Actions"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"LIKE": "search...",
+				"STATE": "State",
+				"IS-VALIDATED": "User Validation"
+			},
+			"APPROVE-CONFIRMATION-MESSAGE": "Are you sure you want to approve this request?",
+			"DECLINE-CONFIRMATION-MESSAGE": "Are you sure you want to decline this request?",
+			"REVERT-CONFIRMATION-MESSAGE": "Are you sure you want to revert this action?",
+			"ACTIONS": {
+				"APPROVE": "Approve",
+				"DECLINE": "Decline",
+				"REVERT": "Revert"
+			}
+		},
+		"WHAT-YOU-KNOW-ABOUT-ME-VALIDATE": {
+			"COMPLETED": "Your request is accepted. An admin will review it, and respond back.",
+			"PROCESSING": "Processing...",
+			"BACK": "Back to home"
+		},
+		"DECLINE-WHAT-YOU-KNOW-ABOUT-ME": {
+			"TITLE": "We 're sorry!",
+			"SUBTITLE": "We 'll investigate further how this email reached you. If you have any information, let us know. Thank you.",
+			"FIELDS": {
+				"TEXT": "Notes"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "What you know about me request declined"
+			}
+		},
+		"EMAIL-RESET": {
+			"TITLE": "Change E-mail",
+			"LOADING": "Processing request...",
+			"RESULT": {
+				"FAILURE": "E-mail change failed.",
+				"SUCCESS": "E-mail changed successfully."
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "E-mail changed successfully"
+			}
+		},
+		"DECLINE-EMAIL-RESET": {
+			"TITLE": "We 're sorry!",
+			"SUBTITLE": "We 'll investigate further how this email reached you. If you have any information, let us know. Thank you.",
+			"FIELDS": {
+				"TEXT": "Notes"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Email reset declined"
+			}
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Active",
+				"INACTIVE": "Inactive"
+			},
+			"FORGET-ME-VALIDATION": {
+				"PENDING": "Pending",
+				"VALIDATED": "Validated"
+			},
+			"FORGET-ME-STATE": {
+				"PENDING": "Pending",
+				"APPROVED": "Approved",
+				"DENIED": "Denied",
+				"COMPLETED": "Completed"
+			},
+			"WHAT-YOU-KNOW-ABOUT-ME-VALIDATION": {
+				"PENDING": "Pending",
+				"VALIDATED": "Validated"
+			},
+			"WHAT-YOU-KNOW-ABOUT-ME-STATE": {
+				"PENDING": "Pending",
+				"APPROVED": "Approved",
+				"DENIED": "Denied",
+				"PROCESSING": "Processing",
+				"COMPLETED": "Completed",
+				"ERROR": "Error"
+			}
+		}
+	},
+	"IDP-SERVICE": {
+		"TENANT-CONFIGURATION": {
+			"CREDENTIAL-PROVIDERS-EDITOR": {
+				"ACTIONS": {
+					"SAVE": "Save"
+				}
+			}
+		},
+		"USER-CONSENTS": {
+			"TITLE": "User Consents",
+			"ACTIONS": {
+				"SAVE": "Save",
+				"CANCEL": "Cancel"
+			}
+		},
+		"USER-ROLE-ASSIGNMENT": {
+			"TITLE": "User Role Assignment",
+			"UNSAVED-CHANGES": "There are unsaved changes",
+			"FIELDS": {
+				"NAME": "Name",
+				"ROLES": "Roles",
+				"X-ROLES": "Neanias Roles"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"LIKE": "search...",
+				"ROLES": "Roles",
+				"IS-ACTIVE": "Status",
+				"SHOW-INACTIVE": "Show Deleted"
+			},
+			"ACTIONS": {
+				"SAVE-ALL": "Save all changes",
+				"DISCARD-ALL": "Discard all changes"
+			}
+		},
+		"ACCESS-TOKEN-LISTING": {
+			"TITLE": "Access Tokens",
+			"FIELDS": {
+				"USERNAME": "Username",
+				"CLIENT": "Client",
+				"TYPE": "Type",
+				"LATEST-EXPIRES-AT": "Latest expiration",
+				"LATEST-CREATED-AT": "Latest creation",
+				"COUNT": "Count",
+				"ACTION": "Action"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"LIKE": "search..."
+			}
+		},
+		"TOTP-DIALOG-COMPONENT": {
+			"TITLE": "Two Step Verification",
+			"ACTIONS": {
+				"DONE": "Done",
+				"CANCEL": "Cancel"
+			}
+		},
+		"AUTHENTICATION": {
+			"TITLES": {
+				"LOGIN": "Login",
+				"DIRECT-LINK-LOGIN": "Login with direct link",
+				"REGISTER": "Or Register",
+				"SUCCESSFUL-REQUEST": "Successful Registration",
+				"SUCCESSFUL-REQUEST-SUBTITLE": "Your registration request has been successfully sent",
+				"SUCCESSFUL-REQUEST-CHECK-MAIL": "We have sent you an email with login information to complete your registration. please check your emails",
+				"INVITATION-CODE": "Please insert invitation code",
+				"PROVIDER-SELECTION": "Please select authentication provider",
+				"REGISTRATION-FIELDS": "User information",
+				"EXTERNAL-PROVIDERS": "External authentication providers",
+				"INTERNAL-PROVIDER": "Internal authentication provider",
+				"TENANT-SELECTION": "Please enter your Company Name",
+				"USER-CONSENTS": "User Consents",
+				"FAILED-LOGIN": "Login Failure",
+				"FAILED-LOGIN-SUBTITLE": "The link used to connect has expired.",
+				"FAILED-LOGIN-CLAIM-MAIL-OTP": "The link used to connect has expired. Please create a new one-time link."
+			},
+			"FIELDS": {
+				"INVITATION-CODE": "Invitation code",
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"EMAIL": "E-mail",
+				"CONFIRM-EMAIL": "Confirm E-mail",
+				"TOTP": "Two Step Authentication Code (if enabled)",
+				"CONFIRM-PASSWORD": "Confirm password",
+				"TENANT": "Company"
+			},
+			"ACTIONS": {
+				"LOGIN": "Login",
+				"PASSWORD-RESET": "Reset password",
+				"REGISTER": "Register",
+				"REGISTER-WITH-INVITATION": "I have an invitation",
+				"SAML-LOGIN": "Saml",
+				"OPENID-CONNECT-CODE-LOGIN": "OpenId",
+				"CAS-LOGIN": "CAS",
+				"NEXT": "Next",
+				"BACK": "Back",
+				"CONTINUE": "Continue",
+				"BACK-TO-LOGIN": "Back to login page"
+			},
+			"MESSAGES": {
+				"SIGN-OUT-IN-PROGRESS": "Logging out...",
+				"TENANT-NOT-FOUND": "Tenant not found"
+			}
+		},
+		"DECLINE-REGISTRATION-INVITATION": {
+			"TITLE": "We 're sorry, to see you going!",
+			"SUBTITLE": "If there is any specific reason for not using this invitation, please let us know. Thank you.",
+			"FIELDS": {
+				"TEXT": "Notes"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Registration invitation declined"
+			}
+		},
+		"PASSWORD-RESET": {
+			"TITLE": "Password Reset",
+			"FIELDS": {
+				"PASSWORD": "Password",
+				"PASSWORD-REPEAT": "Repeat password"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Password reset successful"
+			}
+		},
+		"DECLINE-PASSWORD-RESET": {
+			"TITLE": "We 're sorry!",
+			"SUBTITLE": "We 'll investigate further how this email reached you. If you have any information, let us know. Thank you.",
+			"FIELDS": {
+				"TEXT": "Notes"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "Password reset declined"
+			}
+		},
+		"PASSWORD-RESET-POPUP": {
+			"TITLE": "Request Password Reset",
+			"INFO": "An e-mail will be sent to the specified address with instructions for reseting your password",
+			"FIELDS": {
+				"USERNAME": "Username",
+				"EMAIL": "E-mail"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "E-mail sent. Validation link will remain valid until "
+			}
+		},
+		"USER-INVITATION": {
+			"TITLE": "Invite Users",
+			"REQUIRED": "At least one user or email must be selected",
+			"FIELDS": {
+				"USERS": "Users",
+				"EMAILS": "E-mails",
+				"ROLE": "Role to assign",
+				"INVITE-EXISTING-USERS": "Invite existing users",
+				"INVITE-NEW-USERS-BY-EMAIL": "Invite new users by email"
+			},
+			"ACTIONS": {
+				"ADD-EMAIL": "Add e-mail",
+				"SEND-INVITATIONS": "Send invitations"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "E-mails sent. Invitation link will remain valid until "
+			}
+		},
+		"USER-PASS-OVERRIDE-DIALOG": {
+			"TITLE": "Password Override",
+			"FIELDS": {
+				"USERNAME": "Username",
+				"PASSWORD": "Password",
+				"PASSWORD-REPEAT": "Repeat password"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			}
+		},
+		"CONSENTS-GUARD-DIALOG": {
+			"TITLE": "In order to proceed, you need to accept the following consents",
+			"ACTIONS": {
+				"SAVE": "Save",
+				"CANCEL": "Cancel"
+			}
+		},
+		"USER-CONSENTS-EDITOR": {
+			"CONSENT-AWARENESS": "*Consents can be changed anytime through the User Profile page."
+		},
+		"SEND-INVITATION-POPUP": {
+			"TITLE": "Invite User",
+			"FIELDS": {
+				"EMAIL": "E-mail"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Submit"
+			},
+			"SNACK-BAR": {
+				"SUCCESS": "E-mail sent. Invitation link will remain valid until "
+			}
+		},
+		"USER-CREDENTIALS": {
+			"COLUMNS": {
+				"PROVIDER": "Provider",
+				"REMOVE": "Revoke"
+			},
+			"ADD-POPUP-TITLE": "Success",
+			"ADD-POPUP-MESSAGE": "An invitation sent to your email to associate your user with another Credential Provider. Please follow the link from your email.",
+			"ACTIONS": {
+				"ADD-PROVIDER": "Connect With a different provider",
+				"CANCEL": "Cancel"
+			}
+		},
+		"TOTP-SETUP": {
+			"ENABLE-TITLE": "For increased security your can activate Two Step Authentication",
+			"DISABLE-TITLE": "Two Step Authentication is active",
+			"QR-CODE-MESSAGE": "Please scan the following QR Code using your code generation application",
+			"MANUAL-INPUT": "or enter the following code manually",
+			"BACKUP-CODE": "Please write down the following code, as it can be used as a backup code",
+			"VERIFICATION-TITLE": "Please enter a generated code",
+			"CODE": "Code",
+			"ACTIONS": {
+				"ENABLE": "Enable",
+				"DISABLE": "Disable",
+				"NEXT": "Next",
+				"VERIFY": "Verify",
+				"CANCEL": "Cancel"
+			}
+		},
+		"TOTP-INPUT": {
+			"PLACEHOLDER": "Two Step Authentication Code"
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Active",
+				"INACTIVE": "Inactive"
+			},
+			"CREDENTIAL-PROVIDER": {
+				"SERVICE": "Service",
+				"USER-PASS": "Internal account",
+				"GOOGLE": "Google",
+				"TAXISNET": "Taxisnet",
+				"FACEBOOK": "Facebook",
+				"TWITTER": "Twitter",
+				"LINKED-IN": "LinkedIn",
+				"GIT-HUB": "GitHub",
+				"SAML": "Saml",
+				"OPENID-CONNECT-CODE": "OpenId",
+				"CAS": "CAS",
+				"API-KEY": "API Key",
+				"DIRECT-LINK": "Direct Link",
+				"TRANSIENT": "Transient",
+				"TOTP": "Time-based One-Time Password"
+			}
+		}
+	},
+	"NOTIFICATION-SERVICE": {
+		"TENANT-CONFIGURATION": {
+			"SLACK-BROADCAST": {
+				"TITLE": "Slack Webhooks",
+				"HINT": "Insert the webhook part after \"https://hooks.slack.com/services/\"",
+				"COLUMNS": {
+					"NAME": "Name",
+					"WEBHOOK": "Webhook",
+					"ACTIONS": "Actions"
+				},
+				"FIELDS": {
+					"NAME": "Name",
+					"WEBHOOK": "Webhook"
+				},
+				"ACTIONS": {
+					"SAVE": "Save",
+					"DELETE": "Delete"
+				}
+			},
+			"SMS-CLIENT-EDITOR": {
+				"HINT": "Insert the webhook part after \"https://hooks.slack.com/services/\"",
+				"FIELDS": {
+					"APPLICATION-ID": "Application Id",
+					"APPLICATION-SECRET": "Application Secret",
+					"SEND-AS-NAME": "Name to send as"
+				},
+				"ACTIONS": {
+					"SAVE": "Save",
+					"DELETE": "Delete"
+				}
+			},
+			"EMAIL-CLIENT-EDITOR": {
+				"HINT": "Insert the webhook part after \"https://hooks.slack.com/services/\"",
+				"FIELDS": {
+					"REQUIRES-CREDENTIALS": "Requires Credentials",
+					"ENABLE-SSL": "Enable SSL",
+					"HOST-SERVER": "Server Host",
+					"HOST-PORT-NUMBER": "Server Port",
+					"EMAIL-ADDRESS": "Email Address",
+					"EMAIL-USERNAME": "Email Username",
+					"EMAIL-PASSWORD": "Email Password"
+				},
+				"ACTIONS": {
+					"SAVE": "Save",
+					"DELETE": "Delete"
+				}
+			},
+			"NOTIFIER-LIST-EDITOR": {
+				"ACTIONS": {
+					"SAVE": "Save",
+					"DELETE": "Delete"
+				}
+			}
+		},
+		"NOTIFICATION-TEMPLATE-EDITOR": {
+			"TITLE": "Notification Templates",
+			"SUBJECT-SECTION": "Subject Template",
+			"BODY-SECTION": "Body Template",
+			"NO-TEMPLATE-AVAILABLE": "The selected Notification Type is not available through this channel.",
+			"FIELDS": {
+				"NOTIFICATION-TYPE": "Notification Type",
+				"NOTIFICATION-CHANNEL": "Notification Channel",
+				"LANGUAGE": "Language",
+				"DESCRIPTION": "Template Description",
+				"SUBJECT-TEXT": "Subject Template",
+				"FIELD-OPTIONS": {
+					"MANDATORY": {
+						"TITLE": "Mandatory Items",
+						"ITEM": "Item"
+					},
+					"OPTIONAL": {
+						"TITLE": "Optional Items",
+						"KEY": "Key",
+						"VALUE": "Value"
+					}
+				}
+			},
+			"ACTIONS": {
+				"CLONE": "Duplicate this Template",
+				"SAVE": "Save",
+				"DELETE": "Delete",
+				"SET-PRIMARY": "Set Primary",
+				"SET-SECONDARY": "Set Secondary",
+				"SET-DRAFT": "Set Draft"
+			}
+		},
+		"USER-PROFILE": {
+			"NOTIFIER-LIST-EDITOR": {
+				"ACTIONS": {
+					"SAVE": "Save"
+				}
+			}
+		},
+		"NOTIFICATION-LISTING": {
+			"TITLE": "Notifications",
+			"FIELDS": {
+				"USER-NAME": "Title",
+				"IS-ACTIVE": "Is Active",
+				"TYPE": "Type",
+				"CONTACT-TYPE": "Contact Type",
+				"NOTIFY-STATE": "Notify State",
+				"NOTIFIED-AT": "Notified at",
+				"TRACKING-STATE": "Tracking State",
+				"TRACKING-PROCESS": "Tracking Process",
+				"PROVENANCE-TYPE": "Workflow",
+				"CREATED-AT": "Created"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"USERS": "Users",
+				"TYPE": "Type",
+				"LIKE": "search...",
+				"CONTACT-TYPE": "Contact Type",
+				"NOTIFY-STATE": "Notify State",
+				"TRACKING-STATE": "Tracking State",
+				"TRACKING-PROCESS": "Tracking Process",
+				"PROVENANCE-TYPE": "Workflow"
+			}
+		},
+		"NOTIFICATION-EVENT-RULE-LISTING": {
+			"TITLE": "Notification Event Rules",
+			"FIELDS": {
+				"USER-NAME": "User",
+				"IN-RESPONSE-TO": "In Response To",
+				"IS-ACTIVE": "Is Active",
+				"ROLE": "Role",
+				"CREATED-AT": "Created"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"SHOW-INACTIVE": "Show Deleted",
+				"USERS": "Users",
+				"ROLES": "Roles",
+				"LIKE": "search...",
+				"IN-RESPONSE-TO": "In Response To"
+			}
+		},
+		"NOTIFICATION-EVENT-RULE-EDITOR": {
+			"TITLE": {
+				"NEW": "New Notification Event Rule"
+			},
+			"FIELDS": {
+				"USERS": "Users",
+				"IN-RESPONSE-TO": "In Response To",
+				"ROLES": "Roles"
+			},
+			"ACTIONS": {
+				"SAVE": "Save",
+				"CANCEL": "Cancel",
+				"DELETE": "Delete"
+			}
+		},
+		"INAPP-NOTIFICATION-LISTING": {
+			"TITLE": "Notifications",
+			"FIELDS": {
+				"SUBJECT": "Subject",
+				"TRACKING-STATE": "State",
+				"CREATED-AT": "Created"
+			},
+			"FILTER": {
+				"SEARCH-FILTER": "SEARCH FILTERS",
+				"ALL-FILTERS": "All the filters",
+				"NO-FILTERS": "No filter",
+				"MORE-FILTERS": "More Filters",
+				"TRACKING-STATE": "State",
+				"LIKE": "search...",
+				"SHOW-INACTIVE": "Show Deleted"
+			}
+		},
+		"INAPP-NOTIFICATION-EDITOR": {
+			"TITLE": "Notification",
+			"ACTIONS": {
+				"READ": "Read",
+				"CANCEL": "Cancel",
+				"DELETE": "Delete"
+			}
+		},
+		"NOTIFICATION-COMPONENT": {
+			"POPUP": {
+				"CLOSE-BUTTON": "OK"
+			}
+		},
+		"TYPES": {
+			"IS-ACTIVE": {
+				"ACTIVE": "Active",
+				"INACTIVE": "Inactive"
+			},
+			"NOTIFICATION-NOTIFY-STATE": {
+				"PENDING": "Pending",
+				"PROCESSING": "Processing",
+				"SUCCESSFUL": "Successful",
+				"ERROR": "Error",
+				"OMITTED": "Omitted"
+			},
+			"NOTIFICATION-TYPE": {
+				"REGISTRATION-INVITATION": "Registration invitation",
+				"TOTP-OVERRIDE-USED": "Two step override code used",
+				"CREDENTIAL-RESET": "Credential reset",
+				"DIRECT-LINK": "Login direct link",
+				"FORGET-ME-REQUEST": "Forget me request",
+				"WHAT-YOU-KNOW-ABOUT-ME-REQUEST": "What you know about me request",
+				"WHAT-YOU-KNOW-ABOUT-ME-REQUEST-COMPLETED": "What you know about me request completed",
+				"EMAIL-RESET-REQUEST": "Email reset request",
+				"EMAIL-RESET-AWARENESS": "Email reset awareness",
+				"EMAIL-RESET-REMOVE": "Email reset remove",
+				"GENERATE-FILE-COMPLETED": "Generate file completed",
+				"USER-FOLLOW": "User follow event",
+				"USER-UNFOLLOW": "User unfollow event",
+				"USER-TRUST": "User trust event",
+				"USER-UNTRUST": "User untrust event",
+				"USER-REVIEW-SIGNED": "Signed review event",
+				"USER-REVIEW-UNSIGNED": "Anonymous review event"
+			},
+			"NOTIFICATION-TRACKING-STATE": {
+				"UNDEFINED": "Undefined",
+				"NA": "N/A",
+				"QUEUED": "Queued",
+				"SENT": "Sent",
+				"DELIVERED": "Delivered",
+				"UNDELIVERED": "Undelivered",
+				"FAILED": "Failed",
+				"UNSENT": "Unsent"
+			},
+			"NOTIFICATION-TRACKING-PROCESS": {
+				"PENDING": "Pending",
+				"PROCESSING": "Processing",
+				"COMPLETED": "Completed",
+				"ERROR": "Error",
+				"OMITTED": "Omitted"
+			},
+			"NOTIFICATION-EVENT-IN-RESPONSE-TO": {
+				"REGISTRATION-INVITATION": "Registration invitation",
+				"PASSWORD-RESET": "Password reset",
+				"EMAIL-RESET": "Email reset",
+				"FORGET-ME-REQUESTED": "Forget me requested",
+				"FORGET-ME-VALIDATED": "Forget me validated",
+				"FORGET-ME-WITHDRAWN": "Forget me withdrawn",
+				"FORGET-ME-STAMPED": "Forget me stamped",
+				"WHAT-YOU-KNOW-ABOUT-ME-REQUESTED": "What you know about me requested",
+				"WHAT-YOU-KNOW-ABOUT-ME-VALIDATED": "What you know about me validated",
+				"WHAT-YOU-KNOW-ABOUT-ME-WITHDRAWN": "What you know about me withdrawn",
+				"WHAT-YOU-KNOW-ABOUT-ME-STAMPED": "What you know about me stamped",
+				"NEW-USER-REGISTERED": "New user registered",
+				"TOTP-OVERRIDE-USED": "Two step override code used"
+			},
+			"NOTIFICATION-INAPP-TRACKING": {
+				"STORED": "New",
+				"DELIVERED": "Read"
+			},
+			"NOTIFICATION-TEMPLATE-CHANNEL": {
+				"EMAIL": "E-mail",
+				"SLACK-BROADCAST": "Slack Broadcast",
+				"SMS": "SMS",
+				"IN-APP": "In App Notification"
+			},
+			"NOTIFICATION-TEMPLATE-KIND": {
+				"DEFAULT": "Default",
+				"PRIMARY": "Primary",
+				"SECONDARY": "Secondary",
+				"DRAFT": "Draft"
+			},
+			"CONTACT-TYPE": {
+				"EMAIL": "Email",
+				"SLACK-BROADCAST": "Slack Broadcast",
+				"SMS": "SMS",
+				"IN-APP": "In App"
+			}
+		}
+	},
+	"COMMONS": {
+		"CUSTOM-USER-SETTINGS": {
+			"LABEL": "Filter Profile",
+			"FILTER-NAME": "Filter Name",
+			"ACTIONS": {
+				"UPDATE-FILTER": "Update Filter",
+				"SAVE-FILTER-AS": "Save Filter As",
+				"SETTINGS-LIST-BUTTON": "Saved Filters",
+				"DELETE": "Delete"
+			}
+		},
+		"FILTER-NAME-DIALOG": {
+			"TITLE": "A filter name is required",
+			"FIELDS": {
+				"FILTER-NAME": "Filter Name"
+			},
+			"ACTIONS": {
+				"SUBMIT": "Save",
+				"CANCEL": "Cancel"
+			}
+		},
+		"LISTING-COMPONENT": {
+			"SETTINGS": {
+				"TITLE": "Settings",
+				"APPLY": "Apply",
+				"CLOSE": "Close"
+			},
+			"MESSAGE": {
+				"EMPTY": "No data to display",
+				"TOTAL": "Total",
+				"SELECTED": "Selected"
+			}
+		},
+		"VALIDATION": {
+			"REQUIRED": "Required field",
+			"INVALID-JSON": "Invalid selection",
+			"EMAIL": "Invalid e-mail",
+			"PHONE": "Invalid format",
+			"PASSWORD-MISMATCH": "Passwords do not match",
+			"EMAIL-MISMATCH": "E-mails do not match",
+			"MAX-LENGTH": "Input exceeds maximum length",
+			"NO-REGEXP": "Input must match regular expression:",
+			"OUT-OF-RANGE": "Input out of range of acceptable values:",
+			"NOT-NUMBER": "Input is not a number",
+			"NOT-INT": "Input is not an integer",
+			"MUST-BE-POSITIVE": "Input must be positive",
+			"MUST-BE-NEGATIVE": "Input must be negative",
+			"NON-INCREASING-UPPER-BOUNDS": "Bounds are non-increasing",
+			"OUT-OF-PERCENTAGE-RANGE-ERROR": "Percentage values must be between 0% and 100%",
+			"ZERO-WEIGHT-SUM-ERROR": "The sum of all strategy weights must not be equal to 0"
+		},
+		"CONFIRMATION-DIALOG": {
+			"SEND-INVITATION": "Send invitation?",
+			"DELETE-ITEM": "Delete this item?",
+			"DELETE-USER-SETTING-PROFILE": "Delete this filter;",
+			"ACTIONS": {
+				"CONFIRMATION": "Confirmation",
+				"CANCELATION": "Cancelation",
+				"CONFIRM": "Yes",
+				"CANCEL": "No"
+			}
+		},
+		"PENDING-FORM-CHANGES-DIALOG": {
+			"MESSAGE": "You haven't saved your changes. Are you sure you want to leave this page?",
+			"ACTIONS": {
+				"YES": "Yes",
+				"NO": "No"
+			}
+		},
+		"ACTIONS": {
+			"NEXT": "Next",
+			"BACK": "Back",
+			"CONTINUE": "Continue"
+		},
+		"TEXT-FILTER": {
+			"LIKE": "search..."
+		},
+		"SNACK-BAR": {
+			"SUCCESSFUL-CREATION": "Successful creation",
+			"SUCCESSFUL-UPDATE": "Successful update",
+			"UNSUCCESSFUL-OPERATION": "Unsuccessful operation",
+			"SUCCESSFUL-LOGIN": "Successful login",
+			"SUCCESSFUL-REGISTRATION": "Successful registration"
+		},
+		"ERRORS": {
+			"DEFAULT": "An Unexpected Error Occurred"
+		}
+	}
+}

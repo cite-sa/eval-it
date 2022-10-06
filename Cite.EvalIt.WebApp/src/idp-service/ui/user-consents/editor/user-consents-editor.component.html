@@ -1,0 +1,17 @@
+<mat-accordion multi="true">
+	<mat-expansion-panel *ngFor="let consent of _availableConsents" class="row user-consents-editor">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<h5>{{consent.title}}</h5><span *ngIf="consent.kind === consentKindEnum.System || consent.kind === consentKindEnum.Mandatory" class="required-consent-indicator">*</span>
+			</mat-panel-title>
+			<mat-panel-description>
+				<div class="col"></div>
+				<div class="col-auto">
+					<mat-slide-toggle [disabled]="consent.kind === consentKindEnum.System" [checked]="_isSelected(consent)" (click)="$event.stopPropagation()" (change)="_selectionChange($event, consent)"></mat-slide-toggle>
+				</div>
+			</mat-panel-description>
+		</mat-expansion-panel-header>
+		{{consent.description}}
+	</mat-expansion-panel>
+</mat-accordion>
+<span *ngIf="showAwareness">{{'IDP-SERVICE.USER-CONSENTS-EDITOR.CONSENT-AWARENESS' | translate}}</span>

@@ -1,0 +1,71 @@
+<div class="login-component row">
+	<div class="col-md-4 offset-md-4">
+		<mat-card>
+			<mat-card-content>
+				<div class="row">
+					<div *ngIf="!tenantId && installationConfiguration.isMultitenant" class="col-md-12">
+						<app-tenant-selection></app-tenant-selection>
+					</div>
+					<div *ngIf="tenantId || (!tenantId && !installationConfiguration.isMultitenant)" class="col-md-12">
+						<div *ngIf="loginComponentMode === loginComponentModeEnum.Basic" class="row">
+							<h3 class="col-12" style="text-align: center" class="col-md-12">{{'IDP-SERVICE.AUTHENTICATION.TITLES.LOGIN' | translate}}</h3>
+							<div *ngIf="providerManager" class="col-md-12">
+								<div class="row">
+									<div *ngIf="!needsTotpVerification && providerManager" class="col-12">
+										<app-auth-providers (onProviderSelected)="updateSelectedProvider($event)"
+										 [configuration]="externalProvidersComponentConfig"
+										[directLinkProvider]="providerManager.directLinkProvider()"
+										[googleProvider]="providerManager.googleProvider()"
+										[taxisnetProvider]="providerManager.taxisnetProvider()"
+										[facebookProvider]="providerManager.facebookProvider()"
+										[twitterProvider]="providerManager.twitterProvider()"
+										[linkedInProvider]="providerManager.linkedInProvider()"
+										[gitHubProvider]="providerManager.gitHubProvider()"
+										[samlProviders]="providerManager.samlProviders()"
+										[openIDConnectCodeProviders]="providerManager.openIDConnectCodeProviders()"
+										[casProviders]="providerManager.casProviders()"
+										[tenantId]="tenantId" (onAuthenticate)="doExternalLogin($event)"></app-auth-providers>
+									</div>
+									<div *ngIf="needsTotpVerification" class="col-12">
+										<div class="row">
+											<div class="col-12">
+												<div class="row">
+													<app-totp-input class="col" placeholder="{{'IDP-SERVICE.AUTHENTICATION.FIELDS.TOTP' | translate}}" [(ngModel)]="totpKey"></app-totp-input>
+												</div>
+												<div class="row">
+													<div class="col-auto"><button mat-raised-button color="primary" (click)="cancelTotp()">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.BACK' | translate}}</button></div>
+													<div class="col"></div>
+													<div class="col-auto"><button mat-raised-button color="primary" (click)="continueTotp()">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.CONTINUE' | translate}}</button></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12" *ngIf="!needsTotpVerification && providerManager.supportsUserPass()">
+										<app-basic-login (onAuthenticateSuccess)="onAuthenticateSuccess($event)" [tenantId]="tenantId" [totpEnabled]="providerManager.totpEnabledForUserPass()"></app-basic-login>
+									</div>
+								</div>
+							</div>
+							<div *ngIf="!needsTotpVerification" class="col-12 register-section">
+								<div class="row">
+									<h3 class="col-12" style="text-align: center" class="col-md-12">{{'IDP-SERVICE.AUTHENTICATION.TITLES.REGISTER' |
+										translate}}</h3>
+									<div class="col-6 register-item"><a mat-raised-button color="primary" [routerLink]="'/signup-register/' + tenantId" queryParamsHandling="preserve">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.REGISTER' | translate}}</a></div>
+									<div class="col-6 register-item"><a mat-raised-button color="primary" [routerLink]="'/signup-invitation/' + tenantId" queryParamsHandling="preserve">{{'IDP-SERVICE.AUTHENTICATION.ACTIONS.REGISTER-WITH-INVITATION' | translate}}</a></div>
+								</div>
+							</div>
+						</div>
+						<div *ngIf="loginComponentMode === loginComponentModeEnum.DirectLinkMail" class="row">
+							<div  class="col-md-12">
+								<h4 class="col-12" style="text-align: center" class="col-md-12">
+									{{'IDP-SERVICE.AUTHENTICATION.TITLES.DIRECT-LINK-LOGIN' | translate}}</h4>
+								<mat-card class="direct-login-card">
+									<app-direct-link-mail-request [tenantId]="tenantId"></app-direct-link-mail-request>
+								</mat-card>
+							</div>
+						</div>
+					</div>
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
+</div>

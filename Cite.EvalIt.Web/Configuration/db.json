@@ -1,0 +1,13 @@
+{
+	"ConnectionStrings": {
+		"NotificationDbContext": "%{PostgreSQLDBConnectionString}%",
+		"MongoDbClient": "%{MongoDBConnectionString}%"
+
+	},
+	"Db": {
+		"Provider": {
+			"Provider": "PostgreSQL",
+			"TablePrefix": "app_"
+		}
+	}
+}
